@@ -25,7 +25,7 @@ export function MobileTimeline({
   const totalYears = maxYear - minYear;
   
   // Базовая высота для одного года (в пикселях)
-  const YEAR_HEIGHT = 120;
+  const YEAR_HEIGHT = 150;
   
   // Создание локальной карты годов для отображения маркеров лет
   const yearMarkers = React.useMemo(() => {
@@ -51,11 +51,11 @@ export function MobileTimeline({
   
   // Функция для расчета позиции на основе года
   const calculatePosition = (year: number) => {
-    return (year - minYear) * YEAR_HEIGHT;
+    return (year - minYear) * YEAR_HEIGHT + 50; // Добавляем отступ сверху
   };
   
   // Рассчитываем минимальную высоту контейнера
-  const minContainerHeight = (totalYears + 1) * YEAR_HEIGHT;
+  const minContainerHeight = (totalYears + 1) * YEAR_HEIGHT + 100; // Добавляем отступ снизу
   
   return (
     <div className="md:hidden w-full">
@@ -104,7 +104,7 @@ export function MobileTimeline({
               }}
             >
               <div className="relative">
-                <span className="text-xs font-medium text-zinc-200 select-none px-2 py-1 bg-zinc-900/80 backdrop-blur-sm rounded-full">
+                <span className="text-sm font-medium text-zinc-200 select-none px-2 py-1 bg-zinc-900/80 backdrop-blur-sm rounded-full">
                   {year}
                 </span>
               </div>
@@ -112,7 +112,7 @@ export function MobileTimeline({
           ))}
           
           {/* Карточки */}
-          <div className="relative z-[2] flex flex-col gap-8">
+          <div className="relative z-[2] flex flex-col">
             {sortedItems.map((item, index) => {
               const cardId = `${item.category}-${item.startYear}-${item.title.replace(/\s+/g, '-')}`;
               const isCardExpanded = expandedCard?.id === cardId;
@@ -121,8 +121,7 @@ export function MobileTimeline({
               const cardPosition = calculatePosition(item.startYear);
               
               // Расчет дополнительного сдвига для избежания наложения карточек
-              const cardSpacing = 20; // Базовый отступ между карточками
-              const verticalShift = index > 0 ? cardSpacing : 0;
+              const cardSpacing = index > 0 ? 40 : 0; // Увеличиваем отступ между карточками
               
               return (
                 <div 
@@ -130,7 +129,7 @@ export function MobileTimeline({
                   className="w-full"
                   style={{
                     position: 'absolute',
-                    top: `${cardPosition + verticalShift}px`,
+                    top: `${cardPosition + cardSpacing}px`,
                     left: 0,
                     right: 0,
                   }}

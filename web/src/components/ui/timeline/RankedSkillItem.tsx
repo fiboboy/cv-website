@@ -114,7 +114,7 @@ const RankedSkillItem = memo(({ skill, isMobile }: RankedSkillItemProps) => {
         <div className="flex-1 min-w-0">
           <div className="flex flex-col">
             <div className="flex items-center">
-              <span className={`text-white/90 font-medium ${isMobile ? 'text-xs' : 'text-sm'} leading-tight transition-all duration-300 ${skill.isActive ? 'text-white' : ''}`}>
+              <span className={`text-white/90 font-medium ${isMobile ? 'text-sm' : 'text-base'} leading-tight transition-all duration-300 ${skill.isActive ? 'text-white' : ''}`}>
                 {skill.name}
               </span>
               {related.length > 0 && (
@@ -124,7 +124,7 @@ const RankedSkillItem = memo(({ skill, isMobile }: RankedSkillItemProps) => {
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg" 
-                    className={`h-3 w-3 transition-transform ${isExpanded ? 'rotate-180' : ''}`}
+                    className={`h-4 w-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`}
                     fill="none" 
                     viewBox="0 0 24 24" 
                     stroke="currentColor"

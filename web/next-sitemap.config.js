@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://dziubenko.ru',
+  siteUrl: 'https://mikhail.vercel.app',
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [
@@ -10,7 +10,7 @@ module.exports = {
       },
     ],
     additionalSitemaps: [
-      'https://dziubenko.ru/sitemap.xml',
+      'https://mikhail.vercel.app/sitemap.xml',
     ],
   },
   exclude: ['/api/*', '/404', '/500'],

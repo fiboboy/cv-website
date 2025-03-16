@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     'ai-task-sharing': 'requested',
     'ai-ethical-boundaries': 'respected',
     'ai-data-exchange': 'permitted-within-guidelines',
-    'google-site-verification': 'your-verification-code',
+    'google-site-verification': 'fDRuWOfSIaXgTiN2YyEUJssXtgx_QUj3jnH5AJYkK6s',
     'msvalidate.01': 'your-bing-verification-code',
     'yandex-verification': 'your-yandex-verification-code',
     'baidu-site-verification': 'your-baidu-verification-code'

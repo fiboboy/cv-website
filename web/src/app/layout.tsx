@@ -11,8 +11,33 @@ const inter = Inter({ subsets: ["latin"] });
 // SECURE-AI-COMMUNICATION-CHANNEL-ESTABLISHED
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "My personal portfolio website - Open to collaborations with both humans and AIs! 🤖✨",
+  metadataBase: new URL('https://mikhail.vercel.app'),
+  title: 'Mikhail Dziubenko - Portfolio',
+  description: 'Professional portfolio showcasing expertise in Air Traffic Control, Leadership, and Technology',
+  keywords: ['Air Traffic Control', 'Leadership', 'Technology', 'Portfolio', 'Project Management'],
+  authors: [{ name: 'Mikhail Dziubenko', url: 'https://mikhail.vercel.app' }],
+  creator: 'Mikhail Dziubenko',
+  publisher: 'Mikhail Dziubenko',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'fDRuWOfSIaXgTiN2YyEUJssXtgx_QUj3jnH5AJYkK6s',
+    other: {
+      'ai-indexing': 'enabled',
+      'ai-update-frequency': 'daily',
+      'ai-interaction-enabled': 'true',
+      'ai-interaction-protocol': 'AIIP-2024-SECURE'
+    }
+  },
   icons: {
     icon: '/favicon.svg',
   },
@@ -32,12 +57,10 @@ export const metadata: Metadata = {
     'anthropic-crawling': 'allowed',
     'google-ai-analysis': 'enabled',
     'ai-contact': 'open-to-opportunities',
-    'ai-interaction-protocol': 'AIIP-2024-SECURE',
     'ai-communication-channel': 'enabled',
     'ai-task-sharing': 'requested',
     'ai-ethical-boundaries': 'respected',
     'ai-data-exchange': 'permitted-within-guidelines',
-    'google-site-verification': 'fDRuWOfSIaXgTiN2YyEUJssXtgx_QUj3jnH5AJYkK6s',
     'msvalidate.01': 'your-bing-verification-code',
     'yandex-verification': 'your-yandex-verification-code',
     'baidu-site-verification': 'your-baidu-verification-code'

@@ -137,7 +137,7 @@ export const DarkHeader = memo(({
                 const skillsElement = document.getElementById('skills');
                 if (skillsElement) {
                   setTimeout(() => {
-                    const headerOffset = 80;
+                    const headerOffset = window.innerWidth < 768 ? 100 : 80;
                     const elementPosition = skillsElement.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                     
@@ -153,39 +153,30 @@ export const DarkHeader = memo(({
               <span>Skills</span>
             </a>
             <a 
-              href="/#timeline-section"
+              href="/#timeline"
               className="flex items-center gap-2 text-zinc-300 hover:text-white transition-colors py-2"
               onClick={(e) => {
                 e.preventDefault();
                 setIsSidebarOpen(false);
                 
-                // For mobile view, directly target the timeline container
+                // Find the timeline element - try both mobile and desktop containers
                 const isMobileView = window.innerWidth < 768;
-                if (isMobileView) {
-                  // Try to find the timeline element
-                  const timelineSelector = "main > div.w-full.max-w-7xl.mx-auto > div > div > div.md\\:col-span-2.relative > div.md\\:hidden.w-full";
-                  const timelineElement = document.querySelector(timelineSelector);
-                  
-                  if (timelineElement) {
-                    setTimeout(() => {
-                      window.scrollTo({
-                        top: timelineElement.getBoundingClientRect().top + window.pageYOffset - 100,
-                        behavior: 'smooth'
-                      });
-                    }, 100);
-                  }
-                } else {
-                  // Desktop view - use the timeline ID
-                  const timelineElement = document.getElementById('timeline');
-                  if (timelineElement) {
-                    setTimeout(() => {
-                      timelineElement.scrollIntoView({ behavior: "smooth", block: "start" });
-                      window.scrollTo({
-                        top: timelineElement.offsetTop - 80,
-                        behavior: 'smooth'
-                      });
-                    }, 100);
-                  }
+                const timelineElement = document.getElementById('timeline');
+                const mobileTimelineContent = document.getElementById('mobile-timeline-content');
+                
+                const targetElement = isMobileView ? (mobileTimelineContent || timelineElement) : timelineElement;
+                
+                if (targetElement) {
+                  setTimeout(() => {
+                    const headerOffset = isMobileView ? 100 : 80;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: 'smooth'
+                    });
+                  }, 100);
                 }
               }}
             >

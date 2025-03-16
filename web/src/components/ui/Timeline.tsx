@@ -965,15 +965,30 @@ export function Timeline() {
         <div className="md:col-span-2">
           <div className="relative w-full">
             <div className="md:hidden w-full">
-              <MobileTimeline items={timelineData} />
+              <MobileTimeline 
+                processedItems={allProcessedItems}
+                onHover={setActivePeriod}
+                expandedCard={expandedCard}
+                setExpandedCard={handleCardExpand}
+              />
             </div>
             <div className="hidden md:block">
               <DesktopTimeline
-                items={processedItems}
+                processedLeftItems={processedLeftItems}
+                processedRightItems={processedRightItems}
                 expandedCard={expandedCard}
-                onCardExpand={handleCardExpand}
-                onBackgroundClick={handleBackgroundClick}
-                skillsTableOffset={skillsTableOffset}
+                setExpandedCard={handleCardExpand}
+                setActivePeriod={setActivePeriod}
+                getPositionByYear={getPositionByYear}
+                MIN_YEAR={MIN_YEAR}
+                maxYear={maxYear}
+                timelineData={timelineData}
+                getExpandedCardExtraHeight={getExpandedCardExtraHeight}
+                totalTimelineHeight={totalTimelineHeight}
+                contentHeight={contentHeight}
+                yearStart={MIN_YEAR}
+                yearEnd={maxYear}
+                numYears={totalYears}
               />
             </div>
           </div>

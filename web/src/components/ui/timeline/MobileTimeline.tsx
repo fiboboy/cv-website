@@ -19,6 +19,14 @@ export function MobileTimeline({
   // Сортируем карточки по году начала для правильного порядка отображения
   const sortedItems = [...processedItems].sort((a, b) => a.startYear - b.startYear);
   
+  // Находим минимальный и максимальный год для расчета масштаба
+  const minYear = Math.min(...sortedItems.map(item => item.startYear));
+  const maxYear = Math.max(...sortedItems.map(item => item.endYear));
+  const totalYears = maxYear - minYear;
+  
+  // Базовая высота для одного года (в пикселях)
+  const YEAR_HEIGHT = 120;
+  
   // Создание локальной карты годов для отображения маркеров лет
   const yearMarkers = React.useMemo(() => {
     const uniqueYears = new Set<number>();
@@ -31,15 +39,23 @@ export function MobileTimeline({
       }
     });
     
-    // Добавляем дополнительные важные годы
-    [2001, 2004, 2009, 2014, 2019, 2025].forEach(year => uniqueYears.add(year));
+    // Добавляем промежуточные годы для более равномерного распределения маркеров
+    for (let year = minYear; year <= maxYear; year++) {
+      if (year % 2 === 0) { // Добавляем каждый второй год
+        uniqueYears.add(year);
+      }
+    }
     
     return Array.from(uniqueYears).sort((a, b) => a - b);
-  }, [processedItems]);
+  }, [sortedItems, minYear, maxYear]);
   
-  // Рассчитываем приблизительную минимальную высоту для контейнера, чтобы вмещать все карточки
-  // Уменьшаем значение для более плотного отображения карточек
-  const minContainerHeight = sortedItems.length * 120 + 150; // 120px на карточку + запас на отступы
+  // Функция для расчета позиции на основе года
+  const calculatePosition = (year: number) => {
+    return (year - minYear) * YEAR_HEIGHT;
+  };
+  
+  // Рассчитываем минимальную высоту контейнера
+  const minContainerHeight = (totalYears + 1) * YEAR_HEIGHT;
   
   return (
     <div className="md:hidden w-full">
@@ -48,81 +64,33 @@ export function MobileTimeline({
         <TimelineLegend isMobileView={true} />
       </div>
       
-      {/* Центральная линия таймлайна - фиксированная, не зависит от контента */}
+      {/* Центральная линия таймлайна */}
       <div className="relative mt-4 mb-12" id="mobile-timeline-content">
         {/* Container для линии и карточек */}
         <div className="relative" style={{ minHeight: `${minContainerHeight}px` }}>
           {/* Фиксированная центральная линия */}
           <div className="absolute left-1/2 -translate-x-1/2 w-[3px] h-full z-[1]">
-            {/* Верхняя градиентная линия (начало) */}
+            {/* Верхняя градиентная линия */}
             <div 
               className="absolute top-0 w-full bg-gradient-to-b from-transparent to-blue-500"
-              style={{ 
-                height: '50px',
-                zIndex: 3
-              }}
+              style={{ height: '50px' }}
             />
             
-            {/* Основная линия с градиентом цветов из легенды */}
+            {/* Основная линия с градиентом */}
             <div 
               className="absolute w-full bg-gradient-to-b from-blue-500 via-cyan-500 to-purple-500"
               style={{ 
                 top: '50px',
-                height: 'calc(100% - 170px)',
+                height: 'calc(100% - 100px)',
                 animation: 'gradientFlow 8s linear infinite',
                 backgroundSize: '200% 200%',
               }} 
             />
             
-            {/* Нижняя градиентная линия (конец) */}
+            {/* Нижняя градиентная линия */}
             <div 
               className="absolute bottom-0 w-full bg-gradient-to-b from-purple-500 to-transparent"
-              style={{ 
-                height: '120px',
-                zIndex: 3
-              }}
-            />
-            
-            {/* Эффект свечения */}
-            <div 
-              className="absolute w-[9px] -left-[3px] h-full blur-[6px] opacity-50"
-            >
-              {/* Верхний градиент свечения */}
-              <div 
-                className="absolute top-0 w-full bg-gradient-to-b from-transparent to-blue-500/40"
-                style={{ 
-                  height: '50px'
-                }}
-              />
-              
-              {/* Основное свечение */}
-              <div 
-                className="absolute w-full bg-gradient-to-b from-blue-500/40 via-cyan-500/40 to-purple-500/40"
-                style={{ 
-                  top: '50px',
-                  height: 'calc(100% - 170px)',
-                  animation: 'gradientFlow 8s linear infinite',
-                  backgroundSize: '200% 200%',
-                }}
-              />
-              
-              {/* Нижний градиент свечения */}
-              <div 
-                className="absolute bottom-0 w-full bg-gradient-to-b from-purple-500/40 to-transparent"
-                style={{ 
-                  height: '120px'
-                }}
-              />
-            </div>
-            
-            {/* Бегущая анимированная линия свечения */}
-            <div 
-              className="absolute top-0 inset-x-0 w-full h-[150px] pointer-events-none z-[2]"
-              style={{
-                background: 'linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.15) 50%, transparent)',
-                animation: 'timelineGlow 5s ease-in-out infinite',
-                backgroundSize: '100% 200%',
-              }}
+              style={{ height: '50px' }}
             />
           </div>
           
@@ -132,7 +100,7 @@ export function MobileTimeline({
               key={year}
               className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center z-10"
               style={{ 
-                top: `${year * 100 - (sortedItems[0]?.startYear || 2001) * 100 + 30}px`,
+                top: `${calculatePosition(year)}px`,
               }}
             >
               <div className="relative">
@@ -144,23 +112,29 @@ export function MobileTimeline({
           ))}
           
           {/* Карточки */}
-          <div className="relative z-[2] flex flex-col gap-8 pb-10">
+          <div className="relative z-[2] flex flex-col gap-8">
             {sortedItems.map((item, index) => {
               const cardId = `${item.category}-${item.startYear}-${item.title.replace(/\s+/g, '-')}`;
               const isCardExpanded = expandedCard?.id === cardId;
               
-              // Расчет позиции первой карточки 
-              const firstCardPosition = (item.startYear - (sortedItems[0]?.startYear || 2001)) * 100 + 30;
+              // Расчет позиции карточки
+              const cardPosition = calculatePosition(item.startYear);
+              
+              // Расчет дополнительного сдвига для избежания наложения карточек
+              const cardSpacing = 20; // Базовый отступ между карточками
+              const verticalShift = index > 0 ? cardSpacing : 0;
               
               return (
                 <div 
                   key={index} 
                   className="w-full"
                   style={{
-                    marginTop: index === 0 ? `${firstCardPosition}px` : undefined 
+                    position: 'absolute',
+                    top: `${cardPosition + verticalShift}px`,
+                    left: 0,
+                    right: 0,
                   }}
                 >
-                  {/* Карточка таймлайна */}
                   <TimelineCard
                     item={item}
                     isRight={index % 2 === 0}
@@ -178,7 +152,7 @@ export function MobileTimeline({
         </div>
       </div>
 
-      {/* Добавляем стили для анимации */}
+      {/* Стили для анимации */}
       <style jsx global>{`
         @keyframes timelineGlow {
           0% { background-position: 0% 0%; }

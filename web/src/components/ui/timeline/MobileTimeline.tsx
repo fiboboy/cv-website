@@ -25,7 +25,7 @@ export function MobileTimeline({
   const totalYears = maxYear - minYear;
   
   // Базовая высота для одного года (в пикселях)
-  const YEAR_HEIGHT = 150;
+  const YEAR_HEIGHT = 180;
   
   // Создание локальной карты годов для отображения маркеров лет
   const yearMarkers = React.useMemo(() => {
@@ -55,7 +55,29 @@ export function MobileTimeline({
   };
   
   // Рассчитываем минимальную высоту контейнера
-  const minContainerHeight = (totalYears + 1) * YEAR_HEIGHT + 100; // Добавляем отступ снизу
+  const minContainerHeight = (totalYears + 1) * YEAR_HEIGHT + 150; // Увеличиваем отступ снизу
+  
+  // Функция для проверки перекрытия карточек
+  const getCardOffset = (index: number, currentYear: number) => {
+    if (index === 0) return 0;
+    
+    // Проверяем предыдущие карточки на перекрытие
+    const previousCards = sortedItems.slice(0, index);
+    const currentPosition = calculatePosition(currentYear);
+    
+    let offset = 0;
+    previousCards.forEach((prevItem, i) => {
+      const prevPosition = calculatePosition(prevItem.startYear);
+      const distance = currentPosition - prevPosition;
+      
+      // Если карточки слишком близко друг к другу
+      if (distance < 100) {
+        offset = Math.max(offset, 100 - distance);
+      }
+    });
+    
+    return offset;
+  };
   
   return (
     <div className="md:hidden w-full">
@@ -117,11 +139,9 @@ export function MobileTimeline({
               const cardId = `${item.category}-${item.startYear}-${item.title.replace(/\s+/g, '-')}`;
               const isCardExpanded = expandedCard?.id === cardId;
               
-              // Расчет позиции карточки
-              const cardPosition = calculatePosition(item.startYear);
-              
-              // Расчет дополнительного сдвига для избежания наложения карточек
-              const cardSpacing = index > 0 ? 40 : 0; // Увеличиваем отступ между карточками
+              // Расчет позиции карточки с учетом смещения
+              const basePosition = calculatePosition(item.startYear);
+              const offset = getCardOffset(index, item.startYear);
               
               return (
                 <div 
@@ -129,7 +149,7 @@ export function MobileTimeline({
                   className="w-full"
                   style={{
                     position: 'absolute',
-                    top: `${cardPosition + cardSpacing}px`,
+                    top: `${basePosition + offset}px`,
                     left: 0,
                     right: 0,
                   }}

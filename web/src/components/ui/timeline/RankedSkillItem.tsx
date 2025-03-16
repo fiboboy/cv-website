@@ -135,7 +135,7 @@ const RankedSkillItem = memo(({ skill, isMobile }: RankedSkillItemProps) => {
               )}
             </div>
             <div className="flex flex-col">
-              <span className={`${isMobile ? 'text-[8px] leading-tight' : 'text-[9px]'} text-white/50 ${isExpanded ? '' : 'line-clamp-2'}`}>
+              <span className={`${isMobile ? 'text-xs leading-tight' : 'text-sm'} text-white/50 ${isExpanded ? '' : 'line-clamp-2'}`}>
                 {enhancedDescription}
               </span>
               {isExpanded && related.length > 0 && (
@@ -143,7 +143,7 @@ const RankedSkillItem = memo(({ skill, isMobile }: RankedSkillItemProps) => {
                   {related.map((relatedSkill, idx) => (
                     <span
                       key={idx}
-                      className="text-[8px] px-1 py-0.5 rounded-full bg-white/10 text-white/70"
+                      className="text-[10px] px-1.5 py-0.5 rounded-full bg-white/10 text-white/70"
                     >
                       {relatedSkill}
                     </span>

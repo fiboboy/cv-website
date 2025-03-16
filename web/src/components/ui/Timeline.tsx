@@ -954,7 +954,7 @@ export function Timeline() {
       <div className="relative grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
         {/* Left column - Skills table */}
         <div className="md:col-span-1">
-          <div className="sticky top-20 space-y-4" ref={skillsTableRef}>
+          <div id="skills" className="sticky top-20 space-y-4" ref={skillsTableRef}>
             <SkillsTable
               isSkillsExpanded={isSkillsExpanded}
               setIsSkillsExpanded={setIsSkillsExpanded}
@@ -962,47 +962,21 @@ export function Timeline() {
             />
           </div>
         </div>
-
-        {/* Timeline content */}
-        <div 
-          className="md:col-span-2 relative" 
-          style={{ 
-            minHeight: isMobileView ? 'auto' : `${totalTimelineHeight}px`,
-            transition: 'height 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
-          }}
-        >
-          {/* Timeline Heading - Visible anchor target */}
-          {isMobileView && (
-            <h3 className="text-xs font-medium text-white/80 tracking-wide uppercase mb-0 pt-12 mt-8 text-center">
-              Experience Timeline
-            </h3>
-          )}
-          {/* Mobile Timeline */}
-          <MobileTimeline 
-            processedItems={allProcessedItems}
-            onHover={setActivePeriod}
-            expandedCard={expandedCard}
-            setExpandedCard={handleCardExpand}
-          />
-          
-          {/* Desktop Timeline */}
-          <DesktopTimeline 
-            processedLeftItems={processedLeftItems}
-            processedRightItems={processedRightItems}
-            expandedCard={expandedCard}
-            setExpandedCard={handleCardExpand}
-            setActivePeriod={setActivePeriod}
-            getPositionByYear={getPositionByYear}
-            MIN_YEAR={MIN_YEAR}
-            maxYear={maxYear}
-            timelineData={timelineData}
-            getExpandedCardExtraHeight={getExpandedCardExtraHeight}
-            totalTimelineHeight={totalTimelineHeight}
-            contentHeight={contentHeight}
-            yearStart={MIN_YEAR}
-            yearEnd={maxYear}
-            numYears={totalYears}
-          />
+        <div className="md:col-span-2">
+          <div className="relative w-full">
+            <div className="md:hidden w-full">
+              <MobileTimeline items={timelineData} />
+            </div>
+            <div className="hidden md:block">
+              <DesktopTimeline
+                items={processedItems}
+                expandedCard={expandedCard}
+                onCardExpand={handleCardExpand}
+                onBackgroundClick={handleBackgroundClick}
+                skillsTableOffset={skillsTableOffset}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

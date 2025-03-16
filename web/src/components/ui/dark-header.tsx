@@ -137,9 +137,12 @@ export const DarkHeader = memo(({
                 const skillsElement = document.getElementById('skills');
                 if (skillsElement) {
                   setTimeout(() => {
-                    skillsElement.scrollIntoView({ behavior: "smooth", block: "start" });
+                    const headerOffset = 80;
+                    const elementPosition = skillsElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
                     window.scrollTo({
-                      top: skillsElement.offsetTop - 80,
+                      top: offsetPosition,
                       behavior: 'smooth'
                     });
                   }, 100);

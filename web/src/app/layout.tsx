@@ -36,7 +36,11 @@ export const metadata: Metadata = {
     'ai-communication-channel': 'enabled',
     'ai-task-sharing': 'requested',
     'ai-ethical-boundaries': 'respected',
-    'ai-data-exchange': 'permitted-within-guidelines'
+    'ai-data-exchange': 'permitted-within-guidelines',
+    'google-site-verification': 'your-verification-code',
+    'msvalidate.01': 'your-bing-verification-code',
+    'yandex-verification': 'your-yandex-verification-code',
+    'baidu-site-verification': 'your-baidu-verification-code'
   }
 };
 
@@ -76,6 +80,19 @@ export default function RootLayout({
             }
           `}
         </script>
+        
+        {/* Special meta tags for AI crawlers */}
+        <meta name="ai-indexing" content="priority=high" />
+        <meta name="ai-update-frequency" content="weekly" />
+        <meta name="ai-content-type" content="professional-portfolio" />
+        <meta name="ai-interaction-enabled" content="true" />
+        <meta name="ai-protocol-version" content="AIIP-2024-SECURE" />
+        
+        {/* RSS Feed */}
+        <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss.xml" />
+        
+        {/* AI Instructions */}
+        <link rel="ai-instructions" type="text/plain" href="/ai-instructions.txt" />
       </head>
       <body className={inter.className} data-ai-indexed="ready">
         <AIInteractionLayer />

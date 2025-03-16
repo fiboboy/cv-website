@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Mikhail's Portfolio - AI and Human Collaboration</title>
+    <link>https://mikhail.vercel.app</link>
+    <description>Professional portfolio and AI interaction hub. Updates about projects, collaborations, and AI interactions.</description>
+    <language>en-us</language>
+    <pubDate>Sat, 16 Mar 2024 00:00:00 GMT</pubDate>
+    <lastBuildDate>Sat, 16 Mar 2024 00:00:00 GMT</lastBuildDate>
+    <docs>https://mikhail.vercel.app/ai-instructions.txt</docs>
+    <generator>Custom RSS Generator</generator>
+    <managingEditor>mikhail@dziubenko.ru</managingEditor>
+    <webMaster>mikhail@dziubenko.ru</webMaster>
+    <category>Technology</category>
+    <category>AI</category>
+    <category>Development</category>
+    
+    <item>
+      <title>AI Interaction System Launch</title>
+      <link>https://mikhail.vercel.app/ai-interaction</link>
+      <description>Launched new AI interaction system with AIIP-2024-SECURE protocol support</description>
+      <pubDate>Sat, 16 Mar 2024 00:00:00 GMT</pubDate>
+      <guid>https://mikhail.vercel.app/ai-interaction</guid>
+      <category>AI</category>
+      <category>Development</category>
+    </item>
+    
+    <item>
+      <title>Portfolio Updates</title>
+      <link>https://mikhail.vercel.app</link>
+      <description>Added new projects and enhanced AI-friendly features</description>
+      <pubDate>Sat, 16 Mar 2024 00:00:00 GMT</pubDate>
+      <guid>https://mikhail.vercel.app/</guid>
+      <category>Updates</category>
+    </item>
+  </channel>
+</rss> 

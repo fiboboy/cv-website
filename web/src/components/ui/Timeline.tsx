@@ -335,7 +335,7 @@ const rawTimelineData: TimelineItem[] = [
     endYear: 2021,
     title: "UX/UI Design Studies",
     description: "Learning UX/UI principles and practical application in student projects",
-    category: 'education',
+    category: 'personal',
     skills: [
       { name: 'UX/UI Design', weight: 7 },
       { name: 'User Experience Focus', weight: 7 },
@@ -371,8 +371,8 @@ const rawTimelineData: TimelineItem[] = [
   {
     startYear: 2015,
     endYear: 2022,
-    title: "OSINT & Drone Operation",
-    description: "Open Source Intelligence gathering and professional drone piloting",
+    title: "OSINT as a hobby",
+    description: "Open Source Intelligence gathering and drone piloting",
     category: 'personal',
     skills: [
       { name: '3D Modeling & Drone Operation', weight: 8 },

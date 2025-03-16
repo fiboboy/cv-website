@@ -79,10 +79,42 @@ const SkillsTable = memo(({
         </h3>
         <button
           onClick={() => setIsSkillsExpanded(!isSkillsExpanded)}
-          className={`${isMobile ? 'text-[10px]' : 'text-xs'} text-white/60 hover:text-white/80 transition-colors flex items-center gap-1`}
+          className={`
+            ${isMobile ? 'text-[10px]' : 'text-xs'} 
+            relative 
+            flex items-center gap-1
+            transition-all
+            duration-300
+            group
+            ${isSkillsExpanded ? 
+              'text-white/60 hover:text-white/80' : 
+              'animate-text-shine bg-gradient-to-r from-blue-500 via-cyan-500 to-purple-500 bg-clip-text text-transparent bg-300% hover:bg-blue-500'
+            }
+          `}
         >
+          <style jsx>{`
+            @keyframes shine {
+              0% {
+                background-position: 0% center;
+              }
+              100% {
+                background-position: -200% center;
+              }
+            }
+            .animate-text-shine {
+              animation: shine 4s linear infinite;
+            }
+            .bg-300\% {
+              background-size: 300% auto;
+            }
+          `}</style>
           <span>{isSkillsExpanded ? 'Show Less' : 'Show All'}</span>
-          <svg xmlns="http://www.w3.org/2000/svg" className={`h-3 w-3 transition-transform ${isSkillsExpanded ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" 
+            className={`h-3 w-3 transition-transform ${isSkillsExpanded ? 'rotate-180' : ''} ${!isSkillsExpanded ? 'group-hover:scale-110' : ''}`} 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor"
+          >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
           </svg>
         </button>

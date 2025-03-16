@@ -19,65 +19,18 @@ export function MobileTimeline({
   // Сортируем карточки по году начала для правильного порядка отображения
   const sortedItems = [...processedItems].sort((a, b) => a.startYear - b.startYear);
   
-  // Находим минимальный и максимальный год для расчета масштаба
-  const minYear = Math.min(...sortedItems.map(item => item.startYear));
-  const maxYear = Math.max(...sortedItems.map(item => item.endYear));
-  const totalYears = maxYear - minYear;
+  // Находим минимальный и максимальный год
+  const minYear = 2001; // Фиксированный год начала
+  const maxYear = 2025; // Фиксированный год окончания
   
-  // Базовая высота для одного года (в пикселях)
-  const YEAR_HEIGHT = 180;
-  
-  // Создание локальной карты годов для отображения маркеров лет
-  const yearMarkers = React.useMemo(() => {
-    const uniqueYears = new Set<number>();
-    
-    // Добавляем все года из карточек
-    sortedItems.forEach(item => {
-      uniqueYears.add(item.startYear);
-      if (item.startYear !== item.endYear) {
-        uniqueYears.add(item.endYear);
-      }
-    });
-    
-    // Добавляем промежуточные годы для более равномерного распределения маркеров
-    for (let year = minYear; year <= maxYear; year++) {
-      if (year % 2 === 0) { // Добавляем каждый второй год
-        uniqueYears.add(year);
-      }
-    }
-    
-    return Array.from(uniqueYears).sort((a, b) => a - b);
-  }, [sortedItems, minYear, maxYear]);
-  
-  // Функция для расчета позиции на основе года
-  const calculatePosition = (year: number) => {
-    return (year - minYear) * YEAR_HEIGHT + 50; // Добавляем отступ сверху
-  };
-  
-  // Рассчитываем минимальную высоту контейнера
-  const minContainerHeight = (totalYears + 1) * YEAR_HEIGHT + 150; // Увеличиваем отступ снизу
-  
-  // Функция для проверки перекрытия карточек
-  const getCardOffset = (index: number, currentYear: number) => {
-    if (index === 0) return 0;
-    
-    // Проверяем предыдущие карточки на перекрытие
-    const previousCards = sortedItems.slice(0, index);
-    const currentPosition = calculatePosition(currentYear);
-    
-    let offset = 0;
-    previousCards.forEach((prevItem, i) => {
-      const prevPosition = calculatePosition(prevItem.startYear);
-      const distance = currentPosition - prevPosition;
-      
-      // Если карточки слишком близко друг к другу
-      if (distance < 100) {
-        offset = Math.max(offset, 100 - distance);
-      }
-    });
-    
-    return offset;
-  };
+  // Вычисляем минимальную высоту контейнера
+  const minContainerHeight = Math.max(
+    sortedItems.reduce((height, item) => {
+      const cardHeight = item.height + item.verticalShift;
+      return Math.max(height, cardHeight);
+    }, 0) + 200, // Добавляем отступ для последнего года
+    600 // Минимальная высота
+  );
   
   return (
     <div className="md:hidden w-full">
@@ -116,44 +69,39 @@ export function MobileTimeline({
             />
           </div>
           
-          {/* Годовые маркеры */}
-          {yearMarkers.map(year => (
-            <div 
-              key={year}
-              className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center z-10"
-              style={{ 
-                top: `${calculatePosition(year)}px`,
-              }}
-            >
-              <div className="relative">
-                <span className="text-sm font-medium text-zinc-200 select-none px-2 py-1 bg-zinc-900/80 backdrop-blur-sm rounded-full">
-                  {year}
-                </span>
-              </div>
+          {/* Год 2001 в начале таймлайна */}
+          <div 
+            className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center z-10"
+            style={{ top: '-20px' }}
+          >
+            <div className="relative">
+              <span className="text-sm font-medium text-zinc-200 select-none px-2 py-1 bg-zinc-900/80 backdrop-blur-sm rounded-full">
+                {minYear}
+              </span>
             </div>
-          ))}
+          </div>
           
           {/* Карточки */}
-          <div className="relative z-[2] flex flex-col">
+          <div className="relative z-[2] pt-8">
             {sortedItems.map((item, index) => {
               const cardId = `${item.category}-${item.startYear}-${item.title.replace(/\s+/g, '-')}`;
               const isCardExpanded = expandedCard?.id === cardId;
               
-              // Расчет позиции карточки с учетом смещения
-              const basePosition = calculatePosition(item.startYear);
-              const offset = getCardOffset(index, item.startYear);
-              
               return (
                 <div 
                   key={index} 
-                  className="w-full"
-                  style={{
-                    position: 'absolute',
-                    top: `${basePosition + offset}px`,
-                    left: 0,
-                    right: 0,
-                  }}
+                  className="w-full py-3"
                 >
+                  {/* Маркер года */}
+                  <div className="flex justify-center mb-2">
+                    <div className="relative">
+                      <span className="text-xs font-medium text-zinc-200 select-none px-2 py-1 bg-zinc-900/80 backdrop-blur-sm rounded-full">
+                        {item.startYear === item.endYear ? item.startYear : `${item.startYear} - ${item.endYear}`}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  {/* Карточка таймлайна */}
                   <TimelineCard
                     item={item}
                     isRight={index % 2 === 0}
@@ -167,6 +115,18 @@ export function MobileTimeline({
                 </div>
               );
             })}
+          </div>
+          
+          {/* Год 2025 в конце таймлайна */}
+          <div 
+            className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center z-10"
+            style={{ bottom: '-40px' }}
+          >
+            <div className="relative">
+              <span className="text-sm font-medium text-zinc-200 select-none px-2 py-1 bg-zinc-900/80 backdrop-blur-sm rounded-full">
+                {maxYear}
+              </span>
+            </div>
           </div>
         </div>
       </div>

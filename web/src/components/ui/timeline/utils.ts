@@ -250,10 +250,10 @@ export const GRADIENT_SPACE = 150; // Пространство для гради
 
 // Константы для расчета позиций
 export const YEAR_MARKERS = [1984, 1994, 2001, 2004, 2009, 2014, 2019, 2025]; // Уменьшаем количество дат между 1984-2001
-const FIRST_PERIOD_HEIGHT = 250; // Высота для периода 1984-2001
-const SECOND_PERIOD_HEIGHT = 1200; // Увеличиваем высоту для периода 2001-2025
-const MIN_CARD_GAP = 300; // Сильно увеличиваем минимальный отступ между карточками
-const CARD_HEIGHT = 200; // Высота карточки
+const FIRST_PERIOD_HEIGHT = 200; // Уменьшаем высоту для первого периода
+const SECOND_PERIOD_HEIGHT = 1600; // Увеличиваем высоту для основного периода
+const MIN_CARD_GAP = 250; // Оптимальный отступ между карточками
+const CARD_HEIGHT = 180; // Немного уменьшаем высоту карточки
 
 // Функция для получения позиции года на таймлайне
 export const getYearPosition = (year: number, minYear: number, maxYear: number, totalYears: number): number => {
@@ -261,10 +261,10 @@ export const getYearPosition = (year: number, minYear: number, maxYear: number, 
   const yearPositions: Record<number, number> = {
     1984: 0,
     2001: FIRST_PERIOD_HEIGHT,
-    2004: FIRST_PERIOD_HEIGHT + 200,
-    2009: FIRST_PERIOD_HEIGHT + 450,
-    2014: FIRST_PERIOD_HEIGHT + 700,
-    2019: FIRST_PERIOD_HEIGHT + 950,
+    2004: FIRST_PERIOD_HEIGHT + 250,
+    2009: FIRST_PERIOD_HEIGHT + 500,
+    2014: FIRST_PERIOD_HEIGHT + 800,
+    2019: FIRST_PERIOD_HEIGHT + 1100,
     2025: FIRST_PERIOD_HEIGHT + SECOND_PERIOD_HEIGHT
   };
   
@@ -296,9 +296,9 @@ export const getYearPosition = (year: number, minYear: number, maxYear: number, 
     }
   }
   
-  // Линейная интерполяция между ближайшими годами
-  const ratio = (year - prevYear) / (nextYear - prevYear);
-  return yearPositions[prevYear] + ratio * (yearPositions[nextYear] - yearPositions[prevYear]);
+  // Линейная интерполяция
+  const progress = (year - prevYear) / (nextYear - prevYear);
+  return yearPositions[prevYear] + (yearPositions[nextYear] - yearPositions[prevYear]) * progress;
 };
 
 // Функция для проверки перекрытия периодов
@@ -386,8 +386,8 @@ export const topITSkills = [
   },
   {
     name: 'Task & Resource Management',
-    weight: 10,
-    description: 'Advanced task control, resource allocation, and operational efficiency',
+    weight: 9,
+    description: 'Advanced task control and resource allocation',
     type: 'soft'
   },
   {
@@ -398,8 +398,8 @@ export const topITSkills = [
   },
   {
     name: 'Crisis Management',
-    weight: 9,
-    description: 'Emergency response coordination and critical situation handling',
+    weight: 10,
+    description: 'Emergency response and critical situation handling',
     type: 'soft'
   },
   {
@@ -456,7 +456,7 @@ export const topCompetencies = [
   },
   {
     name: 'Crisis management',
-    weight: 9,
+    weight: 10,
     description: 'Management of critical situations and emergency response in high-stakes environments',
     type: 'soft'
   },
@@ -497,7 +497,7 @@ export const fullCompetencies = [
   },
   {
     name: 'Task & Resource Management',
-    weight: 10,
+    weight: 9,
     description: 'Advanced task control and resource allocation',
     type: 'soft'
   },
@@ -529,7 +529,7 @@ export const fullCompetencies = [
   },
   {
     name: 'Crisis Management',
-    weight: 9,
+    weight: 10,
     description: 'Emergency response and critical situation handling',
     type: 'soft'
   },

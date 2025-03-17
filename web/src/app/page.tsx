@@ -16,7 +16,7 @@ export default function Home() {
               Mikhail Dziubenko
             </h1>
             <p className="text-lg md:text-xl text-neutral-400 max-w-2xl mb-8 mx-auto">
-              AI & Crypto Enthusiast | Vibe Developer | Aviation SME
+              AI & Crypto Enthusiast | Vibe Developer | Aviation SME | Instruction Design Wizard | Seasoned Team Lead & Mentor
               <br />
               <span className="text-neutral-500 text-base md:text-lg">🌍 Curiosity-Driven Tech Explorer</span>
             </p>

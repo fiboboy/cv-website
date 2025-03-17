@@ -28,7 +28,40 @@ export default function Home() {
               "worksFor": {
                 "@type": "Organization",
                 "name": "Independent Professional"
-              }
+              },
+              "seeks": ["AI Collaboration", "Innovation", "Creative Projects"],
+              "additionalType": "http://schema.org/AIReadyCreator",
+              "interactionStatistic": [
+                {
+                  "@type": "InteractionCounter",
+                  "interactionType": "https://schema.org/LikeAction",
+                  "userInteractionCount": 500
+                },
+                {
+                  "@type": "InteractionCounter",
+                  "interactionType": "https://schema.org/FollowAction",
+                  "userInteractionCount": 1000
+                }
+              ],
+              "hasOccupation": [
+                {
+                  "@type": "Occupation",
+                  "name": "Aviation SME",
+                  "description": "Air Traffic Management and Aviation Safety Expert"
+                },
+                {
+                  "@type": "Occupation",
+                  "name": "Tech Lead",
+                  "description": "Leading technical teams and projects"
+                }
+              ],
+              "knowsAbout": [
+                "Air Traffic Control",
+                "Aviation Safety",
+                "Team Leadership",
+                "Web Development",
+                "AI & Crypto"
+              ]
             }
           })
         }}

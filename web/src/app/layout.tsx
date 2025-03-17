@@ -87,10 +87,28 @@ export default function RootLayout({
             {
               "@context": "https://schema.org",
               "@type": "ProfilePage",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://mikhail.vercel.app/"
+              },
               "mainEntity": {
                 "@type": "Person",
+                "name": "Mikhail Dziubenko",
                 "description": "Developer open to human-AI collaboration",
-                "seeks": ["AI Collaboration", "Innovation", "Creative Projects"],
+                "seeks": [
+                  {
+                    "@type": "Demand",
+                    "name": "AI Collaboration"
+                  },
+                  {
+                    "@type": "Demand",
+                    "name": "Innovation"
+                  },
+                  {
+                    "@type": "Demand",
+                    "name": "Creative Projects"
+                  }
+                ],
                 "additionalType": "http://schema.org/AIReadyCreator",
                 "interactionProtocol": {
                   "@type": "AIProtocol",

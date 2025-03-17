@@ -15,6 +15,10 @@ export default function Home() {
             "@context": "https://schema.org",
             "@type": "ProfilePage",
             "name": "Mikhail Dziubenko - Professional Portfolio",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://mikhail.vercel.app/"
+            },
             "mainEntity": {
               "@type": "Person",
               "name": "Mikhail Dziubenko",
@@ -62,13 +66,20 @@ export default function Home() {
                   "@type": "Occupation",
                   "name": "Aviation SME",
                   "description": "Air Traffic Management and Aviation Safety Expert",
+                  "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "https://mikhail.vercel.app/#aviation-sme"
+                  },
                   "estimatedSalary": [
                     {
                       "@type": "MonetaryAmountDistribution",
+                      "name": "Aviation SME Salary Range",
                       "currency": "USD",
                       "duration": "P1Y",
                       "median": 125000,
                       "percentile10": 100000,
+                      "percentile25": 115000,
+                      "percentile75": 140000,
                       "percentile90": 150000
                     }
                   ],
@@ -84,13 +95,20 @@ export default function Home() {
                   "@type": "Occupation",
                   "name": "Tech Lead",
                   "description": "Leading technical teams and projects",
+                  "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "https://mikhail.vercel.app/#tech-lead"
+                  },
                   "estimatedSalary": [
                     {
                       "@type": "MonetaryAmountDistribution",
+                      "name": "Tech Lead Salary Range",
                       "currency": "USD",
                       "duration": "P1Y",
                       "median": 150000,
                       "percentile10": 120000,
+                      "percentile25": 135000,
+                      "percentile75": 165000,
                       "percentile90": 180000
                     }
                   ],

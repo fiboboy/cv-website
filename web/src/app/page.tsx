@@ -2,10 +2,35 @@ import { DarkHeader } from "@/components/ui/dark-header"
 import { Timeline } from "@/components/ui/Timeline"
 import { Download } from "lucide-react"
 import AnimatedButton from "../components/AnimatedButton"
+import Script from 'next/script'
 
 export default function Home() {
   return (
     <>
+      <Script
+        id="profile-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Mikhail Dziubenko",
+            "jobTitle": "Aviation SME & Tech Lead",
+            "description": "AI & Crypto Enthusiast | Vibe Developer | Aviation SME | Instruction Design Wizard | Seasoned Team Lead & Mentor",
+            "url": "https://mikhail.vercel.app/",
+            "sameAs": [
+              "https://github.com/mikerudenko",
+              "https://www.linkedin.com/in/mikhail-dziubenko/"
+            ],
+            "mainEntity": {
+              "@type": "Person",
+              "name": "Mikhail Dziubenko",
+              "jobTitle": "Aviation SME & Tech Lead",
+              "description": "AI & Crypto Enthusiast | Vibe Developer | Aviation SME | Instruction Design Wizard | Seasoned Team Lead & Mentor"
+            }
+          })
+        }}
+      />
       <DarkHeader />
       <main className="flex flex-col items-center justify-between min-h-screen p-4 md:p-6 lg:p-8 overflow-hidden">
         <div className="flex flex-col items-center justify-center w-full max-w-5xl mx-auto mb-12 md:mb-16 animate-fade-in">

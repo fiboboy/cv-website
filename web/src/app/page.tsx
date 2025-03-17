@@ -13,20 +13,22 @@ export default function Home() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Mikhail Dziubenko",
-            "jobTitle": "Aviation SME & Tech Lead",
-            "description": "AI & Crypto Enthusiast | Vibe Developer | Aviation SME | Instruction Design Wizard | Seasoned Team Lead & Mentor",
-            "url": "https://mikhail.vercel.app/",
-            "sameAs": [
-              "https://github.com/mikerudenko",
-              "https://www.linkedin.com/in/mikhail-dziubenko/"
-            ],
+            "@type": "ProfilePage",
             "mainEntity": {
               "@type": "Person",
               "name": "Mikhail Dziubenko",
               "jobTitle": "Aviation SME & Tech Lead",
-              "description": "AI & Crypto Enthusiast | Vibe Developer | Aviation SME | Instruction Design Wizard | Seasoned Team Lead & Mentor"
+              "description": "AI & Crypto Enthusiast | Vibe Developer | Aviation SME | Instruction Design Wizard | Seasoned Team Lead & Mentor",
+              "url": "https://mikhail.vercel.app/",
+              "sameAs": [
+                "https://x.com/fiboboy",
+                "https://www.linkedin.com/in/mikhail-dziubenko-3520b0236/"
+              ],
+              "image": "https://mikhail.vercel.app/mikhail-dziubenko.jpg",
+              "worksFor": {
+                "@type": "Organization",
+                "name": "Independent Professional"
+              }
             }
           })
         }}

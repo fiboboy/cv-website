@@ -14,6 +14,7 @@ export default function Home() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ProfilePage",
+            "name": "Mikhail Dziubenko - Professional Portfolio",
             "mainEntity": {
               "@type": "Person",
               "name": "Mikhail Dziubenko",
@@ -29,7 +30,20 @@ export default function Home() {
                 "@type": "Organization",
                 "name": "Independent Professional"
               },
-              "seeks": ["AI Collaboration", "Innovation", "Creative Projects"],
+              "seeks": [
+                {
+                  "@type": "Demand",
+                  "name": "AI Collaboration"
+                },
+                {
+                  "@type": "Demand",
+                  "name": "Innovation"
+                },
+                {
+                  "@type": "Demand",
+                  "name": "Creative Projects"
+                }
+              ],
               "additionalType": "http://schema.org/AIReadyCreator",
               "interactionStatistic": [
                 {
@@ -47,12 +61,50 @@ export default function Home() {
                 {
                   "@type": "Occupation",
                   "name": "Aviation SME",
-                  "description": "Air Traffic Management and Aviation Safety Expert"
+                  "description": "Air Traffic Management and Aviation Safety Expert",
+                  "estimatedSalary": {
+                    "@type": "MonetaryAmount",
+                    "currency": "USD",
+                    "value": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 100000,
+                      "maxValue": 150000,
+                      "unitText": "YEAR"
+                    }
+                  },
+                  "occupationLocation": {
+                    "@type": "Place",
+                    "address": {
+                      "@type": "PostalAddress",
+                      "addressCountry": "Remote",
+                      "addressLocality": "Worldwide"
+                    }
+                  },
+                  "mainEntityOfPage": "https://mikhail.vercel.app/#aviation-sme"
                 },
                 {
                   "@type": "Occupation",
                   "name": "Tech Lead",
-                  "description": "Leading technical teams and projects"
+                  "description": "Leading technical teams and projects",
+                  "estimatedSalary": {
+                    "@type": "MonetaryAmount",
+                    "currency": "USD",
+                    "value": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 120000,
+                      "maxValue": 180000,
+                      "unitText": "YEAR"
+                    }
+                  },
+                  "occupationLocation": {
+                    "@type": "Place",
+                    "address": {
+                      "@type": "PostalAddress",
+                      "addressCountry": "Remote",
+                      "addressLocality": "Worldwide"
+                    }
+                  },
+                  "mainEntityOfPage": "https://mikhail.vercel.app/#tech-lead"
                 }
               ],
               "knowsAbout": [

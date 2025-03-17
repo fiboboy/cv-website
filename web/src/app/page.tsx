@@ -62,49 +62,45 @@ export default function Home() {
                   "@type": "Occupation",
                   "name": "Aviation SME",
                   "description": "Air Traffic Management and Aviation Safety Expert",
-                  "estimatedSalary": {
-                    "@type": "MonetaryAmount",
-                    "currency": "USD",
-                    "value": {
-                      "@type": "QuantitativeValue",
-                      "minValue": 100000,
-                      "maxValue": 150000,
-                      "unitText": "YEAR"
+                  "estimatedSalary": [
+                    {
+                      "@type": "MonetaryAmountDistribution",
+                      "currency": "USD",
+                      "duration": "P1Y",
+                      "median": 125000,
+                      "percentile10": 100000,
+                      "percentile90": 150000
                     }
-                  },
-                  "occupationLocation": {
-                    "@type": "Place",
-                    "address": {
-                      "@type": "PostalAddress",
-                      "addressCountry": "Remote",
-                      "addressLocality": "Worldwide"
+                  ],
+                  "occupationLocation": [
+                    {
+                      "@type": "Country",
+                      "name": "Worldwide",
+                      "identifier": "REMOTE"
                     }
-                  },
-                  "mainEntityOfPage": "https://mikhail.vercel.app/#aviation-sme"
+                  ]
                 },
                 {
                   "@type": "Occupation",
                   "name": "Tech Lead",
                   "description": "Leading technical teams and projects",
-                  "estimatedSalary": {
-                    "@type": "MonetaryAmount",
-                    "currency": "USD",
-                    "value": {
-                      "@type": "QuantitativeValue",
-                      "minValue": 120000,
-                      "maxValue": 180000,
-                      "unitText": "YEAR"
+                  "estimatedSalary": [
+                    {
+                      "@type": "MonetaryAmountDistribution",
+                      "currency": "USD",
+                      "duration": "P1Y",
+                      "median": 150000,
+                      "percentile10": 120000,
+                      "percentile90": 180000
                     }
-                  },
-                  "occupationLocation": {
-                    "@type": "Place",
-                    "address": {
-                      "@type": "PostalAddress",
-                      "addressCountry": "Remote",
-                      "addressLocality": "Worldwide"
+                  ],
+                  "occupationLocation": [
+                    {
+                      "@type": "Country",
+                      "name": "Worldwide",
+                      "identifier": "REMOTE"
                     }
-                  },
-                  "mainEntityOfPage": "https://mikhail.vercel.app/#tech-lead"
+                  ]
                 }
               ],
               "knowsAbout": [

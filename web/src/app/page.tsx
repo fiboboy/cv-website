@@ -1,7 +1,10 @@
+'use client';
+
 import { DarkHeader } from "@/components/ui/dark-header"
 import { Timeline } from "@/components/ui/Timeline"
 import { Download } from "lucide-react"
 import AnimatedButton from "../components/AnimatedButton"
+import BlurText from "../components/BlurText"
 import Script from 'next/script'
 
 export default function Home() {
@@ -136,11 +139,13 @@ export default function Home() {
       <main className="flex flex-col items-center justify-between min-h-screen p-4 md:p-6 lg:p-8 overflow-hidden">
         <div className="flex flex-col items-center justify-center w-full max-w-5xl mx-auto mb-12 md:mb-16 animate-fade-in">
           <div className="text-center w-full">
-            <h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white via-neutral-300 to-neutral-500 mt-16 mb-4 mx-auto"
-            >
-              Mikhail Dziubenko
-            </h1>
+            <BlurText 
+              text="Mikhail Dziubenko"
+              delay={150}
+              animateBy="letters"
+              direction="top"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-16 mb-4 mx-auto block"
+            />
             <p className="text-lg md:text-xl text-neutral-400 max-w-2xl mb-8 mx-auto">
               AI & Crypto Enthusiast | Vibe Developer | Aviation SME | Instruction Design Wizard | Seasoned Team Lead & Mentor
               <br />

@@ -53,4 +53,6 @@ export interface ProcessedTimelineItem extends TimelineItemWithSide {
   verticalShift: number;
   height: number;
   originalItems?: ProcessedTimelineItem[]; // Added for grouped cards
-} 
+  stackIndex?: number;
+  stackSize?: number;
+}

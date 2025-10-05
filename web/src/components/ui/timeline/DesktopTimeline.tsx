@@ -176,7 +176,7 @@ export function DesktopTimeline({
                     isExpanded={isCardExpanded}
                     onToggleExpand={setExpandedCard}
                     expandedHeight={expandedCard?.expandedHeight || 0}
-                    zIndex={isCardExpanded ? 100 : (item.verticalShift > 0 ? 20 + index : 10)}
+                    zIndex={isCardExpanded ? 100 : 99 - index}
                   />
                 </div>
               );
@@ -230,7 +230,7 @@ export function DesktopTimeline({
                     isExpanded={isCardExpanded}
                     onToggleExpand={setExpandedCard}
                     expandedHeight={expandedCard?.expandedHeight || 0}
-                    zIndex={isCardExpanded ? 100 : (item.verticalShift > 0 ? 20 + index : 10)}
+                    zIndex={isCardExpanded ? 100 : 99 - index}
                   />
                 </div>
               );

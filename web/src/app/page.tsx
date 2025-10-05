@@ -140,7 +140,7 @@ export default function Home() {
       <main className="flex flex-col items-center justify-between min-h-screen p-4 md:p-6 lg:p-8 overflow-hidden">
         <div className="fixed inset-0 -z-10">
           <Plasma 
-            color="#AFFF33"
+            color="#B0B0B0"
             speed={0.6}
             direction="forward"
             scale={1.1}

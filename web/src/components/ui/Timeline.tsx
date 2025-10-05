@@ -611,18 +611,23 @@ export function Timeline() {
   
   // Find overlapping items in a column and adjust
   const processTimelineColumn = (
-    items: TimelineItemWithSide[],
-    overlapGroups: TimelineItemWithSide[][] = []
+    items: TimelineItemWithSide[]
   ) => {
     if (items.length === 0) return [];
     
     // Sort by start year
     const sortedItems = [...items].sort((a, b) => a.startYear - b.startYear);
-    
+
     // Track vertical positions to avoid overlaps
     type VerticalRanges = Array<{start: number, end: number, index: number}>;
     const verticalRanges: VerticalRanges = [];
-    
+
+    // Find expanded card index if it exists in this column
+    const expandedCardIndex = expandedCard
+      ? sortedItems.findIndex(item =>
+          `${item.category}-${item.startYear}-${item.title.replace(/\s+/g, '-')}` === expandedCard.id)
+      : -1;
+
     // Calculate positions and shifts
     const processedItems = sortedItems.map((item, idx) => {
       // Get exact position based on year - primary positioning factor
@@ -636,16 +641,20 @@ export function Timeline() {
 
       let verticalShift = 0;
 
-      const overlappingRanges = verticalRanges.filter(range => {
-        const paddedStart = range.start - overlapPadding;
-        const paddedEnd = range.end + overlapPadding;
-        return basePosition < paddedEnd && end > paddedStart;
-      });
+      const shouldCheckOverlaps = isMobileView || idx === expandedCardIndex;
 
-      if (overlappingRanges.length > 0) {
-        const maxOccupiedEnd = Math.max(...overlappingRanges.map(range => range.end));
-        if (basePosition <= maxOccupiedEnd) {
-          verticalShift = maxOccupiedEnd - basePosition + spacingBetweenCards;
+      if (shouldCheckOverlaps) {
+        const overlappingRanges = verticalRanges.filter(range => {
+          const paddedStart = range.start - overlapPadding;
+          const paddedEnd = range.end + overlapPadding;
+          return basePosition < paddedEnd && end > paddedStart;
+        });
+
+        if (overlappingRanges.length > 0) {
+          const maxOccupiedEnd = Math.max(...overlappingRanges.map(range => range.end));
+          if (basePosition <= maxOccupiedEnd) {
+            verticalShift = maxOccupiedEnd - basePosition + spacingBetweenCards;
+          }
         }
       }
 
@@ -671,7 +680,8 @@ export function Timeline() {
       return processedItem;
     });
 
-    if (!isMobileView && overlapGroups.length > 0) {
+    if (!isMobileView) {
+      const overlapGroups = getOverlappingGroups(sortedItems);
       const CASCADE_VERTICAL_STEP = 28;
 
       overlapGroups.forEach(group => {
@@ -721,7 +731,7 @@ export function Timeline() {
     const optimizedItems = [...items];
     
     // Process each group of overlapping items
-    groups.forEach((group, groupIndex) => {
+    groups.forEach(group => {
       if (group.length <= 1) return; // No need to optimize single items
       
       // Sort the group by start year
@@ -763,16 +773,16 @@ export function Timeline() {
       const rightItems = groupedItems.filter(item => item.side === 'right');
       
       // Desktop optimization - analyze potential overlaps and optimize column allocation
+      // Apply additional spacing for desktop view to ensure cards don't overlap visually
       const leftGroups = getOverlappingGroups(leftItems);
       const rightGroups = getOverlappingGroups(rightItems);
-      
-      // Apply additional spacing for desktop view to ensure cards don't overlap visually
+
       const optimizedLeftItems = optimizeGroupSpacing(leftItems, leftGroups, 'left');
       const optimizedRightItems = optimizeGroupSpacing(rightItems, rightGroups, 'right');
 
       return {
-        processedLeftItems: processTimelineColumn(optimizedLeftItems, leftGroups),
-        processedRightItems: processTimelineColumn(optimizedRightItems, rightGroups)
+        processedLeftItems: processTimelineColumn(optimizedLeftItems),
+        processedRightItems: processTimelineColumn(optimizedRightItems)
       };
     } else {
       // Mobile processing - no grouping or additional optimization

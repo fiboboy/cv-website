@@ -6,6 +6,7 @@ import { Download } from "lucide-react"
 import AnimatedButton from "../components/AnimatedButton"
 import BlurText from "../components/BlurText"
 import Script from 'next/script'
+import { Plasma } from "@/components/Plasma"
 
 export default function Home() {
   return (
@@ -137,6 +138,16 @@ export default function Home() {
       />
       <DarkHeader />
       <main className="flex flex-col items-center justify-between min-h-screen p-4 md:p-6 lg:p-8 overflow-hidden">
+        <div className="fixed inset-0 -z-10">
+          <Plasma 
+            color="#ff6b35"
+            speed={0.6}
+            direction="forward"
+            scale={1.1}
+            opacity={0.8}
+            mouseInteractive={true}
+          />
+        </div>
         <div className="flex flex-col items-center justify-center w-full max-w-5xl mx-auto mb-12 md:mb-16 animate-fade-in">
           <div className="text-center w-full">
             <BlurText 
@@ -161,12 +172,6 @@ export default function Home() {
               </AnimatedButton>
             </div>
           </div>
-        </div>
-
-        {/* Background gradient circles */}
-        <div className="fixed inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-purple-500/20 to-transparent rounded-full blur-3xl animate-float" />
-          <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-blue-500/20 to-transparent rounded-full blur-3xl animate-float" style={{ animationDelay: "-3s" }} />
         </div>
 
         {/* Timeline */}

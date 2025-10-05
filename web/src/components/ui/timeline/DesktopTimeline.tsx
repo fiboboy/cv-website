@@ -161,7 +161,7 @@ export function DesktopTimeline({
                   key={index}
                   className="absolute w-[calc(100%-2rem)]"
                   style={{
-                    top: `${item.basePosition}px`,
+                    top: `${item.basePosition + item.verticalShift}px`,
                     height: `${item.height}px`,
                     transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
                     transform: `translateX(-20px)`,
@@ -215,7 +215,7 @@ export function DesktopTimeline({
                   key={index}
                   className="absolute w-[calc(100%-2rem)]"
                   style={{
-                    top: `${item.basePosition}px`,
+                    top: `${item.basePosition + item.verticalShift}px`,
                     height: `${item.height}px`,
                     transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
                     transform: `translateX(20px)`,

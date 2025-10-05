@@ -165,7 +165,7 @@ export function DesktopTimeline({
                     height: `${item.height}px`,
                     transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
                     transform: `translateX(-20px)`,
-                    zIndex: isCardExpanded ? 100 : (item.verticalShift > 0 ? 20 + index : 10)
+                    zIndex: isCardExpanded ? 100 : 99 - index
                   }}
                 >
                   <TimelineCard
@@ -219,7 +219,7 @@ export function DesktopTimeline({
                     height: `${item.height}px`,
                     transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
                     transform: `translateX(20px)`,
-                    zIndex: isCardExpanded ? 100 : (item.verticalShift > 0 ? 20 + index : 10)
+                    zIndex: isCardExpanded ? 100 : 99 - index
                   }}
                 >
                   <TimelineCard

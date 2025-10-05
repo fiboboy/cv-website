@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { ActivePeriod, ExpandedCard, ProcessedTimelineItem, TimelineItem } from './types';
+import type { ActivePeriod, ExpandedCard, ProcessedTimelineItem, TimelineItem } from './types';
 import { TimelineCard } from './TimelineCard';
 import { TimelineLegend } from './TimelineLegend';
 import { getYearPosition } from './utils';
@@ -155,17 +155,23 @@ export function DesktopTimeline({
             {leftItems.map((item, index) => {
               const cardId = `${item.category}-${item.startYear}-${item.title.replace(/\s+/g, '-')}`;
               const isCardExpanded = expandedCard?.id === cardId;
-              
+              const stackIndex = item.stackIndex ?? 0;
+              const stackSize = item.stackSize ?? 1;
+              const horizontalCascade = stackIndex * 26;
+              const baseZIndex = isCardExpanded
+                ? 100
+                : 40 + (processedLeftItems.length - index) + (stackSize - stackIndex);
+
               return (
                 <div
                   key={index}
                   className="absolute w-[calc(100%-2rem)]"
                   style={{
-                    top: `${item.basePosition}px`,
+                    top: `${item.basePosition + item.verticalShift}px`,
                     height: `${item.height}px`,
                     transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
-                    transform: `translateX(-20px)`,
-                    zIndex: isCardExpanded ? 100 : (item.verticalShift > 0 ? 20 + index : 10)
+                    transform: `translateX(-${20 + horizontalCascade}px)`,
+                    zIndex: baseZIndex
                   }}
                 >
                   <TimelineCard
@@ -176,7 +182,7 @@ export function DesktopTimeline({
                     isExpanded={isCardExpanded}
                     onToggleExpand={setExpandedCard}
                     expandedHeight={expandedCard?.expandedHeight || 0}
-                    zIndex={isCardExpanded ? 100 : (item.verticalShift > 0 ? 20 + index : 10)}
+                    zIndex={baseZIndex}
                   />
                 </div>
               );
@@ -209,17 +215,23 @@ export function DesktopTimeline({
             {rightItems.map((item, index) => {
               const cardId = `${item.category}-${item.startYear}-${item.title.replace(/\s+/g, '-')}`;
               const isCardExpanded = expandedCard?.id === cardId;
-              
+              const stackIndex = item.stackIndex ?? 0;
+              const stackSize = item.stackSize ?? 1;
+              const horizontalCascade = stackIndex * 26;
+              const baseZIndex = isCardExpanded
+                ? 100
+                : 40 + (processedRightItems.length - index) + (stackSize - stackIndex);
+
               return (
                 <div
                   key={index}
                   className="absolute w-[calc(100%-2rem)]"
                   style={{
-                    top: `${item.basePosition}px`,
+                    top: `${item.basePosition + item.verticalShift}px`,
                     height: `${item.height}px`,
                     transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
-                    transform: `translateX(20px)`,
-                    zIndex: isCardExpanded ? 100 : (item.verticalShift > 0 ? 20 + index : 10)
+                    transform: `translateX(${20 + horizontalCascade}px)`,
+                    zIndex: baseZIndex
                   }}
                 >
                   <TimelineCard
@@ -230,7 +242,7 @@ export function DesktopTimeline({
                     isExpanded={isCardExpanded}
                     onToggleExpand={setExpandedCard}
                     expandedHeight={expandedCard?.expandedHeight || 0}
-                    zIndex={isCardExpanded ? 100 : (item.verticalShift > 0 ? 20 + index : 10)}
+                    zIndex={baseZIndex}
                   />
                 </div>
               );

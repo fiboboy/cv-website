@@ -26,7 +26,7 @@ export default function Home() {
               "@type": "Person",
               "name": "Mikhail Dziubenko",
               "jobTitle": "Aviation SME & Tech Lead",
-              "description": "AI & Crypto Enthusiast | Vibe Developer | Aviation SME | Instruction Design Wizard | Seasoned Team Lead & Mentor",
+              "description": "AI & Crypto Enthusiast | AI Agentic Developer | Aviation SME | Instruction Design Wizard | Seasoned Team Lead & Mentor | Expert in Crisis Management",
               "url": "https://mikhail.vercel.app/",
               "sameAs": [
                 "https://x.com/fiboboy",
@@ -147,7 +147,7 @@ export default function Home() {
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-16 mb-4 mx-auto block"
             />
             <p className="text-lg md:text-xl text-neutral-400 max-w-2xl mb-8 mx-auto">
-              AI & Crypto Enthusiast | Vibe Developer | Aviation SME | Instruction Design Wizard | Seasoned Team Lead & Mentor
+              AI & Crypto Enthusiast | AI Agentic Developer | Aviation SME | Instruction Design Wizard | Seasoned Team Lead & Mentor | Expert in Crisis Management
               <br />
               <span className="text-neutral-500 text-base md:text-lg">🌍 Curiosity-Driven Tech Explorer</span>
             </p>

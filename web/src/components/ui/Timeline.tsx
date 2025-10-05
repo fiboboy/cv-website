@@ -4,7 +4,7 @@ import React from 'react';
 import { SkillsTable } from './timeline/SkillsTable';
 import { MobileTimeline } from './timeline/MobileTimeline';
 import { DesktopTimeline } from './timeline/DesktopTimeline';
-import { ActivePeriod, ExpandedCard, SkillWeight, TimelineItem, TimelineItemWithSide } from './timeline/types';
+import { ActivePeriod, ExpandedCard, ProcessedTimelineItem, SkillWeight, TimelineItem, TimelineItemWithSide } from './timeline/types';
 import { getYearPosition, getOverlappingGroups, softSkills, rankedCompetencies, skillsMapping } from './timeline/utils';
 
 // Функция для консолидации похожих скиллов
@@ -620,52 +620,42 @@ export function Timeline() {
     type VerticalRanges = Array<{start: number, end: number, index: number}>;
     const verticalRanges: VerticalRanges = [];
     
-    // Find expanded card index if it exists in this column
-    const expandedCardIndex = expandedCard 
-      ? sortedItems.findIndex(item => 
-          `${item.category}-${item.startYear}-${item.title.replace(/\s+/g, '-')}` === expandedCard.id)
-      : -1;
-    
     // Calculate positions and shifts
     const processedItems = sortedItems.map((item, idx) => {
       // Get exact position based on year - primary positioning factor
       const basePosition = getAdjustedPosition(item);
       const height = getCardHeight(item);
       const end = basePosition + height;
-      
-      // For desktop view, don't apply vertical shifts to maintain exact year alignment
-      // For mobile view, still adjust to prevent overlaps
-      const shouldCheckOverlaps = 
-        isMobileView || 
-        (idx === expandedCardIndex); // Only expanded card can shift in desktop
-      
+
+      // Apply a gentle cascading shift when cards overlap so each one remains clickable
+      const overlapPadding = isMobileView ? 160 : 40;
+      const spacingBetweenCards = isMobileView ? 48 : 28;
+
       let verticalShift = 0;
-      
-      if (shouldCheckOverlaps) {
-        // Find overlapping ranges
-        const OVERLAP_PADDING = isMobileView ? 160 : 10; // Minimal padding for desktop
-        
-        // Find overlapping ranges with padding
-        const overlaps = verticalRanges.filter(range => 
-          (basePosition >= range.start - OVERLAP_PADDING && basePosition < range.end) || 
-          (end > range.start && end <= range.end + OVERLAP_PADDING) ||
-          (basePosition <= range.start && end >= range.end)
-        );
-        
-        // Calculate vertical shift - reduce for desktop to maintain year alignment
-        if (overlaps.length > 0) {
-          const spacingMultiplier = isMobileView ? 180 : 20; // Minimal shift for desktop
-          verticalShift = spacingMultiplier * overlaps.length;
+
+      const overlappingRanges = verticalRanges.filter(range => {
+        const paddedStart = range.start - overlapPadding;
+        const paddedEnd = range.end + overlapPadding;
+        return basePosition < paddedEnd && end > paddedStart;
+      });
+
+      if (overlappingRanges.length > 0) {
+        const maxOccupiedEnd = Math.max(...overlappingRanges.map(range => range.end));
+        if (basePosition <= maxOccupiedEnd) {
+          verticalShift = maxOccupiedEnd - basePosition + spacingBetweenCards;
         }
       }
-      
+
+      const finalStart = basePosition + verticalShift;
+      const finalEnd = finalStart + height;
+
       // Update vertical ranges
       verticalRanges.push({
-        start: basePosition + verticalShift,
-        end: basePosition + height + verticalShift,
+        start: finalStart,
+        end: finalEnd,
         index: idx
       });
-      
+
       return {
         ...item,
         basePosition,
@@ -941,12 +931,22 @@ export function Timeline() {
   
   // Apply the optimized processing
   const { processedLeftItems, processedRightItems } = processTimelineItemsWithOptimization();
-  
+
   // Combined items for mobile view
   const allProcessedItems = [...processedLeftItems, ...processedRightItems];
-  
-  // Get maximum height for content - используем maxPosition вместо сложных вычислений
-  const contentHeight = maxPosition + 200; // Добавляем отступ снизу
+
+  const getColumnMaxPosition = (items: ProcessedTimelineItem[]) => (
+    items.length ? Math.max(...items.map(item => item.basePosition + item.verticalShift + item.height)) : 0
+  );
+
+  const processedMaxPosition = Math.max(
+    getColumnMaxPosition(processedLeftItems),
+    getColumnMaxPosition(processedRightItems)
+  );
+
+  const baseContentHeight = maxPosition + 200;
+  const contentHeight = Math.max(baseContentHeight, processedMaxPosition + 120);
+  const timelineHeightWithShifts = Math.max(totalTimelineHeight, contentHeight + 120);
   
   return (
     <div id="timeline" className="w-full relative scroll-mt-20" ref={containerRef} onClick={handleBackgroundClick}>
@@ -984,7 +984,7 @@ export function Timeline() {
                 maxYear={maxYear}
                 timelineData={timelineData}
                 getExpandedCardExtraHeight={getExpandedCardExtraHeight}
-                totalTimelineHeight={totalTimelineHeight}
+                totalTimelineHeight={timelineHeightWithShifts}
                 contentHeight={contentHeight}
                 yearStart={MIN_YEAR}
                 yearEnd={maxYear}

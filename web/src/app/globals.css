@@ -663,10 +663,21 @@
 .drone-nav-link:focus-visible,
 .drone-nav-link:active,
 .drone-nav-link--active,
+.drone-mobile-link--active,
 .drone-footer-link:hover,
 .drone-footer-link:focus-visible,
 .drone-footer-link:active {
   color: var(--drone-accent-lime);
+}
+
+.drone-demo--light .drone-nav-link:hover,
+.drone-demo--light .drone-nav-link:focus-visible,
+.drone-demo--light .drone-nav-link:active,
+.drone-demo--light .drone-nav-link--active,
+.drone-demo--light .drone-mobile-link:hover,
+.drone-demo--light .drone-mobile-link:focus-visible,
+.drone-demo--light .drone-mobile-link--active {
+  color: var(--drone-accent-orange);
 }
 
 .drone-menu-button,

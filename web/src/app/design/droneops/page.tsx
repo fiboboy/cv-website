@@ -24,10 +24,10 @@ import {
 const marqueeText = "NO SCAFFOLDING / 100% CLEAN / ZERO RISKS / COST EFFICIENT / ";
 
 const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "For Whom", href: "#audiences" },
-  { label: "Why Drones", href: "#why", active: true },
-  { label: "Contact", href: "#contact" },
+  { label: "Services", href: "#services", sectionId: "services" },
+  { label: "For Whom", href: "#audiences", sectionId: "audiences" },
+  { label: "Why Drones", href: "#why", sectionId: "why" },
+  { label: "Contact", href: "#contact", sectionId: "contact" },
 ];
 
 const revealVariants: Variants = {
@@ -170,12 +170,43 @@ export default function DroneOpsDemoPage() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const updateActiveSection = () => {
+      const headerOffset = 120;
+      let nextActiveSection = "";
+
+      for (const link of navLinks) {
+        const section = document.getElementById(link.sectionId);
+        if (!section) continue;
+
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= headerOffset && rect.bottom > headerOffset) {
+          nextActiveSection = link.sectionId;
+          break;
+        }
+      }
+
+      setActiveSection((current) => (current === nextActiveSection ? current : nextActiveSection));
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+    window.addEventListener("hashchange", updateActiveSection);
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+      window.removeEventListener("hashchange", updateActiveSection);
+    };
   }, []);
 
   return (
@@ -196,7 +227,7 @@ export default function DroneOpsDemoPage() {
 
           <nav className="hidden items-center gap-8 md:flex">
             {navLinks.map((link) => (
-              <a key={link.href} href={link.href} className={`drone-nav-link ${link.active ? "drone-nav-link--active" : ""}`}>
+              <a key={link.href} href={link.href} className={`drone-nav-link ${activeSection === link.sectionId ? "drone-nav-link--active" : ""}`}>
                 {link.label}
               </a>
             ))}
@@ -233,7 +264,12 @@ export default function DroneOpsDemoPage() {
           </div>
           <nav className="flex flex-col gap-4 text-left">
             {navLinks.map((link) => (
-              <a key={link.href} href={link.href} className="drone-mobile-link" onClick={() => setMobileMenuOpen(false)}>
+              <a
+                key={link.href}
+                href={link.href}
+                className={`drone-mobile-link ${activeSection === link.sectionId ? "drone-mobile-link--active" : ""}`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 {link.label}
               </a>
             ))}

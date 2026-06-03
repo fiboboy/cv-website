@@ -3,7 +3,7 @@
 import { DarkHeader } from "@/components/ui/dark-header";
 import { Timeline } from "@/components/ui/Timeline";
 import { professionalProfile } from "@/data/professional-profile";
-import { Download, LayoutTemplate, Package2, Radar, ShieldCheck, Workflow } from "lucide-react";
+import { ArrowRight, Download, LayoutTemplate, Package2, Radar, ShieldCheck, Workflow } from "lucide-react";
 import AnimatedButton from "../components/AnimatedButton";
 import Script from "next/script";
 import Image from "next/image";
@@ -444,26 +444,19 @@ export default function Home() {
               </div>
 
               <div className="work-visual-stack">
-                <div className="work-hero-image">
+                <div className="work-hero-image work-hero-image--label">
                   <Image
                     src="/work/coffee/mokko-supremo.png"
                     alt="Coffee label design for the Mokko Supremo blend"
                     fill
-                    className="object-cover"
+                    className="object-contain"
                     sizes="(max-width: 1024px) 100vw, 42vw"
                   />
                 </div>
-                <div className="work-thumb-grid">
-                  {[
-                    { src: "/work/coffee/crema-forte.png", alt: "Coffee label design for Crema Forte" },
-                    { src: "/work/coffee/supremo-classic.png", alt: "Coffee label design for Supremo Classic" },
-                    { src: "/work/coffee/dark-reserve.png", alt: "Coffee label design for Dark Reserve" },
-                    { src: "/work/coffee/chocolate-dawn.png", alt: "Coffee label design for Chocolate Dawn" },
-                  ].map((item) => (
-                    <div key={item.src} className="work-thumb">
-                      <Image src={item.src} alt={item.alt} fill className="object-cover" sizes="(max-width: 1024px) 50vw, 20vw" />
-                    </div>
-                  ))}
+                <div className="work-proof-line">
+                  <span>5 label variants</span>
+                  <span>shared hierarchy</span>
+                  <span>color-coded blends</span>
                 </div>
               </div>
             </article>
@@ -502,27 +495,28 @@ export default function Home() {
                   What is already convincing: a bold brutalist palette, clear audience framing, and a service-first
                   structure that makes the offer understandable fast.
                 </p>
+                <div className="pt-1">
+                  <AnimatedButton href="/design/droneops" className="min-w-[240px] justify-center sm:w-auto">
+                    <ArrowRight size={18} />
+                    Open Live Demo
+                  </AnimatedButton>
+                </div>
               </div>
 
               <div className="work-visual-stack">
-                <div className="work-hero-image">
+                <div className="work-hero-image work-hero-image--screen">
                   <Image
-                    src="/work/drones/hero.png"
-                    alt="DroneOps concept hero visual"
+                    src="/work/drones/droneops-home-screen.png"
+                    alt="DroneOps landing page interface screenshot"
                     fill
-                    className="object-cover"
+                    className="object-cover object-top"
                     sizes="(max-width: 1024px) 100vw, 42vw"
                   />
                 </div>
-                <div className="work-thumb-grid work-thumb-grid--wide">
-                  {[
-                    { src: "/work/drones/facade.png", alt: "DroneOps facade cleaning visual" },
-                    { src: "/work/drones/solar.png", alt: "DroneOps solar maintenance visual" },
-                  ].map((item) => (
-                    <div key={item.src} className="work-thumb">
-                      <Image src={item.src} alt={item.alt} fill className="object-cover" sizes="(max-width: 1024px) 50vw, 24vw" />
-                    </div>
-                  ))}
+                <div className="work-proof-line">
+                  <span>real interface</span>
+                  <span>hover-driven demo</span>
+                  <span>CTA flow</span>
                 </div>
               </div>
             </article>

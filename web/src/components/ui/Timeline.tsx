@@ -45,9 +45,8 @@ const consolidateSkills = (items: TimelineItem[]): TimelineItem[] => {
   });
 };
 
-// Updated timeline data from the info.md file
+// Timeline content based on verified CV materials only.
 const rawTimelineData: TimelineItem[] = [
-  // Education
   {
     startYear: 2001,
     endYear: 2006,
@@ -71,7 +70,7 @@ const rawTimelineData: TimelineItem[] = [
   {
     startYear: 2008,
     endYear: 2012,
-    title: "Specialist degree in State and Municipal Administration",
+    title: "Bachelor's degree in State and Municipal Administration",
     description: "Russian State Humanitarian University",
     category: 'education',
     skills: [
@@ -88,7 +87,7 @@ const rawTimelineData: TimelineItem[] = [
   {
     startYear: 2018,
     endYear: 2019,
-    title: "Additional diploma in Management",
+    title: "Diploma in Enterprise Management",
     description: "Russian Presidential Academy of National Economy and Public Administration (RANEPA)",
     category: 'education',
     skills: [
@@ -102,214 +101,81 @@ const rawTimelineData: TimelineItem[] = [
     ]
   },
   
-  // Career
-  {
-    startYear: 2002,
-    endYear: 2002,
-    title: "Bookseller",
-    description: "First job experience with customer service and sales",
-    category: 'work',
-    skills: [
-      { name: 'Customer service', weight: 5 },
-      { name: 'Cash handling', weight: 4 },
-      { name: 'Sales techniques', weight: 5 },
-      { name: 'Communication', weight: 6 },
-      { name: 'Attention to detail', weight: 6 }
-    ]
-  },
-  {
-    startYear: 2003,
-    endYear: 2003,
-    title: "Bakery Worker",
-    description: "Food preparation and bakery operations in a high-paced environment",
-    category: 'work',
-    skills: [
-      { name: 'Food preparation', weight: 5 },
-      { name: 'Time management', weight: 6 },
-      { name: 'Precision', weight: 7 },
-      { name: 'Patience', weight: 7 }
-    ]
-  },
-  {
-    startYear: 2004,
-    endYear: 2004,
-    title: "PC Operator at Insurance Company",
-    description: "Data entry and processing using Microsoft Office",
-    category: 'work',
-    skills: [
-      { name: 'Data entry', weight: 6 },
-      { name: 'Microsoft Office', weight: 7 },
-      { name: 'Databases', weight: 6 },
-      { name: 'Accuracy', weight: 8 },
-      { name: 'Efficiency', weight: 7 }
-    ]
-  },
-  {
-    startYear: 2005,
-    endYear: 2005,
-    title: "Security Guard at Museum",
-    description: "Surveillance, security protocols, and tour guiding for foreign groups",
-    category: 'work',
-    skills: [
-      { name: 'Surveillance', weight: 6 },
-      { name: 'Security protocols', weight: 7 },
-      { name: 'Conflict resolution', weight: 7 },
-      { name: 'Tour guiding', weight: 6 },
-      { name: 'Problem-solving', weight: 7 },
-      { name: 'Communication', weight: 7 },
-      { name: 'Crisis management', weight: 6 }
-    ]
-  },
-  {
-    startYear: 2005,
-    endYear: 2006,
-    title: "Ventilation Systems Installer",
-    description: "HVAC installation and technical blueprint reading",
-    category: 'work',
-    skills: [
-      { name: 'HVAC installation', weight: 6 },
-      { name: 'Technical blueprint reading', weight: 7 },
-      { name: 'Hand tools', weight: 6 },
-      { name: 'Power tools', weight: 6 },
-      { name: 'Teamwork', weight: 7 },
-      { name: 'Precision', weight: 8 }
-    ]
-  },
   {
     startYear: 2006,
-    endYear: 2009,
-    title: "3rd-class Air Traffic Controller",
-    description: "Radar control, radio communication, and flight coordination at State ATM Corporation",
+    endYear: 2016,
+    title: "Air Traffic Control Officer",
+    description: "State ATM Corporation, Magadan, Russia",
     category: 'work',
     skills: [
-      { name: 'Radar control', weight: 8 },
+      { name: 'Air traffic management systems', weight: 9 },
       { name: 'Radio communication', weight: 9 },
-      { name: 'Flight coordination', weight: 8 },
       { name: 'Situational awareness', weight: 9 },
-      { name: 'Quick decision-making', weight: 9 }
+      { name: 'Decision-making under pressure', weight: 10 },
+      { name: 'Operational accuracy', weight: 9 }
     ]
   },
   {
-    startYear: 2009,
-    endYear: 2012,
-    title: "2nd-class Air Traffic Controller",
-    description: "Advanced air traffic management and route optimization at State ATM Corporation",
-    category: 'work',
-    skills: [
-      { name: 'Advanced air traffic management', weight: 9 },
-      { name: 'Route optimization', weight: 8 },
-      { name: 'Emergency response', weight: 9 },
-      { name: 'Leadership', weight: 8 },
-      { name: 'Team coordination', weight: 9 }
-    ]
-  },
-  {
-    startYear: 2012,
-    endYear: 2015,
-    title: "1st-class Air Traffic Controller",
-    description: "Complex traffic management and large-scale coordination at State ATM Corporation",
-    category: 'work',
-    skills: [
-      { name: 'Complex traffic management', weight: 9 },
-      { name: 'Large-scale coordination', weight: 9 },
-      { name: 'Crisis management', weight: 9 },
-      { name: 'Decision-making under pressure', weight: 10 }
-    ]
-  },
-  {
-    startYear: 2015,
-    endYear: 2018,
-    title: "Senior Air Traffic Controller",
-    description: "Supervisory duties, training and mentoring at State ATM Corporation",
-    category: 'work',
-    skills: [
-      { name: 'Supervisory duties', weight: 9 },
-      { name: 'Training', weight: 8 },
-      { name: 'Mentoring', weight: 9 },
-      { name: 'Advanced problem-solving', weight: 9 },
-      { name: 'Teaching', weight: 8 },
-      { name: 'Stress resilience', weight: 10 },
-      { name: 'Work instructions development', weight: 8 },
-      { name: 'Time planning', weight: 9 }
-    ]
-  },
-  {
-    startYear: 2018,
+    startYear: 2016,
     endYear: 2022,
-    title: "Flight Operations Supervisor",
-    description: "Team leadership and inter-agency coordination at State ATM Corporation",
+    title: "Flight Supervisor / Operations Supervisor",
+    description: "State ATM Corporation, Magadan, Russia",
     category: 'work',
     skills: [
       { name: 'Team leadership', weight: 10 },
       { name: 'Inter-agency coordination', weight: 9 },
-      { name: 'Disaster recovery planning', weight: 8 },
       { name: 'High-pressure decision-making', weight: 10 },
       { name: 'Stakeholder communication', weight: 9 },
-      { name: 'Work instructions analysis', weight: 9 },
-      { name: 'Task control', weight: 10 },
-      { name: 'Operational procedures development', weight: 9 }
+      { name: 'Operational reporting', weight: 9 },
+      { name: 'Training coordination', weight: 8 },
+      { name: 'Incident handling', weight: 10 }
     ]
   },
   {
     startYear: 2015,
-    endYear: 2016,
-    title: "Entrepreneur",
-    description: "Business development and market research",
+    endYear: 2017,
+    title: "Individual Entrepreneur",
+    description: "Small handmade jewelry store run alongside main employment",
     category: 'work',
     skills: [
-      { name: 'Business development', weight: 7 },
-      { name: 'Market research', weight: 7 },
-      { name: 'Problem-solving', weight: 8 },
-      { name: 'Negotiation', weight: 8 }
+      { name: 'Supplier coordination', weight: 8 },
+      { name: 'Negotiation', weight: 8 },
+      { name: 'Small-team oversight', weight: 7 },
+      { name: 'Tax reporting', weight: 7 }
     ]
   },
   {
-    startYear: 2024,
-    endYear: 2024,
-    title: "Web Development & AI Automation",
-    description: "AI-assisted development and automation",
+    startYear: 2025,
+    endYear: 2026,
+    title: "AI Data Labeling, Review, QA, and Translation",
+    description: "Alignerr.com, remote",
     category: 'work',
     skills: [
-      { name: 'AI-assisted Web development', weight: 8 },
-      { name: 'AI-assisted API integration', weight: 7 },
-      { name: 'AI-assisted Automation', weight: 8 },
-      { name: 'UX/UI Design', weight: 7 },
-      { name: 'Adaptability', weight: 9 },
-      { name: 'Critical thinking', weight: 9 },
-      { name: 'User Experience Focus', weight: 8 }
+      { name: 'Data labeling', weight: 8 },
+      { name: 'Transcription', weight: 9 },
+      { name: 'Transcript review', weight: 9 },
+      { name: 'Quality control', weight: 9 },
+      { name: 'English to Russian translation', weight: 8 }
     ]
   },
-  
-  // Key Events & Projects
-  {
-    startYear: 2011,
-    endYear: 2011,
-    title: "Aircraft Accident Management",
-    description: "Crisis handling and aviation emergency procedures",
-    category: 'personal',
-    skills: [
-      { name: 'Crisis handling', weight: 9 },
-      { name: 'Aviation emergency procedures', weight: 9 },
-      { name: 'Stress management', weight: 10 },
-      { name: 'Decision-making', weight: 10 }
-    ]
-  },
+
   {
     startYear: 2019,
     endYear: 2019,
-    title: "Emergency Landing of an Air China Aircraft",
-    description: "Flight operation crisis management",
+    title: "Emergency landing coordination: CCA983",
+    description: "Organized an unplanned landing and all required coordination while acting as duty manager",
     category: 'personal',
     skills: [
       { name: 'Flight operation crisis management', weight: 10 },
-      { name: 'Leadership under pressure', weight: 10 }
+      { name: 'Leadership under pressure', weight: 10 },
+      { name: 'Emergency coordination', weight: 10 }
     ]
   },
   {
     startYear: 2019,
     endYear: 2019,
-    title: "Internal Study on ATC Demotivation Factors",
-    description: "Data analysis and reporting on motivational factors",
+    title: "Co-authored workplace demotivation study",
+    description: "Internal research and reporting on employee demotivation factors",
     category: 'personal',
     skills: [
       { name: 'Data analysis', weight: 8 },
@@ -319,90 +185,27 @@ const rawTimelineData: TimelineItem[] = [
     ]
   },
   {
-    startYear: 2020,
-    endYear: 2020,
-    title: "Scientific Article Publication",
-    description: "Research and academic writing on ATC topics",
+    startYear: 2019,
+    endYear: 2019,
+    title: "Mentor Training Course",
+    description: "Institute of Air Navigation, Moscow",
     category: 'personal',
     skills: [
-      { name: 'Research', weight: 8 },
-      { name: 'Academic writing', weight: 8 },
-      { name: 'Analytical thinking', weight: 9 }
+      { name: 'Mentoring', weight: 8 },
+      { name: 'Training support', weight: 8 },
+      { name: 'Knowledge transfer', weight: 8 }
     ]
   },
   {
     startYear: 2020,
     endYear: 2021,
-    title: "UX/UI Design Studies",
-    description: "Learning UX/UI principles and practical application in student projects",
+    title: "UX/UI theory studies",
+    description: "Theoretical training in UX/UI design",
     category: 'personal',
     skills: [
-      { name: 'UX/UI Design', weight: 7 },
-      { name: 'User Experience Focus', weight: 7 },
-      { name: 'Wireframing', weight: 6 },
-      { name: 'User Research', weight: 6 },
-      { name: 'Prototyping', weight: 6 },
-      { name: 'Design Thinking', weight: 7 },
-      { name: 'Visual Design', weight: 6 },
-      { name: 'Figma', weight: 7 },
-      { name: 'Problem-Solving & Adaptability', weight: 7 },
-      { name: 'Creative Thinking', weight: 7 }
-    ]
-  },
-  // Добавляем новый блок для Web3 Gaming
-  {
-    startYear: 2023,
-    endYear: 2024,
-    title: "Web3 Gaming Exploration",
-    description: "Participation in Web3 gaming ecosystems and NFT collections",
-    category: 'personal',
-    skills: [
-      { name: 'Blockchain & Crypto', weight: 8 },
-      { name: 'GameFi Participation', weight: 7 },
-      { name: 'Play-to-Earn Games', weight: 7 },
-      { name: 'NFT Trading', weight: 7 },
-      { name: 'Community Engagement', weight: 6 },
-      { name: 'Game Strategy', weight: 7 },
-      { name: 'Web3 Ecosystem Knowledge', weight: 7 },
-      { name: 'Adaptability', weight: 8 }
-    ]
-  },
-  // Add new item for OSINT and Drone Operation
-  {
-    startYear: 2015,
-    endYear: 2022,
-    title: "OSINT as a hobby",
-    description: "Open Source Intelligence gathering and drone piloting",
-    category: 'personal',
-    skills: [
-      { name: '3D Modeling & Drone Operation', weight: 8 },
-      { name: 'OSINT & Information Analysis', weight: 7 },
-      { name: 'Drone operation & aerial control', weight: 8 },
-      { name: 'Aerial photography', weight: 7 },
-      { name: 'Data collection', weight: 7 },
-      { name: 'Pattern recognition', weight: 7 },
-      { name: 'Situational awareness', weight: 8 },
-      { name: 'Precision', weight: 7 },
-      { name: 'Problem-Solving & Adaptability', weight: 7 }
-    ]
-  },
-  // Добавляем новый блок для 3D Printing
-  {
-    startYear: 2022,
-    endYear: 2024,
-    title: "3D Printing & Modeling",
-    description: "Creating and printing custom 3D models and prototypes",
-    category: 'personal',
-    skills: [
-      { name: '3D Modeling & Drone Operation', weight: 8 },
-      { name: '3D Design', weight: 7 },
-      { name: 'CAD Software', weight: 7 },
-      { name: 'Material Science', weight: 6 },
-      { name: 'Prototype Development', weight: 7 },
-      { name: 'Digital Fabrication', weight: 7 },
-      { name: 'Technical Problem-Solving', weight: 8 },
-      { name: 'Precision', weight: 7 },
-      { name: 'Creativity', weight: 8 }
+      { name: 'User experience theory', weight: 6 },
+      { name: 'Visual structure', weight: 6 },
+      { name: 'Adaptability', weight: 7 }
     ]
   },
 ];

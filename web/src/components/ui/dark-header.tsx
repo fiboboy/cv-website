@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { memo, useState, useCallback, useMemo } from "react"
+import { memo, useState, useCallback } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import {
@@ -11,7 +11,6 @@ import {
   Menu,
   X,
   Home,
-  User,
   Clock,
   Code
 } from "lucide-react"
@@ -118,15 +117,7 @@ export const DarkHeader = memo(({
               <Home className="h-5 w-5" />
               <span>Home</span>
             </Link>
-            <Link 
-              href="/about"
-              className="flex items-center gap-2 py-2 font-mono text-sm uppercase tracking-[0.18em] text-[var(--terminal-text-soft)] transition-colors hover:text-[var(--terminal-green)]"
-              onClick={(e) => handleAnchorClick(e, "/about")}
-            >
-              <User className="h-5 w-5" />
-              <span>About</span>
-            </Link>
-            <a 
+            <a
               href="/#skills"
               className="flex items-center gap-2 py-2 font-mono text-sm uppercase tracking-[0.18em] text-[var(--terminal-text-soft)] transition-colors hover:text-[var(--terminal-green)]"
               onClick={(e) => {
@@ -209,14 +200,7 @@ export const DarkHeader = memo(({
       {/* Desktop Header */}
       <header className="fixed left-0 top-0 z-40 hidden w-full border-b border-[color:var(--terminal-border-strong)] bg-[rgba(5,7,6,0.84)] text-white backdrop-blur-md md:block">
         <div className="container relative mx-auto min-h-16 flex items-center">
-          <div className="flex-1">
-            <Link 
-              href="/about" 
-              className="font-mono text-sm uppercase tracking-[0.2em] text-[var(--terminal-text-soft)] transition-colors hover:text-[var(--terminal-green)]"
-            >
-              About
-            </Link>
-          </div>
+          <div className="flex-1" />
           <div className="flex-1 flex justify-center">
             <Link href="/" className="font-mono text-lg font-semibold uppercase tracking-[0.24em] text-[var(--terminal-ivory)] transition-colors hover:text-[var(--terminal-green)]">
               {logo}

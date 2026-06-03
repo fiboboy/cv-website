@@ -33,59 +33,71 @@ export interface ProfessionalProfile {
 
 export const professionalProfile: ProfessionalProfile = {
   currentRole: {
-    title: "Senior Software Engineer",
-    yearsOfExperience: 8,
+    title: "Operations and QA Specialist",
+    yearsOfExperience: 15,
     expertise: [
-      "Full Stack Development",
-      "System Architecture",
-      "Mission-Critical Systems"
+      "Air traffic management",
+      "Operations supervision",
+      "AI data review and QA",
+      "EN-RU translation"
     ]
   },
   technicalSkills: {
     expert: [
-      "TypeScript",
-      "React",
-      "Node.js",
-      "Next.js",
-      "System Design"
+      "Operational coordination",
+      "Incident handling",
+      "Documentation and reporting",
+      "Transcript review",
+      "Quality control"
     ],
     proficient: [
-      "Python",
-      "AWS",
-      "Docker",
-      "GraphQL",
-      "PostgreSQL"
+      "Data labeling",
+      "Transcription",
+      "English to Russian translation",
+      "Remote workflow tools",
+      "Training support"
     ]
   },
   uniqueQualifications: [
     {
-      qualification: "Air Traffic Controller Background",
-      relevance: "Brings unique perspective to mission-critical systems",
-      applicationToTech: "Applied in designing resilient and fault-tolerant systems"
+      qualification: "15+ years in safety-critical aviation operations",
+      relevance: "Strong judgment, calm execution, and procedural discipline",
+      applicationToTech: "Useful in QA, operations, review, and high-accuracy remote work"
     }
   ],
   keyStrengths: [
     {
-      area: "System Architecture",
-      description: "Designing scalable and maintainable systems",
-      relevance: "Critical for growing applications"
+      area: "Structured execution",
+      description: "Works accurately under detailed rules, time pressure, and shifting priorities",
+      relevance: "Useful in operations, QA, review, and multilingual support"
+    },
+    {
+      area: "Coordination",
+      description: "Handles communication across teams, supervisors, and external parties",
+      relevance: "Useful in remote support, project coordination, and incident handling"
     }
   ],
   careerHighlights: [
     {
-      achievement: "Led system modernization project",
-      impact: "Reduced system downtime by 75%",
-      relevance: "Demonstrates leadership and technical expertise"
+      achievement: "Worked across 6 Alignerr projects",
+      impact: "Handled transcription, labeling, review, QA, and EN-RU translation with a 4.8/5 average rating",
+      relevance: "Demonstrates reliable quality-focused remote work"
+    },
+    {
+      achievement: "Flight supervisor / duty manager in Magadan",
+      impact: "Coordinated routine, non-standard, and emergency situations in a 24/7 aviation environment",
+      relevance: "Demonstrates calm decision-making and operations leadership"
     }
   ],
   idealRoles: [
-    "Senior Software Engineer",
-    "Lead Developer",
-    "System Architect"
+    "Operations Coordinator",
+    "AI Data QA / Reviewer",
+    "Transcription / Localization Specialist",
+    "Aviation Operations Support"
   ],
   metadata: {
     availableForWork: true,
-    preferredWorkType: ["Remote", "Hybrid"],
-    willingToRelocate: true
+    preferredWorkType: ["Remote"],
+    willingToRelocate: false
   }
-}; 
+};

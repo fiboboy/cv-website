@@ -3,7 +3,7 @@
 import { DarkHeader } from "@/components/ui/dark-header";
 import { Timeline } from "@/components/ui/Timeline";
 import { professionalProfile } from "@/data/professional-profile";
-import { Download, ArrowUpRight, Radar, ShieldCheck, Workflow } from "lucide-react";
+import { Download, Radar, ShieldCheck, Workflow } from "lucide-react";
 import AnimatedButton from "../components/AnimatedButton";
 import Script from "next/script";
 import { useEffect, useState } from "react";
@@ -122,9 +122,9 @@ export default function Home() {
             mainEntity: {
               "@type": "Person",
               name: "Mikhail Dziubenko",
-              jobTitle: "Aviation SME & Tech Lead",
+              jobTitle: "Operations and QA Specialist",
               description:
-                "AI & Crypto Enthusiast | AI Agentic Developer | Aviation SME | Instruction Design Wizard | Seasoned Team Lead & Mentor | Expert in Crisis Management",
+                "Operations and QA specialist based in Bangkok with 15+ years in aviation and recent remote work in AI data review, QA, transcription, and EN-RU translation.",
               url: "https://mikhail.vercel.app/",
               sameAs: [
                 "https://x.com/fiboboy",
@@ -137,10 +137,11 @@ export default function Home() {
               },
               knowsAbout: [
                 "Air Traffic Control",
-                "Aviation Safety",
-                "Team Leadership",
-                "Web Development",
-                "AI & Crypto",
+                "Aviation Operations",
+                "AI Data Review",
+                "Quality Assurance",
+                "Transcription",
+                "English to Russian Translation",
               ],
             },
           }),
@@ -165,23 +166,23 @@ export default function Home() {
                 <div className="space-y-6">
                   <div className="space-y-3">
                     <p className="text-[11px] uppercase tracking-[0.34em] text-[var(--terminal-green)]">
-                      mikhail dziubenko / hybrid operator
+                      mikhail dziubenko / bangkok / remote-ready
                     </p>
-                    <h1 className="max-w-[12ch] font-mono text-4xl font-semibold uppercase leading-[0.95] text-[var(--terminal-ivory)] md:text-6xl">
-                      From air traffic control to AI system design
+                    <h1 className="max-w-[14ch] font-mono text-4xl font-semibold uppercase leading-[0.95] text-[var(--terminal-ivory)] md:text-6xl">
+                      Operations, QA, and AI data work with aviation discipline
                     </h1>
                   </div>
 
                   <p className="max-w-[60ch] text-base leading-7 text-[var(--terminal-text-soft)] md:text-lg">
-                    I build calm, resilient digital systems shaped by years of high-pressure aviation work,
-                    team leadership, and a recent shift into AI-assisted product development.
+                    Bilingual operations and quality-focused professional with 15+ years in air traffic management and aviation supervision.
+                    Recent remote work includes transcription, labeling, review, QA, and English-to-Russian translation for AI-data workflows.
                   </p>
 
                   <div className="flex flex-wrap gap-3">
-                    <span className="terminal-chip">AI agentic workflows</span>
-                    <span className="terminal-chip">Mission-critical thinking</span>
-                    <span className="terminal-chip">Instruction design</span>
-                    <span className="terminal-chip">Crisis-ready leadership</span>
+                    <span className="terminal-chip">15+ years in aviation / ATM</span>
+                    <span className="terminal-chip">6 Alignerr projects</span>
+                    <span className="terminal-chip">AI data review and QA</span>
+                    <span className="terminal-chip">English to Russian translation</span>
                   </div>
 
                   <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:gap-4">
@@ -189,20 +190,13 @@ export default function Home() {
                       <Download size={18} />
                       Download CV
                     </AnimatedButton>
-                    <a
-                      href="/about"
-                      className="terminal-link inline-flex items-center justify-center gap-2 px-4 py-3 text-sm uppercase tracking-[0.24em] sm:justify-start"
-                    >
-                      Detailed profile
-                      <ArrowUpRight className="h-4 w-4" />
-                    </a>
                   </div>
                 </div>
 
                 <div className="terminal-panel flex flex-col gap-4 bg-[linear-gradient(180deg,rgba(17,20,17,0.92),rgba(7,9,8,0.96))] p-4 sm:p-5">
                   <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.28em] text-[var(--terminal-ash)]">
-                    <span>active mission profile</span>
-                    <span className="text-[var(--terminal-green)]">remote / hybrid</span>
+                    <span>active profile</span>
+                    <span className="text-[var(--terminal-green)]">remote / bangkok</span>
                   </div>
                   <div className="space-y-4">
                     {expertise.map((item) => (
@@ -213,9 +207,9 @@ export default function Home() {
                     ))}
                   </div>
                   <div className="grid gap-3 pt-2">
-                    <TerminalStatus label="focus" value="AI collaboration systems" />
+                    <TerminalStatus label="focus" value="QA, review, operations support" />
                     <TerminalStatus label="mode" value="open to new work" />
-                    <TerminalStatus label="signal" value="curiosity-driven builder" tone="warning" />
+                    <TerminalStatus label="languages" value="russian native / english advanced" tone="warning" />
                   </div>
                 </div>
               </div>
@@ -224,20 +218,20 @@ export default function Home() {
             <div className="grid gap-4 md:grid-cols-3">
               <SignalCard
                 icon={Radar}
-                title="Operational Clarity"
-                body="Aviation taught me to make fast decisions without turning systems or teams into chaos."
+                title="Safety-Critical Experience"
+                body="Ten years in air traffic control and six years in supervision built strong habits around accuracy, discipline, and fast judgment."
                 stat="01"
               />
               <SignalCard
                 icon={ShieldCheck}
-                title="Resilience by Design"
-                body="I naturally think in failure modes, fallback paths, handoffs, and human factors."
+                title="Review and QA"
+                body="Recent remote work focused on transcription, labeling, review, QA, and catching recurring errors in AI-data workflows."
                 stat="02"
               />
               <SignalCard
                 icon={Workflow}
-                title="AI Workflow Builder"
-                body="Now I translate that mindset into product flows, agents, automation, and interface systems."
+                title="Calm Coordination"
+                body="Best fit areas include operations support, multilingual workflows, documentation, incident handling, and structured remote collaboration."
                 stat="03"
               />
             </div>
@@ -253,16 +247,16 @@ export default function Home() {
               </div>
               <div className="space-y-4 font-mono text-sm">
                 <div className="terminal-log-row">
-                  <span className="text-[var(--terminal-green)]">[2002-2022]</span>
-                  <p>Air traffic control, supervision, emergency response, inter-agency coordination.</p>
+                  <span className="text-[var(--terminal-green)]">[2006-2022]</span>
+                  <p>Air traffic control, flight supervision, operational reporting, emergency handling, and team coordination.</p>
                 </div>
                 <div className="terminal-log-row">
-                  <span className="text-[var(--terminal-green)]">[2023-2024]</span>
-                  <p>UX/UI study, Web3 exploration, AI-assisted web delivery, personal systems thinking.</p>
+                  <span className="text-[var(--terminal-green)]">[2015-2017]</span>
+                  <p>Ran a small side business: supplier coordination, two workers, purchasing, delivery, and tax reporting.</p>
                 </div>
                 <div className="terminal-log-row">
-                  <span className="text-[var(--terminal-green)]">[NOW]</span>
-                  <p>Looking for work where technical depth and calm leadership both matter.</p>
+                  <span className="text-[var(--terminal-green)]">[2025-2026]</span>
+                  <p>Remote AI-data work: transcription, labeling, review, QA, and English-to-Russian translation.</p>
                 </div>
               </div>
             </section>
@@ -289,11 +283,11 @@ export default function Home() {
             <div>
               <p className="text-[11px] uppercase tracking-[0.3em] text-[var(--terminal-ash)]">career archive</p>
               <h2 className="mt-2 text-2xl font-semibold uppercase tracking-[0.08em] text-[var(--terminal-ivory)]">
-                Experience as structured telemetry
+                Verified experience and training
               </h2>
             </div>
             <p className="max-w-[34ch] text-sm leading-6 text-[var(--terminal-text-soft)]">
-              The original timeline stays intact, but now lives inside a clearer terminal shell.
+              A concise timeline of work, education, and a few relevant milestones only.
             </p>
           </div>
           <Timeline />

@@ -14,20 +14,20 @@ export const LLMOptimizedContent = () => {
           '@context': 'https://schema.org',
           '@type': 'Person',
           '@id': 'https://dziubenko.ru/#person',
-          name: 'Mika',
+          name: 'Mikhail Dziubenko',
           jobTitle: professionalProfile.currentRole.title,
-          description: `Senior Software Engineer with ${professionalProfile.currentRole.yearsOfExperience} years of experience. Former Air Traffic Controller with expertise in ${professionalProfile.currentRole.expertise.join(', ')}.`,
+          description: `Operations and QA specialist with ${professionalProfile.currentRole.yearsOfExperience}+ years of experience across aviation, review, QA, transcription, and translation.`,
           knowsAbout: professionalProfile.technicalSkills.expert.concat(professionalProfile.technicalSkills.proficient),
           hasCredential: [
             {
               '@type': 'Credential',
-              name: 'Air Traffic Controller Certification',
-              description: 'Licensed Air Traffic Controller with experience in mission-critical systems',
+              name: 'Mentor Training Course',
+              description: 'Institute of Air Navigation, Moscow (2019)',
             },
           ],
           hasOccupation: {
             '@type': 'Occupation',
-            name: 'Senior Software Engineer',
+            name: professionalProfile.currentRole.title,
             qualifications: professionalProfile.uniqueQualifications.map((q: { qualification: string }) => q.qualification),
             skills: professionalProfile.technicalSkills.expert.join(', '),
             responsibilities: professionalProfile.keyStrengths.map((s: { description: string }) => s.description),
@@ -89,9 +89,9 @@ export const LLMOptimizedContent = () => {
           Preferred work type: {professionalProfile.metadata.preferredWorkType.join(', ')}
         </div>
         <div data-relocate={professionalProfile.metadata.willingToRelocate}>
-          Open to relocation opportunities
+          Remote-ready from Bangkok, Thailand
         </div>
       </div>
     </div>
   )
-} 
+}

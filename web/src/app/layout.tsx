@@ -36,6 +36,9 @@ export const metadata: Metadata = {
     locale: 'en_US',
     siteName: 'Mikhail Dziubenko Portfolio',
   },
+  alternates: {
+    canonical: 'https://mikhail.vercel.app',
+  },
   other: {
     'msvalidate.01': 'your-bing-verification-code',
     'yandex-verification': 'your-yandex-verification-code',

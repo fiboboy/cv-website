@@ -140,6 +140,33 @@
   padding: 1rem;
 }
 
+.resume-role {
+  border-top: 1px solid var(--terminal-border);
+  padding-top: 1.5rem;
+}
+
+.resume-role:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.resume-bullet {
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.resume-bullet::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72rem;
+  height: 0.32rem;
+  width: 0.32rem;
+  border-radius: 999px;
+  background: var(--terminal-green);
+  box-shadow: 0 0 10px rgba(109, 255, 123, 0.35);
+}
+
 .terminal-noise {
   background-image:
     linear-gradient(transparent 0%, rgba(255, 255, 255, 0.015) 50%, transparent 100%),

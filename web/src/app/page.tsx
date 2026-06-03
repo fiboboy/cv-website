@@ -87,6 +87,24 @@ function SignalCard({
   );
 }
 
+function StatCard({
+  label,
+  value,
+  detail,
+}: {
+  label: string;
+  value: string;
+  detail: string;
+}) {
+  return (
+    <article className="terminal-mini-card space-y-3">
+      <p className="text-[10px] uppercase tracking-[0.28em] text-[var(--terminal-ash)]">{label}</p>
+      <p className="text-2xl font-semibold uppercase tracking-[0.08em] text-[var(--terminal-ivory)]">{value}</p>
+      <p className="text-sm leading-6 text-[var(--terminal-text-soft)]">{detail}</p>
+    </article>
+  );
+}
+
 function BrailleStrip() {
   const frame = useFrame(rainFrames, 120);
   return (
@@ -162,78 +180,57 @@ export default function Home() {
             </div>
 
             <div className="terminal-panel terminal-grid overflow-hidden p-6 md:p-8">
-              <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
-                <div className="space-y-6">
-                  <div className="space-y-3">
-                    <p className="text-[11px] uppercase tracking-[0.34em] text-[var(--terminal-green)]">
-                      mikhail dziubenko / bangkok / remote-ready
-                    </p>
-                    <h1 className="max-w-[14ch] font-mono text-4xl font-semibold uppercase leading-[0.95] text-[var(--terminal-ivory)] md:text-6xl">
-                      Operations, QA, and AI data work with aviation discipline
-                    </h1>
-                  </div>
-
-                  <p className="max-w-[60ch] text-base leading-7 text-[var(--terminal-text-soft)] md:text-lg">
-                    Bilingual operations and quality-focused professional with 15+ years in air traffic management and aviation supervision.
-                    Recent remote work includes transcription, labeling, review, QA, and English-to-Russian translation for AI-data workflows.
+              <div className="space-y-8">
+                <div className="space-y-4">
+                  <p className="text-[11px] uppercase tracking-[0.34em] text-[var(--terminal-green)]">
+                    mikhail dziubenko / bangkok / remote-ready
                   </p>
-
-                  <div className="flex flex-wrap gap-3">
-                    <span className="terminal-chip">15+ years in aviation / ATM</span>
-                    <span className="terminal-chip">6 Alignerr projects</span>
-                    <span className="terminal-chip">AI data review and QA</span>
-                    <span className="terminal-chip">English to Russian translation</span>
-                  </div>
-
-                  <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:gap-4">
-                    <AnimatedButton href="/mikhail-dziubenko-cv.pdf" className="min-w-[220px] justify-center sm:w-auto">
-                      <Download size={18} />
-                      Download CV
-                    </AnimatedButton>
-                  </div>
+                  <h1 className="max-w-[12ch] font-mono text-4xl font-semibold uppercase leading-[0.95] text-[var(--terminal-ivory)] md:text-6xl">
+                    Operations, QA, and AI data work
+                  </h1>
+                  <p className="max-w-[62ch] text-base leading-7 text-[var(--terminal-text-soft)] md:text-lg">
+                    Bilingual operations and quality-focused professional with 15+ years across air traffic management,
+                    aviation supervision, and remote AI-data workflows. Strong in review, QA, documentation,
+                    coordination, and calm work under pressure.
+                  </p>
                 </div>
 
-                <div className="terminal-panel flex flex-col gap-4 bg-[linear-gradient(180deg,rgba(17,20,17,0.92),rgba(7,9,8,0.96))] p-4 sm:p-5">
-                  <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.28em] text-[var(--terminal-ash)]">
-                    <span>active profile</span>
-                    <span className="text-[var(--terminal-green)]">remote / bangkok</span>
-                  </div>
-                  <div className="space-y-4">
-                    {expertise.map((item) => (
-                      <div key={item} className="flex items-center justify-between gap-4 border-b border-[color:var(--terminal-border)] pb-3">
-                        <span className="text-sm uppercase tracking-[0.18em] text-[var(--terminal-text-soft)]">{item}</span>
-                        <span className="text-[var(--terminal-green)]">[LIVE]</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="grid gap-3 pt-2">
-                    <TerminalStatus label="focus" value="QA, review, operations support" />
-                    <TerminalStatus label="mode" value="open to new work" />
-                    <TerminalStatus label="languages" value="russian native / english advanced" tone="warning" />
-                  </div>
+                <div className="grid gap-4 md:grid-cols-3">
+                  <StatCard
+                    label="experience"
+                    value="15+ years"
+                    detail="Air traffic control, flight supervision, incident handling, and operational reporting."
+                  />
+                  <StatCard
+                    label="recent remote work"
+                    value="6 projects"
+                    detail="Transcription, labeling, review, QA, and English-to-Russian translation."
+                  />
+                  <StatCard
+                    label="work setup"
+                    value="remote-ready"
+                    detail="Based in Bangkok, with Russian native and English advanced."
+                  />
+                </div>
+
+                <div className="flex flex-wrap gap-3">
+                  <span className="terminal-chip">Aviation operations</span>
+                  <span className="terminal-chip">AI data review</span>
+                  <span className="terminal-chip">Transcript QA</span>
+                  <span className="terminal-chip">EN-RU translation</span>
+                </div>
+
+                <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:flex-wrap sm:gap-4">
+                  <AnimatedButton href="/resume" className="min-w-[220px] justify-center sm:w-auto">
+                    <Download size={18} />
+                    Open Resume
+                  </AnimatedButton>
+                  <AnimatedButton href="/mikhail-dziubenko-cv.pdf" className="min-w-[220px] justify-center sm:w-auto">
+                      <Download size={18} />
+                      Download PDF
+                    </AnimatedButton>
                 </div>
               </div>
-            </div>
-
-            <div className="grid gap-4 md:grid-cols-3">
-              <SignalCard
-                icon={Radar}
-                title="Safety-Critical Experience"
-                body="Ten years in air traffic control and six years in supervision built strong habits around accuracy, discipline, and fast judgment."
-                stat="01"
-              />
-              <SignalCard
-                icon={ShieldCheck}
-                title="Review and QA"
-                body="Recent remote work focused on transcription, labeling, review, QA, and catching recurring errors in AI-data workflows."
-                stat="02"
-              />
-              <SignalCard
-                icon={Workflow}
-                title="Calm Coordination"
-                body="Best fit areas include operations support, multilingual workflows, documentation, incident handling, and structured remote collaboration."
-                stat="03"
-              />
             </div>
           </div>
 
@@ -242,40 +239,85 @@ export default function Home() {
 
             <section className="terminal-panel p-5">
               <div className="mb-4 flex items-center justify-between text-[11px] uppercase tracking-[0.3em] text-[var(--terminal-ash)]">
-                <span>trajectory</span>
-                <span className="text-[var(--terminal-green)]">2002 → 2026</span>
+                <span>profile snapshot</span>
+                <span className="text-[var(--terminal-green)]">verified</span>
               </div>
-              <div className="space-y-4 font-mono text-sm">
-                <div className="terminal-log-row">
-                  <span className="text-[var(--terminal-green)]">[2006-2022]</span>
-                  <p>Air traffic control, flight supervision, operational reporting, emergency handling, and team coordination.</p>
+              <div className="space-y-4">
+                <div className="space-y-3">
+                  {expertise.map((item) => (
+                    <div key={item} className="flex items-center justify-between gap-4 border-b border-[color:var(--terminal-border)] pb-3">
+                      <span className="text-sm uppercase tracking-[0.18em] text-[var(--terminal-text-soft)]">{item}</span>
+                      <span className="text-[var(--terminal-green)]">[LIVE]</span>
+                    </div>
+                  ))}
                 </div>
-                <div className="terminal-log-row">
-                  <span className="text-[var(--terminal-green)]">[2015-2017]</span>
-                  <p>Ran a small side business: supplier coordination, two workers, purchasing, delivery, and tax reporting.</p>
+                <div className="grid gap-3 pt-2">
+                  <TerminalStatus label="focus" value="QA, review, operations support" />
+                  <TerminalStatus label="mode" value="open to new work" />
+                  <TerminalStatus label="languages" value="russian native / english advanced" tone="warning" />
                 </div>
-                <div className="terminal-log-row">
-                  <span className="text-[var(--terminal-green)]">[2025-2026]</span>
-                  <p>Remote AI-data work: transcription, labeling, review, QA, and English-to-Russian translation.</p>
-                </div>
-              </div>
-            </section>
-
-            <section className="terminal-panel p-5">
-              <div className="mb-4 flex items-center justify-between text-[11px] uppercase tracking-[0.3em] text-[var(--terminal-ash)]">
-                <span>current vector</span>
-                <span className="text-[var(--terminal-green)]">priority targets</span>
-              </div>
-              <div className="grid gap-3 sm:grid-cols-2">
-                {professionalProfile.idealRoles.map((role) => (
-                  <div key={role} className="terminal-mini-card">
-                    <span className="text-[10px] uppercase tracking-[0.28em] text-[var(--terminal-ash)]">role</span>
-                    <p className="mt-2 text-sm uppercase tracking-[0.16em] text-[var(--terminal-ivory)]">{role}</p>
-                  </div>
-                ))}
               </div>
             </section>
           </div>
+        </section>
+
+        <section className="relative mx-auto mt-8 grid w-full max-w-7xl gap-4 md:grid-cols-3">
+          <SignalCard
+            icon={Radar}
+            title="Safety-Critical Experience"
+            body="Ten years in air traffic control and six years in supervision built strong habits around accuracy, discipline, and fast judgment."
+            stat="01"
+          />
+          <SignalCard
+            icon={ShieldCheck}
+            title="Review and QA"
+            body="Recent remote work focused on transcription, labeling, review, QA, and catching recurring errors in AI-data workflows."
+            stat="02"
+          />
+          <SignalCard
+            icon={Workflow}
+            title="Calm Coordination"
+            body="Best fit areas include operations support, multilingual workflows, documentation, incident handling, and structured remote collaboration."
+            stat="03"
+          />
+        </section>
+
+        <section className="relative mx-auto mt-8 grid w-full max-w-7xl gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+          <section className="terminal-panel p-5">
+            <div className="mb-4 flex items-center justify-between text-[11px] uppercase tracking-[0.3em] text-[var(--terminal-ash)]">
+              <span>trajectory</span>
+              <span className="text-[var(--terminal-green)]">2006 → 2026</span>
+            </div>
+            <div className="space-y-4 font-mono text-sm">
+              <div className="terminal-log-row">
+                <span className="text-[var(--terminal-green)]">[2006-2022]</span>
+                <p>Air traffic control, flight supervision, operational reporting, emergency handling, and team coordination.</p>
+              </div>
+              <div className="terminal-log-row">
+                <span className="text-[var(--terminal-green)]">[2015-2017]</span>
+                <p>Ran a small side business: supplier coordination, two workers, purchasing, delivery, and tax reporting.</p>
+              </div>
+              <div className="terminal-log-row">
+                <span className="text-[var(--terminal-green)]">[2025-2026]</span>
+                <p>Remote AI-data work: transcription, labeling, review, QA, and English-to-Russian translation.</p>
+              </div>
+            </div>
+          </section>
+
+          <section className="terminal-panel p-5">
+            <div className="mb-4 flex items-center justify-between text-[11px] uppercase tracking-[0.3em] text-[var(--terminal-ash)]">
+              <span>target roles</span>
+              <span className="text-[var(--terminal-green)]">universal fit</span>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {professionalProfile.idealRoles.map((role) => (
+                <div key={role} className="terminal-mini-card">
+                  <span className="text-[10px] uppercase tracking-[0.28em] text-[var(--terminal-ash)]">role</span>
+                  <p className="mt-2 text-sm uppercase tracking-[0.16em] text-[var(--terminal-ivory)]">{role}</p>
+                </div>
+              ))}
+            </div>
+          </section>
         </section>
 
         <section className="relative mx-auto mt-12 w-full max-w-7xl">

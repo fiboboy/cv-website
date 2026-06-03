@@ -12,7 +12,9 @@ import {
   X,
   Home,
   Clock,
-  Code
+  Code,
+  Briefcase,
+  FileText
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
@@ -117,6 +119,22 @@ export const DarkHeader = memo(({
               <Home className="h-5 w-5" />
               <span>Home</span>
             </Link>
+            <Link
+              href="/design"
+              className="flex items-center gap-2 py-2 font-mono text-sm uppercase tracking-[0.18em] text-[var(--terminal-text-soft)] transition-colors hover:text-[var(--terminal-green)]"
+              onClick={(e) => handleAnchorClick(e, "/design")}
+            >
+              <Briefcase className="h-5 w-5" />
+              <span>Design Work</span>
+            </Link>
+            <Link
+              href="/resume"
+              className="flex items-center gap-2 py-2 font-mono text-sm uppercase tracking-[0.18em] text-[var(--terminal-text-soft)] transition-colors hover:text-[var(--terminal-green)]"
+              onClick={(e) => handleAnchorClick(e, "/resume")}
+            >
+              <FileText className="h-5 w-5" />
+              <span>Resume</span>
+            </Link>
             <a
               href="/#skills"
               className="flex items-center gap-2 py-2 font-mono text-sm uppercase tracking-[0.18em] text-[var(--terminal-text-soft)] transition-colors hover:text-[var(--terminal-green)]"
@@ -202,9 +220,19 @@ export const DarkHeader = memo(({
         <div className="container relative mx-auto min-h-16 flex items-center">
           <div className="flex-1" />
           <div className="flex-1 flex justify-center">
-            <Link href="/" className="font-mono text-lg font-semibold uppercase tracking-[0.24em] text-[var(--terminal-ivory)] transition-colors hover:text-[var(--terminal-green)]">
-              {logo}
-            </Link>
+            <div className="flex items-center gap-8">
+              <Link href="/" className="font-mono text-lg font-semibold uppercase tracking-[0.24em] text-[var(--terminal-ivory)] transition-colors hover:text-[var(--terminal-green)]">
+                {logo}
+              </Link>
+              <nav className="flex items-center gap-5">
+                <Link href="/design" className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--terminal-text-soft)] transition-colors hover:text-[var(--terminal-green)]">
+                  Design Work
+                </Link>
+                <Link href="/resume" className="font-mono text-[11px] uppercase tracking-[0.24em] text-[var(--terminal-text-soft)] transition-colors hover:text-[var(--terminal-green)]">
+                  Resume
+                </Link>
+              </nav>
+            </div>
           </div>
           <div className="flex-1 flex justify-end items-center gap-3">
             {socialLinks.map((link, index) => (

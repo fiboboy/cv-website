@@ -3,9 +3,10 @@
 import { DarkHeader } from "@/components/ui/dark-header";
 import { Timeline } from "@/components/ui/Timeline";
 import { professionalProfile } from "@/data/professional-profile";
-import { Download, Radar, ShieldCheck, Workflow } from "lucide-react";
+import { Download, LayoutTemplate, Package2, Radar, ShieldCheck, Workflow } from "lucide-react";
 import AnimatedButton from "../components/AnimatedButton";
 import Script from "next/script";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const liveFrames = ["[>_]", "[>>]", "[_>]", "[OK]"];
@@ -119,6 +120,25 @@ function BrailleStrip() {
   );
 }
 
+function WorkChip({ children }: { children: string }) {
+  return <span className="work-chip">{children}</span>;
+}
+
+function CaseStat({
+  label,
+  value,
+}: {
+  label: string;
+  value: string;
+}) {
+  return (
+    <div className="work-metric">
+      <span>{label}</span>
+      <strong>{value}</strong>
+    </div>
+  );
+}
+
 export default function Home() {
   const bootFrame = useFrame(liveFrames, 320);
   const expertise = professionalProfile.currentRole.expertise;
@@ -218,9 +238,15 @@ export default function Home() {
                   <span className="terminal-chip">AI data review</span>
                   <span className="terminal-chip">Transcript QA</span>
                   <span className="terminal-chip">EN-RU translation</span>
+                  <span className="terminal-chip">Packaging design</span>
+                  <span className="terminal-chip">UX/UI concepts</span>
                 </div>
 
                 <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:flex-wrap sm:gap-5">
+                  <AnimatedButton href="/design" className="min-w-[220px] justify-center sm:w-auto">
+                    <Download size={18} />
+                    Design Work
+                  </AnimatedButton>
                   <AnimatedButton href="/resume" className="min-w-[220px] justify-center sm:w-auto" targetBlank={true}>
                     <Download size={18} />
                     Open Resume
@@ -287,6 +313,46 @@ export default function Home() {
           />
         </section>
 
+        <section className="relative mx-auto mt-12 grid w-full max-w-7xl gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+          <section className="terminal-panel p-6">
+            <div className="mb-4 flex items-center justify-between text-[11px] uppercase tracking-[0.3em] text-[var(--terminal-ash)]">
+              <span>design focus</span>
+              <span className="text-[var(--terminal-green)]">recent work</span>
+            </div>
+            <div className="space-y-4 text-sm leading-7 text-[var(--terminal-text-soft)]">
+              <p>
+                My visual work is not a huge agency-style archive. What I can show today is smaller, but real:
+                a coffee label system and a drone-service website concept with a strong visual direction.
+              </p>
+              <p>
+                The useful through-line is structure: I tend to work from hierarchy, clarity, repeatable systems,
+                and practical communication rather than decoration for its own sake.
+              </p>
+            </div>
+          </section>
+
+          <section className="terminal-panel p-6">
+            <div className="mb-4 flex items-center justify-between text-[11px] uppercase tracking-[0.3em] text-[var(--terminal-ash)]">
+              <span>design skills</span>
+              <span className="text-[var(--terminal-green)]">honest baseline</span>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {[
+                "Visual hierarchy",
+                "Packaging layout",
+                "Color-coded product variation",
+                "Landing page structure",
+                "Offer presentation",
+                "UX/UI theory",
+              ].map((skill) => (
+                <div key={skill} className="terminal-mini-card">
+                  <p className="text-sm uppercase tracking-[0.14em] text-[var(--terminal-ivory)]">{skill}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        </section>
+
         <section className="relative mx-auto mt-12 grid w-full max-w-7xl gap-8 lg:grid-cols-[0.95fr_1.05fr]">
           <section className="terminal-panel p-6">
             <div className="mb-4 flex items-center justify-between text-[11px] uppercase tracking-[0.3em] text-[var(--terminal-ash)]">
@@ -325,7 +391,145 @@ export default function Home() {
           </section>
         </section>
 
-        <section className="relative mx-auto mt-14 w-full max-w-7xl">
+        <section className="relative mx-auto mt-16 w-full max-w-7xl">
+          <div className="terminal-panel mb-6 flex flex-wrap items-end justify-between gap-4 px-5 py-5 sm:px-6">
+            <div className="max-w-3xl">
+              <p className="text-[11px] uppercase tracking-[0.3em] text-[var(--terminal-ash)]">selected design work</p>
+              <h2 className="mt-2 text-2xl font-semibold uppercase tracking-[0.08em] text-[var(--terminal-ivory)] sm:text-3xl">
+                Real work, packaged clearly
+              </h2>
+              <p className="mt-3 max-w-[56ch] text-sm leading-7 text-[var(--terminal-text-soft)] sm:text-base">
+                I do not have dozens of finished product case studies, so this section focuses on work that is real and
+                presentable: a coffee label system and an unfinished but visually defined drone-service website concept.
+              </p>
+            </div>
+            <span className="terminal-chip">2 grounded case studies</span>
+          </div>
+
+          <div className="space-y-8">
+            <article className="terminal-panel work-case">
+              <div className="work-copy">
+                <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-[var(--terminal-green)]">
+                  <Package2 className="h-4 w-4" />
+                  packaging system
+                </div>
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-semibold uppercase tracking-[0.08em] text-[var(--terminal-ivory)] sm:text-3xl">
+                    Coffee label series for a blend lineup
+                  </h3>
+                  <p className="max-w-[60ch] text-sm leading-7 text-[var(--terminal-text-soft)] sm:text-base">
+                    A compact packaging system built for a coffee lineup with several blends. The goal was to keep one
+                    recognizable structure across all labels while changing palette, blend identity, and tasting notes
+                    from product to product.
+                  </p>
+                </div>
+
+                <div className="work-chip-row">
+                  <WorkChip>Label hierarchy</WorkChip>
+                  <WorkChip>Variant color system</WorkChip>
+                  <WorkChip>Packaging layout</WorkChip>
+                  <WorkChip>Retail shelf clarity</WorkChip>
+                </div>
+
+                <div className="work-metrics">
+                  <CaseStat label="scope" value="5 label variants" />
+                  <CaseStat label="focus" value="consistency + differentiation" />
+                  <CaseStat label="role" value="visual design / packaging" />
+                </div>
+
+                <p className="text-sm leading-7 text-[var(--terminal-text-soft)]">
+                  What works well here: strong repeatable frame, readable information hierarchy, and enough color
+                  contrast between blends to make the series feel organized instead of repetitive.
+                </p>
+              </div>
+
+              <div className="work-visual-stack">
+                <div className="work-hero-image">
+                  <Image
+                    src="/work/coffee/mokko-supremo.png"
+                    alt="Coffee label design for the Mokko Supremo blend"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 42vw"
+                  />
+                </div>
+                <div className="work-thumb-grid">
+                  {[
+                    { src: "/work/coffee/crema-forte.png", alt: "Coffee label design for Crema Forte" },
+                    { src: "/work/coffee/supremo-classic.png", alt: "Coffee label design for Supremo Classic" },
+                    { src: "/work/coffee/dark-reserve.png", alt: "Coffee label design for Dark Reserve" },
+                    { src: "/work/coffee/chocolate-dawn.png", alt: "Coffee label design for Chocolate Dawn" },
+                  ].map((item) => (
+                    <div key={item.src} className="work-thumb">
+                      <Image src={item.src} alt={item.alt} fill className="object-cover" sizes="(max-width: 1024px) 50vw, 20vw" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </article>
+
+            <article className="terminal-panel work-case">
+              <div className="work-copy">
+                <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-[var(--terminal-green)]">
+                  <LayoutTemplate className="h-4 w-4" />
+                  ui concept
+                </div>
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-semibold uppercase tracking-[0.08em] text-[var(--terminal-ivory)] sm:text-3xl">
+                    DroneOps landing and service concept
+                  </h3>
+                  <p className="max-w-[60ch] text-sm leading-7 text-[var(--terminal-text-soft)] sm:text-base">
+                    An unfinished website concept for a drone-based property maintenance service. The current state
+                    already shows a clear visual direction, service architecture, and strong CTA flow even though the
+                    project is not fully completed.
+                  </p>
+                </div>
+
+                <div className="work-chip-row">
+                  <WorkChip>Landing page structure</WorkChip>
+                  <WorkChip>Service cards</WorkChip>
+                  <WorkChip>Industrial visual language</WorkChip>
+                  <WorkChip>High-contrast CTA flow</WorkChip>
+                </div>
+
+                <div className="work-metrics">
+                  <CaseStat label="status" value="concept in progress" />
+                  <CaseStat label="built" value="homepage + service pages" />
+                  <CaseStat label="role" value="ui direction / content structure" />
+                </div>
+
+                <p className="text-sm leading-7 text-[var(--terminal-text-soft)]">
+                  What is already convincing: a bold brutalist palette, clear audience framing, and a service-first
+                  structure that makes the offer understandable fast.
+                </p>
+              </div>
+
+              <div className="work-visual-stack">
+                <div className="work-hero-image">
+                  <Image
+                    src="/work/drones/hero.png"
+                    alt="DroneOps concept hero visual"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 42vw"
+                  />
+                </div>
+                <div className="work-thumb-grid work-thumb-grid--wide">
+                  {[
+                    { src: "/work/drones/facade.png", alt: "DroneOps facade cleaning visual" },
+                    { src: "/work/drones/solar.png", alt: "DroneOps solar maintenance visual" },
+                  ].map((item) => (
+                    <div key={item.src} className="work-thumb">
+                      <Image src={item.src} alt={item.alt} fill className="object-cover" sizes="(max-width: 1024px) 50vw, 24vw" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section className="relative mx-auto mt-16 w-full max-w-7xl">
           <div className="terminal-panel mb-6 flex flex-wrap items-center justify-between gap-3 px-4 py-4 sm:px-5">
             <div>
               <p className="text-[11px] uppercase tracking-[0.3em] text-[var(--terminal-ash)]">career archive</p>

@@ -33,13 +33,14 @@ export interface ProfessionalProfile {
 
 export const professionalProfile: ProfessionalProfile = {
   currentRole: {
-    title: "Operations and QA Specialist",
+    title: "Operations, QA, and Design-Oriented Generalist",
     yearsOfExperience: 15,
     expertise: [
       "Air traffic management",
       "Operations supervision",
       "AI data review and QA",
-      "EN-RU translation"
+      "EN-RU translation",
+      "Packaging and UX/UI concepts"
     ]
   },
   technicalSkills: {
@@ -55,7 +56,11 @@ export const professionalProfile: ProfessionalProfile = {
       "Transcription",
       "English to Russian translation",
       "Remote workflow tools",
-      "Training support"
+      "Training support",
+      "Visual hierarchy",
+      "Packaging layout",
+      "Landing page structure",
+      "UX/UI theory"
     ]
   },
   uniqueQualifications: [
@@ -75,6 +80,11 @@ export const professionalProfile: ProfessionalProfile = {
       area: "Coordination",
       description: "Handles communication across teams, supervisors, and external parties",
       relevance: "Useful in remote support, project coordination, and incident handling"
+    },
+    {
+      area: "Visual structure",
+      description: "Builds clear information hierarchy and consistent visual systems for labels and web concepts",
+      relevance: "Useful in packaging design, landing pages, and presentation-oriented digital work"
     }
   ],
   careerHighlights: [
@@ -87,13 +97,19 @@ export const professionalProfile: ProfessionalProfile = {
       achievement: "Flight supervisor / duty manager in Magadan",
       impact: "Coordinated routine, non-standard, and emergency situations in a 24/7 aviation environment",
       relevance: "Demonstrates calm decision-making and operations leadership"
+    },
+    {
+      achievement: "Built a coffee label series and a drone-service website concept",
+      impact: "Created a repeatable packaging system and a strong visual landing-page direction from limited assets",
+      relevance: "Demonstrates practical visual design thinking and UX/UI initiative"
     }
   ],
   idealRoles: [
     "Operations Coordinator",
     "AI Data QA / Reviewer",
     "Transcription / Localization Specialist",
-    "Aviation Operations Support"
+    "Aviation Operations Support",
+    "Junior UX/UI or Visual Design Support"
   ],
   metadata: {
     availableForWork: true,

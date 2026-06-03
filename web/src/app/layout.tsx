@@ -7,8 +7,8 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   metadataBase: new URL('https://mikhail.vercel.app'),
   title: 'Mikhail Dziubenko - Portfolio',
-  description: 'Portfolio of Mikhail Dziubenko: aviation operations, AI data review, QA, transcription, and English-to-Russian translation.',
-  keywords: ['Air Traffic Control', 'Aviation Operations', 'QA', 'Transcription', 'Translation', 'Portfolio'],
+  description: 'Portfolio of Mikhail Dziubenko: aviation operations, AI data review, QA, transcription, translation, packaging design, and UX/UI concept work.',
+  keywords: ['Air Traffic Control', 'Aviation Operations', 'QA', 'Transcription', 'Translation', 'Packaging Design', 'UX/UI', 'Portfolio'],
   authors: [{ name: 'Mikhail Dziubenko', url: 'https://mikhail.vercel.app' }],
   creator: 'Mikhail Dziubenko',
   publisher: 'Mikhail Dziubenko',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Mikhail Dziubenko - Portfolio',
-    description: 'Aviation operations, AI data review, QA, transcription, and English-to-Russian translation.',
+    description: 'Aviation operations, AI data review, QA, translation, packaging design, and UX/UI concept work.',
     type: 'website',
     locale: 'en_US',
     siteName: 'Mikhail Dziubenko Portfolio',
@@ -66,7 +66,7 @@ export default function RootLayout({
               "mainEntity": {
                 "@type": "Person",
                 "name": "Mikhail Dziubenko",
-                "description": "Operations and QA specialist with aviation, transcription, review, and translation experience",
+                "description": "Operations, QA, and design-oriented specialist with aviation, transcription, review, translation, packaging, and UX/UI concept experience",
                 "jobTitle": "Operations and QA Specialist",
                 "url": "https://mikhail.vercel.app/"
               }

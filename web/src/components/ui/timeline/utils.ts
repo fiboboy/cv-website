@@ -105,7 +105,13 @@ export const techSkillGroups = {
     'Tour guiding',
     'Work instructions development',
     'Work instructions analysis',
-    'Business process optimization'
+    'Business process optimization',
+    'Visual hierarchy',
+    'Packaging layout',
+    'Landing page structure',
+    'UX/UI theory',
+    'Color-coded product variation',
+    'Offer presentation'
   ]
 };
 
@@ -196,7 +202,13 @@ export const skillsMapping: Record<string, string> = {
   'Tour guiding': 'Administrative Skills',
   'Work instructions development': 'Administrative Skills',
   'Work instructions analysis': 'Administrative Skills',
-  'Business process optimization': 'Administrative Skills'
+  'Business process optimization': 'Administrative Skills',
+  'Visual hierarchy': 'Administrative Skills',
+  'Packaging layout': 'Administrative Skills',
+  'Landing page structure': 'Administrative Skills',
+  'UX/UI theory': 'Administrative Skills',
+  'Color-coded product variation': 'Administrative Skills',
+  'Offer presentation': 'Administrative Skills'
 };
 
 // Функция для получения группы навыка

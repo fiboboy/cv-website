@@ -208,6 +208,32 @@ const rawTimelineData: TimelineItem[] = [
       { name: 'Adaptability', weight: 7 }
     ]
   },
+  {
+    startYear: 2025,
+    endYear: 2025,
+    title: "Coffee label series for blend lineup",
+    description: "Independent visual work for a multi-variant coffee packaging concept",
+    category: 'personal',
+    skills: [
+      { name: 'Visual hierarchy', weight: 7 },
+      { name: 'Packaging layout', weight: 8 },
+      { name: 'Color-coded product variation', weight: 8 },
+      { name: 'Offer presentation', weight: 6 }
+    ]
+  },
+  {
+    startYear: 2026,
+    endYear: 2026,
+    title: "Drone-service landing-page concept",
+    description: "Independent UX/UI concept for a drone-based maintenance website",
+    category: 'personal',
+    skills: [
+      { name: 'Landing page structure', weight: 8 },
+      { name: 'Visual hierarchy', weight: 7 },
+      { name: 'UX/UI theory', weight: 7 },
+      { name: 'Offer presentation', weight: 8 }
+    ]
+  },
 ];
 
 // Применяем консолидацию навыков к данным таймлайна

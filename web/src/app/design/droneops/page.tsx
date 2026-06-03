@@ -26,7 +26,7 @@ const marqueeText = "NO SCAFFOLDING / 100% CLEAN / ZERO RISKS / COST EFFICIENT /
 const navLinks = [
   { label: "Services", href: "#services" },
   { label: "For Whom", href: "#audiences" },
-  { label: "Why Drones", href: "#why" },
+  { label: "Why Drones", href: "#why", active: true },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -196,7 +196,7 @@ export default function DroneOpsDemoPage() {
 
           <nav className="hidden items-center gap-8 md:flex">
             {navLinks.map((link) => (
-              <a key={link.href} href={link.href} className="drone-nav-link">
+              <a key={link.href} href={link.href} className={`drone-nav-link ${link.active ? "drone-nav-link--active" : ""}`}>
                 {link.label}
               </a>
             ))}

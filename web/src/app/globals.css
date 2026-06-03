@@ -510,7 +510,6 @@
   --drone-muted: #a3a3a3;
   --drone-accent-lime: #e6ff00;
   --drone-accent-orange: #ff3d00;
-  --drone-accent-emerald: #10b981;
   background: var(--drone-background);
   color: var(--drone-foreground);
   font-family: var(--font-sans), sans-serif;
@@ -653,8 +652,13 @@
 }
 
 .drone-nav-link:hover,
-.drone-footer-link:hover {
-  color: var(--drone-accent-emerald);
+.drone-nav-link:focus-visible,
+.drone-nav-link:active,
+.drone-nav-link--active,
+.drone-footer-link:hover,
+.drone-footer-link:focus-visible,
+.drone-footer-link:active {
+  color: var(--drone-accent-lime);
 }
 
 .drone-menu-button,
@@ -854,13 +858,25 @@
 }
 
 .drone-marquee {
+  display: inline-block;
+  min-width: max-content;
   white-space: nowrap;
   font-family: var(--font-geist-mono), monospace;
   font-size: 1.8rem;
   font-weight: 700;
   text-transform: uppercase;
   color: #000;
-  animation: marquee 30s linear infinite;
+  will-change: transform;
+  animation: drone-marquee 22s linear infinite;
+}
+
+@keyframes drone-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .drone-audiences {

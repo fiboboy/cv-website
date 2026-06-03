@@ -245,9 +245,9 @@ export default function DroneOpsDemoPage() {
       )}
 
       <nav className="drone-breadcrumbs" aria-label="Breadcrumb">
-        <Link href="/">Portfolio</Link>
+        <Link href="/" className="drone-breadcrumb-link" style={{ color: "inherit" }}>Portfolio</Link>
         <span>/</span>
-        <Link href="/design">Design Work</Link>
+        <Link href="/design" className="drone-breadcrumb-link" style={{ color: "inherit" }}>Design Work</Link>
         <span>/</span>
         <span>DroneOps Demo</span>
       </nav>

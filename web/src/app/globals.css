@@ -602,16 +602,24 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: var(--drone-muted);
+  color: var(--drone-foreground);
 }
 
-.drone-breadcrumbs a {
-  color: var(--drone-foreground);
+.drone-breadcrumb-link {
   transition: color 180ms ease;
 }
 
-.drone-breadcrumbs a:hover {
+.drone-breadcrumb-link:hover {
   color: var(--drone-accent-lime);
+}
+
+.drone-demo--light .drone-breadcrumbs {
+  background: #ffffff;
+  color: #111827;
+}
+
+.drone-demo--light .drone-breadcrumb-link:hover {
+  color: var(--drone-accent-orange) !important;
 }
 
 .drone-logo-box,
@@ -830,6 +838,8 @@
   width: 120%;
   max-width: 44rem;
   overflow: hidden;
+  border: 2px solid var(--drone-border);
+  box-shadow: 8px 8px 0 0 #000;
 }
 
 .drone-hero-image {
@@ -842,9 +852,7 @@
 }
 
 .drone-hero-art-mask {
-  position: absolute;
-  inset: -5%;
-  background: radial-gradient(circle at center, transparent 40%, var(--drone-background) 66%);
+  display: none;
 }
 
 .drone-marquee-wrap {
@@ -1119,6 +1127,10 @@
   border-bottom: 2px solid var(--drone-border);
   background: var(--drone-background);
   padding: 8rem 0;
+}
+
+.drone-demo--light .drone-cta .text-\[var\(--drone-accent-lime\)\] {
+  color: var(--drone-accent-orange);
 }
 
 .drone-footer {

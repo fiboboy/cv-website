@@ -166,12 +166,12 @@ export default function Home() {
         }}
       />
       <DarkHeader />
-      <main className="relative min-h-screen overflow-hidden bg-[var(--terminal-bg)] px-4 pb-16 pt-24 text-[var(--terminal-text)] md:px-6 lg:px-8">
+      <main className="relative min-h-screen overflow-hidden bg-[var(--terminal-bg)] px-4 pb-20 pt-24 text-[var(--terminal-text)] md:px-6 lg:px-8">
         <div className="pointer-events-none absolute inset-0 terminal-noise opacity-60" />
         <div className="pointer-events-none absolute inset-x-0 top-0 h-[32rem] bg-[radial-gradient(circle_at_top,_rgba(109,255,123,0.16),_transparent_58%)]" />
 
-        <section className="relative mx-auto grid w-full max-w-7xl gap-8 lg:grid-cols-[1.35fr_0.9fr]">
-          <div className="space-y-6">
+        <section className="relative mx-auto grid w-full max-w-7xl gap-10 lg:grid-cols-[1.35fr_0.9fr]">
+          <div className="space-y-8">
             <div className="terminal-panel p-4">
               <div className="flex flex-wrap items-center justify-between gap-4 text-[11px] uppercase tracking-[0.3em] text-[var(--terminal-ash)]">
                 <span>portfolio terminal / mission-ready profile</span>
@@ -179,9 +179,9 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="terminal-panel terminal-grid overflow-hidden p-6 md:p-8">
-              <div className="space-y-8">
-                <div className="space-y-4">
+            <div className="terminal-panel terminal-grid overflow-hidden p-7 md:p-10">
+              <div className="space-y-10">
+                <div className="space-y-5">
                   <p className="text-[11px] uppercase tracking-[0.34em] text-[var(--terminal-green)]">
                     mikhail dziubenko / bangkok / remote-ready
                   </p>
@@ -195,7 +195,7 @@ export default function Home() {
                   </p>
                 </div>
 
-                <div className="grid gap-4 md:grid-cols-3">
+                <div className="grid gap-5 md:grid-cols-3">
                   <StatCard
                     label="experience"
                     value="15+ years"
@@ -213,45 +213,50 @@ export default function Home() {
                   />
                 </div>
 
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-3 pt-1">
                   <span className="terminal-chip">Aviation operations</span>
                   <span className="terminal-chip">AI data review</span>
                   <span className="terminal-chip">Transcript QA</span>
                   <span className="terminal-chip">EN-RU translation</span>
                 </div>
 
-                <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:flex-wrap sm:gap-4">
-                  <AnimatedButton href="/resume" className="min-w-[220px] justify-center sm:w-auto">
+                <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:flex-wrap sm:gap-5">
+                  <AnimatedButton href="/resume" className="min-w-[220px] justify-center sm:w-auto" targetBlank={true}>
                     <Download size={18} />
                     Open Resume
                   </AnimatedButton>
-                  <AnimatedButton href="/mikhail-dziubenko-cv.pdf" className="min-w-[220px] justify-center sm:w-auto">
-                      <Download size={18} />
-                      Download PDF
-                    </AnimatedButton>
+                  <AnimatedButton
+                    href="/mikhail-dziubenko-cv.pdf"
+                    className="min-w-[220px] justify-center sm:w-auto"
+                    download="Mikhail_Dziubenko_CV.pdf"
+                    targetBlank={true}
+                  >
+                    <Download size={18} />
+                    Download PDF
+                  </AnimatedButton>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-6 lg:pt-2">
             <BrailleStrip />
 
-            <section className="terminal-panel p-5">
+            <section className="terminal-panel p-6">
               <div className="mb-4 flex items-center justify-between text-[11px] uppercase tracking-[0.3em] text-[var(--terminal-ash)]">
                 <span>profile snapshot</span>
                 <span className="text-[var(--terminal-green)]">verified</span>
               </div>
-              <div className="space-y-4">
-                <div className="space-y-3">
+              <div className="space-y-5">
+                <div className="space-y-4">
                   {expertise.map((item) => (
-                    <div key={item} className="flex items-center justify-between gap-4 border-b border-[color:var(--terminal-border)] pb-3">
+                    <div key={item} className="flex items-center justify-between gap-4 border-b border-[color:var(--terminal-border)] pb-4">
                       <span className="text-sm uppercase tracking-[0.18em] text-[var(--terminal-text-soft)]">{item}</span>
                       <span className="text-[var(--terminal-green)]">[LIVE]</span>
                     </div>
                   ))}
                 </div>
-                <div className="grid gap-3 pt-2">
+                <div className="grid gap-4 pt-1">
                   <TerminalStatus label="focus" value="QA, review, operations support" />
                   <TerminalStatus label="mode" value="open to new work" />
                   <TerminalStatus label="languages" value="russian native / english advanced" tone="warning" />
@@ -261,7 +266,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative mx-auto mt-8 grid w-full max-w-7xl gap-4 md:grid-cols-3">
+        <section className="relative mx-auto mt-12 grid w-full max-w-7xl gap-6 md:grid-cols-3">
           <SignalCard
             icon={Radar}
             title="Safety-Critical Experience"
@@ -282,13 +287,13 @@ export default function Home() {
           />
         </section>
 
-        <section className="relative mx-auto mt-8 grid w-full max-w-7xl gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-          <section className="terminal-panel p-5">
+        <section className="relative mx-auto mt-12 grid w-full max-w-7xl gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+          <section className="terminal-panel p-6">
             <div className="mb-4 flex items-center justify-between text-[11px] uppercase tracking-[0.3em] text-[var(--terminal-ash)]">
               <span>trajectory</span>
               <span className="text-[var(--terminal-green)]">2006 → 2026</span>
             </div>
-            <div className="space-y-4 font-mono text-sm">
+            <div className="space-y-5 font-mono text-sm">
               <div className="terminal-log-row">
                 <span className="text-[var(--terminal-green)]">[2006-2022]</span>
                 <p>Air traffic control, flight supervision, operational reporting, emergency handling, and team coordination.</p>
@@ -304,12 +309,12 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="terminal-panel p-5">
+          <section className="terminal-panel p-6">
             <div className="mb-4 flex items-center justify-between text-[11px] uppercase tracking-[0.3em] text-[var(--terminal-ash)]">
               <span>target roles</span>
               <span className="text-[var(--terminal-green)]">universal fit</span>
             </div>
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2">
               {professionalProfile.idealRoles.map((role) => (
                 <div key={role} className="terminal-mini-card">
                   <span className="text-[10px] uppercase tracking-[0.28em] text-[var(--terminal-ash)]">role</span>
@@ -320,7 +325,7 @@ export default function Home() {
           </section>
         </section>
 
-        <section className="relative mx-auto mt-12 w-full max-w-7xl">
+        <section className="relative mx-auto mt-14 w-full max-w-7xl">
           <div className="terminal-panel mb-6 flex flex-wrap items-center justify-between gap-3 px-4 py-4 sm:px-5">
             <div>
               <p className="text-[11px] uppercase tracking-[0.3em] text-[var(--terminal-ash)]">career archive</p>

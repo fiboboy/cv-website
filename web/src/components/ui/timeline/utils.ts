@@ -379,57 +379,63 @@ export const getSkillColor = (isSoftSkill: boolean) => {
 // IT-related skills для начального отображения
 export const topITSkills = [
   {
-    name: 'Decision-making under pressure',
+    name: 'Air Traffic Management',
     weight: 10,
-    description: 'Critical decision making in high-stakes environments with strategic thinking and quick response',
-    type: 'soft'
-  },
-  {
-    name: 'Task & Resource Management',
-    weight: 9,
-    description: 'Advanced task control and resource allocation',
-    type: 'soft'
-  },
-  {
-    name: 'Technical Documentation',
-    weight: 9,
-    description: 'Development and analysis of technical documentation, work instructions, and operational procedures with focus on clarity and compliance',
+    description: 'Air traffic control, radio communication, situational awareness, and real-time coordination',
     type: 'hard'
   },
   {
-    name: 'Crisis Management',
+    name: 'Operations Supervision',
     weight: 10,
-    description: 'Emergency response and critical situation handling',
-    type: 'soft'
-  },
-  {
-    name: 'Problem-Solving',
-    weight: 9,
-    description: 'Complex technical and operational problem resolution with analytical approach',
-    type: 'soft'
-  },
-  {
-    name: 'Operational Procedures',
-    weight: 9,
-    description: 'Development, optimization and control of operational procedures and work instructions',
+    description: 'Shift readiness control, briefings, work allocation, reporting, and continuity support',
     type: 'hard'
   },
   {
-    name: 'UX/UI Design',
+    name: 'AI Data Review & QA',
+    weight: 9,
+    description: 'Transcript review, quality control, recurring-error detection, and guideline-based QA work',
+    type: 'hard'
+  },
+  {
+    name: 'Transcription',
+    weight: 9,
+    description: 'Audio-focused transcription work including specialized radio-communications datasets',
+    type: 'hard'
+  },
+  {
+    name: 'EN-RU Translation',
     weight: 8,
-    description: 'User experience design, wireframing, prototyping and interface optimization',
+    description: 'English-to-Russian translation and localization support for remote workflows',
     type: 'hard'
+  },
+  {
+    name: 'Incident Handling',
+    weight: 10,
+    description: 'Emergency, escalation, diversion, and abnormal-situation coordination under pressure',
+    type: 'soft'
+  },
+  {
+    name: 'Structured Decision-Making',
+    weight: 10,
+    description: 'Calm judgment in time-sensitive, safety-critical environments',
+    type: 'soft'
   },
   {
     name: 'Stakeholder Communication',
     weight: 9,
-    description: 'Effective communication with diverse stakeholders and clear technical documentation',
+    description: 'Clear communication across teams, supervisors, and external operational parties',
     type: 'soft'
   },
   {
-    name: 'Strategic Planning',
+    name: 'Documentation & Reporting',
+    weight: 9,
+    description: 'Incident documentation, incoming-document review, reporting, and standards-based follow-through',
+    type: 'hard'
+  },
+  {
+    name: 'Training & Mentoring',
     weight: 8,
-    description: 'Strategic planning, process optimization and resource allocation',
+    description: 'Mentoring junior specialists, knowledge checks, training coordination, and admissions support',
     type: 'soft'
   }
 ];
@@ -488,190 +494,101 @@ export const topCompetencies = [
 
 // Полный список компетенций с описаниями и весами
 export const fullCompetencies = [
-  // Высший приоритет (10)
   {
-    name: 'Decision-making under pressure',
+    name: 'Air Traffic Management',
     weight: 10,
-    description: 'Critical decision making in high-stakes environments with strategic thinking',
+    description: 'Air traffic control, radio communication, situational awareness, and complex coordination',
+    type: 'hard'
+  },
+  {
+    name: 'Operations Supervision',
+    weight: 10,
+    description: 'Shift readiness control, staff briefings, allocation, and continuity management',
+    type: 'hard'
+  },
+  {
+    name: 'Incident Handling',
+    weight: 10,
+    description: 'Emergency response, abnormal-situation handling, and escalation coordination',
     type: 'soft'
   },
   {
-    name: 'Task & Resource Management',
-    weight: 9,
-    description: 'Advanced task control and resource allocation',
-    type: 'soft'
-  },
-  {
-    name: 'Team Leadership',
+    name: 'Structured Decision-Making',
     weight: 10,
-    description: 'Leading and managing high-performance teams',
+    description: 'Reliable judgment in high-pressure environments with strong procedural discipline',
     type: 'soft'
   },
   {
     name: 'Stress Resilience',
     weight: 10,
-    description: 'High performance and stability under pressure',
+    description: 'Stable performance and focus under pressure',
     type: 'soft'
   },
-
-  // Приоритет 9
   {
-    name: 'Air Traffic Management',
+    name: 'AI Data Review & QA',
     weight: 9,
-    description: 'Complex air traffic control and coordination',
+    description: 'Transcript review, QA checks, error detection, and quality-focused remote execution',
     type: 'hard'
   },
   {
-    name: 'Flight Operations',
+    name: 'Transcription',
     weight: 9,
-    description: 'Flight procedures and operational management',
+    description: 'Audio-centric transcription work including specialized radio-communications content',
     type: 'hard'
   },
   {
-    name: 'Crisis Management',
-    weight: 10,
-    description: 'Emergency response and critical situation handling',
-    type: 'soft'
-  },
-  {
-    name: 'Problem-Solving',
+    name: 'Documentation & Reporting',
     weight: 9,
-    description: 'Complex technical and operational problem resolution',
-    type: 'soft'
+    description: 'Incident records, reporting, document review, and standards-based follow-through',
+    type: 'hard'
   },
   {
     name: 'Stakeholder Communication',
     weight: 9,
-    description: 'Effective communication with diverse stakeholders',
+    description: 'Clear communication across teams, supervisors, and external parties',
     type: 'soft'
   },
   {
-    name: 'Operational Procedures',
+    name: 'Operational Coordination',
     weight: 9,
-    description: 'Development and optimization of operational procedures',
+    description: 'Briefings, handoffs, continuity support, work allocation, and pre-shift control',
     type: 'hard'
   },
   {
-    name: 'Team Coordination',
-    weight: 9,
-    description: 'Effective team coordination and collaboration',
-    type: 'soft'
-  },
-  {
-    name: 'Attention to Detail',
-    weight: 9,
-    description: 'High precision and attention to critical details',
-    type: 'soft'
-  },
-
-  // Приоритет 8
-  {
-    name: 'Aviation Safety & Security',
+    name: 'EN-RU Translation',
     weight: 8,
-    description: 'Risk assessment and aviation regulations compliance',
+    description: 'English-to-Russian translation and localization support',
     type: 'hard'
   },
   {
-    name: 'Strategic Planning',
+    name: 'Training & Mentoring',
     weight: 8,
-    description: 'Strategic planning and process optimization',
+    description: 'Mentoring, knowledge checks, training support, and junior-specialist development',
     type: 'soft'
+  },
+  {
+    name: 'Supplier Coordination',
+    weight: 7,
+    description: 'Supplier sourcing, purchasing coordination, and delivery arrangements from side-business experience',
+    type: 'hard'
   },
   {
     name: 'Analytical Thinking',
-    weight: 8,
-    description: 'Complex analysis and systematic problem assessment',
+    weight: 7,
+    description: 'Structured analysis, pattern recognition, and research-informed thinking',
     type: 'soft'
   },
   {
-    name: 'Training & Development',
-    weight: 8,
-    description: 'Training program development and knowledge transfer',
-    type: 'soft'
-  },
-  {
-    name: 'UX/UI Design',
-    weight: 8,
-    description: 'User experience design and interface optimization',
-    type: 'hard'
-  },
-  {
-    name: 'Blockchain & Web3',
-    weight: 8,
-    description: 'Web3 technologies, NFT ecosystems and crypto markets',
-    type: 'hard'
-  },
-  {
-    name: '3D Modeling & Design',
-    weight: 8,
-    description: 'Digital 3D modeling, CAD software and prototype development',
-    type: 'hard'
-  },
-  {
-    name: 'Conflict Resolution',
-    weight: 8,
-    description: 'Resolution of conflicts and effective negotiation',
-    type: 'soft'
-  },
-
-  // Приоритет 7
-  {
-    name: 'Business Development',
-    weight: 7,
-    description: 'Business growth and market research',
-    type: 'hard'
-  },
-  {
-    name: 'Public Administration',
-    weight: 7,
-    description: 'Public sector administration and regulations',
-    type: 'hard'
-  },
-  {
-    name: 'Data Analysis',
-    weight: 7,
-    description: 'Data analysis and interpretation',
-    type: 'hard'
-  },
-  {
-    name: 'Technical Documentation',
-    weight: 7,
-    description: 'Technical documentation and blueprint interpretation',
-    type: 'hard'
-  },
-  {
-    name: 'Microsoft Office',
-    weight: 7,
-    description: 'Microsoft Office suite proficiency',
-    type: 'hard'
-  },
-
-  // Приоритет 6
-  {
-    name: 'Database Management',
+    name: 'Research & Reporting',
     weight: 6,
-    description: 'Database usage and data management',
+    description: 'Applied research exposure including internal study work on workplace demotivation factors',
     type: 'hard'
   },
   {
-    name: 'Technical Operations',
-    weight: 6,
-    description: 'Technical equipment operation and maintenance',
-    type: 'hard'
-  },
-  {
-    name: 'Security Protocols',
-    weight: 6,
-    description: 'Security procedures and surveillance',
-    type: 'hard'
-  },
-
-  // Приоритет 5
-  {
-    name: 'Customer Service',
+    name: 'UX/UI Theory',
     weight: 5,
-    description: 'Customer service and sales support',
-    type: 'soft'
+    description: 'Theoretical UX/UI background used carefully as supporting knowledge, not as core identity',
+    type: 'hard'
   }
 ];
 

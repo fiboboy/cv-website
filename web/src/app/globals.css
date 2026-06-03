@@ -69,7 +69,7 @@
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.03),
     0 0 0 1px rgba(0, 0, 0, 0.2),
-    0 24px 80px rgba(0, 0, 0, 0.32);
+    0 20px 64px rgba(0, 0, 0, 0.24);
   backdrop-filter: blur(10px);
 }
 
@@ -94,7 +94,7 @@
   align-items: center;
   border: 1px solid var(--terminal-border);
   background: rgba(8, 10, 9, 0.82);
-  padding: 0.55rem 0.85rem;
+  padding: 0.62rem 0.9rem;
   font-size: 0.68rem;
   line-height: 1;
   text-transform: uppercase;
@@ -123,10 +123,10 @@
 .terminal-log-row {
   display: grid;
   grid-template-columns: 7.5rem 1fr;
-  gap: 1rem;
+  gap: 1.25rem;
   align-items: start;
   border-top: 1px solid var(--terminal-border);
-  padding-top: 1rem;
+  padding-top: 1.25rem;
 }
 
 .terminal-log-row:first-child {
@@ -137,7 +137,7 @@
 .terminal-mini-card {
   border: 1px solid var(--terminal-border);
   background: rgba(9, 11, 10, 0.82);
-  padding: 1rem;
+  padding: 1.15rem;
 }
 
 .resume-role {

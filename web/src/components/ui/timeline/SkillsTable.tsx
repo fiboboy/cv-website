@@ -1,5 +1,5 @@
 import React, { useState, useMemo, memo } from 'react';
-import { SkillWeight, Competency } from './types';
+import { Competency } from './types';
 import { RankedSkillItem } from './RankedSkillItem';
 import { topITSkills, fullCompetencies } from './utils';
 
@@ -8,39 +8,6 @@ interface SkillsTableProps {
   setIsSkillsExpanded: (expanded: boolean) => void;
   isMobile: boolean;
 }
-
-// Консолидированные навыки по основным категориям
-const topSkills = [
-  // Технические категории
-  'Frontend Development',
-  'Backend Development',
-  'Software Architecture',
-  'DevOps & Infrastructure',
-  'API & Data',
-  'Database Technologies',
-  
-  // Авиационная специализация
-  'Air Traffic Management',
-  'Flight Operations',
-  'Aviation Safety & Security',
-  
-  // Креативные навыки
-  'UX/UI Design',
-  '3D Modeling & Design',
-  'Blockchain & Web3',
-  
-  // Ключевые профессиональные навыки
-  'Strategic Decision-Making',
-  'Crisis Management',
-  'Leadership',
-  'Problem-Solving',
-  'Analytical Thinking',
-  'Stress Resilience',
-  'Communication Skills',
-  'Task & Resource Management',
-  'Teamwork & Collaboration',
-  'Data Analysis & Research'
-];
 
 const SkillsTable = memo(({ 
   isSkillsExpanded, 
@@ -75,7 +42,7 @@ const SkillsTable = memo(({
     <div className="terminal-panel w-full p-3 md:p-4">
       <div className="flex items-center justify-between mb-3">
         <h3 className={`${isMobile ? 'text-[10px]' : 'text-xs'} font-mono font-medium text-[var(--terminal-ivory)] tracking-[0.24em] uppercase`}>
-          {isSkillsExpanded ? 'COMPETENCIES' : 'TOP IT RELATED COMPETENCIES'}
+          {isSkillsExpanded ? 'VERIFIED COMPETENCIES' : 'TOP COMPETENCIES'}
         </h3>
         <button
           onClick={() => setIsSkillsExpanded(!isSkillsExpanded)}
@@ -120,20 +87,20 @@ const SkillsTable = memo(({
         </button>
       </div>
       
-      <div className="mb-3 flex justify-between px-1 text-[9px] font-mono uppercase tracking-[0.18em] text-[var(--terminal-ash)]">
+      <div className="mb-4 flex justify-between px-1 text-[9px] font-mono uppercase tracking-[0.18em] text-[var(--terminal-ash)]">
         <div 
           className={`flex items-center gap-1 cursor-pointer ${selectedCategory === 'hard' || selectedCategory === 'all' ? 'opacity-100' : 'opacity-50'}`}
           onClick={() => isSkillsExpanded && setSelectedCategory(selectedCategory === 'hard' ? 'all' : 'hard')}
         >
           <div className="h-1.5 w-1.5 bg-[var(--terminal-green)]"></div>
-          <span>Hard Skills</span>
+          <span>Domain / Workflow</span>
         </div>
         <div 
           className={`flex items-center gap-1 cursor-pointer ${selectedCategory === 'soft' || selectedCategory === 'all' ? 'opacity-100' : 'opacity-50'}`}
           onClick={() => isSkillsExpanded && setSelectedCategory(selectedCategory === 'soft' ? 'all' : 'soft')}
         >
-          <div className="h-1.5 w-1.5 bg-[var(--terminal-amber)]"></div>
-          <span>Soft Skills</span>
+          <div className="h-1.5 w-1.5 bg-[var(--terminal-ivory)]"></div>
+          <span>Decision / People</span>
         </div>
       </div>
       

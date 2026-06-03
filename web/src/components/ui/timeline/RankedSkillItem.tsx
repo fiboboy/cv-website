@@ -9,15 +9,13 @@ interface RankedSkillItemProps {
 
 // Функция для определения цвета градиента навыка
 const getSkillColor = (isSoftSkill: boolean) => {
-  return isSoftSkill
-    ? 'from-[var(--terminal-amber)] to-[rgba(242,196,109,0.45)]'
-    : 'from-[var(--terminal-green)] to-[rgba(109,255,123,0.4)]';
+  return 'from-[var(--terminal-green)] to-[rgba(109,255,123,0.42)]';
 };
 
 // Функция для получения цвета фона карточки навыка
 const getSkillBackgroundColor = (isSoftSkill: boolean) => {
   return isSoftSkill
-    ? 'bg-[rgba(242,196,109,0.04)] hover:bg-[rgba(242,196,109,0.08)]'
+    ? 'bg-[rgba(255,255,255,0.03)] hover:bg-[rgba(255,255,255,0.05)]'
     : 'bg-[rgba(109,255,123,0.04)] hover:bg-[rgba(109,255,123,0.08)]';
 };
 
@@ -135,7 +133,7 @@ const RankedSkillItem = memo(({ skill, isMobile }: RankedSkillItemProps) => {
               )}
             </div>
             <div className="flex flex-col">
-              <span className={`${isMobile ? 'text-[11px] leading-5' : 'text-xs leading-5'} text-[var(--terminal-text-soft)] ${isExpanded ? '' : 'line-clamp-2'}`}>
+              <span className={`${isMobile ? 'text-[11px] leading-6' : 'text-xs leading-6'} text-[var(--terminal-text-soft)] ${isExpanded ? '' : 'line-clamp-2'}`}>
                 {enhancedDescription}
               </span>
               {isExpanded && related.length > 0 && (
@@ -153,7 +151,7 @@ const RankedSkillItem = memo(({ skill, isMobile }: RankedSkillItemProps) => {
             </div>
           </div>
         </div>
-        <span className={`${isMobile ? 'text-[10px]' : 'text-xs'} font-mono text-[var(--terminal-green)] pt-0.5`}>{skill.currentWeight}/10</span>
+        <span className={`${isMobile ? 'text-[10px]' : 'text-xs'} font-mono ${skill.isSoftSkill ? 'text-[var(--terminal-ivory)]' : 'text-[var(--terminal-green)]'} pt-0.5`}>{skill.currentWeight}/10</span>
       </div>
       <div className="h-2 w-full overflow-hidden border border-[color:var(--terminal-border)] bg-[rgba(255,255,255,0.03)]">
         <div

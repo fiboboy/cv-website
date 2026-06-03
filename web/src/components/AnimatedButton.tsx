@@ -6,6 +6,8 @@ interface AnimatedButtonProps {
   href: string;
   children: React.ReactNode;
   className?: string;
+  download?: boolean | string;
+  targetBlank?: boolean;
 }
 
 const baseClasses = `
@@ -17,13 +19,20 @@ const baseClasses = `
   hover:shadow-[0_0_28px_rgba(109,255,123,0.12)]
 `;
 
-const AnimatedButton: React.FC<AnimatedButtonProps> = memo(({ href, children, className = '' }) => {
+const AnimatedButton: React.FC<AnimatedButtonProps> = memo(({
+  href,
+  children,
+  className = '',
+  download = false,
+  targetBlank = false,
+}) => {
   return (
     <a
       href={href}
       className={`${baseClasses} ${className}`}
-      target="_blank"
-      download="Mikhail_Dziubenko_CV.pdf"
+      target={targetBlank ? "_blank" : undefined}
+      rel={targetBlank ? "noopener noreferrer" : undefined}
+      download={typeof download === "string" ? download : download ? "" : undefined}
     >
       <span className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(109,255,123,0.85),transparent)] opacity-70" />
       <span className="relative flex items-center justify-center gap-2">

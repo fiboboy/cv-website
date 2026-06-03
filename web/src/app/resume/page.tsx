@@ -74,7 +74,7 @@ export default function ResumePage() {
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div className="space-y-3">
                 <p className="text-[11px] uppercase tracking-[0.32em] text-[var(--terminal-green)]">
-                  universal resume / verified facts only
+                  universal resume
                 </p>
                 <h1 className="text-3xl font-semibold uppercase tracking-[0.06em] text-[var(--terminal-ivory)] md:text-5xl">
                   Mikhail Dziubenko
@@ -154,35 +154,15 @@ export default function ResumePage() {
             </div>
           </section>
 
-          <section className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-            <div className="terminal-panel p-5 md:p-6">
-              <p className="text-[11px] uppercase tracking-[0.3em] text-[var(--terminal-ash)]">education and training</p>
-              <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--terminal-text-soft)] md:text-base">
-                {education.map((item) => (
-                  <li key={item} className="resume-bullet">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="terminal-panel p-5 md:p-6">
-              <p className="text-[11px] uppercase tracking-[0.3em] text-[var(--terminal-ash)]">relevant notes</p>
-              <div className="mt-4 space-y-4 text-sm leading-6 text-[var(--terminal-text-soft)] md:text-base">
-                <p>
-                  Experience includes emergency handling, operational reporting, procedural compliance,
-                  training support, stakeholder communication, and calm decision-making under pressure.
-                </p>
-                <p>
-                  Additional supporting experience includes supplier coordination, small-team oversight,
-                  applied research exposure, and theoretical UX/UI background.
-                </p>
-                <p>
-                  This page intentionally uses verified baseline facts only and avoids inflated software,
-                  tool, or title claims.
-                </p>
-              </div>
-            </div>
+          <section className="terminal-panel p-5 md:p-6">
+            <p className="text-[11px] uppercase tracking-[0.3em] text-[var(--terminal-ash)]">education and training</p>
+            <ul className="mt-4 space-y-3 text-sm leading-6 text-[var(--terminal-text-soft)] md:text-base">
+              {education.map((item) => (
+                <li key={item} className="resume-bullet">
+                  {item}
+                </li>
+              ))}
+            </ul>
           </section>
         </section>
       </main>

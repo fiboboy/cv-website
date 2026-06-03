@@ -4,90 +4,152 @@
 
 @layer base {
   :root {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-    --radius: 0.75rem;
+    --background: 120 8% 4%;
+    --foreground: 48 24% 91%;
+    --card: 120 8% 6%;
+    --card-foreground: 48 24% 91%;
+    --popover: 120 8% 6%;
+    --popover-foreground: 48 24% 91%;
+    --primary: 119 100% 71%;
+    --primary-foreground: 120 10% 4%;
+    --secondary: 120 7% 10%;
+    --secondary-foreground: 48 24% 91%;
+    --muted: 120 7% 10%;
+    --muted-foreground: 48 8% 66%;
+    --accent: 120 7% 10%;
+    --accent-foreground: 48 24% 91%;
+    --destructive: 10 76% 56%;
+    --destructive-foreground: 48 24% 91%;
+    --border: 120 8% 15%;
+    --input: 120 8% 15%;
+    --ring: 119 100% 71%;
+    --radius: 0rem;
 
-    /* Aurora effect variables */
-    --white: rgba(255, 255, 255, 0.2);
-    --black: rgba(0, 0, 0, 0.2);
-    --transparent: transparent;
-    --blue-300: rgba(147, 197, 253, 0.5);
-    --blue-400: rgba(96, 165, 250, 0.5);
-    --blue-500: rgba(59, 130, 246, 0.5);
-    --indigo-300: rgba(165, 180, 252, 0.5);
-    --violet-200: rgba(221, 214, 254, 0.5);
+    --terminal-bg: #050706;
+    --terminal-surface: rgba(11, 14, 12, 0.88);
+    --terminal-surface-strong: rgba(16, 19, 16, 0.95);
+    --terminal-border: rgba(128, 145, 132, 0.18);
+    --terminal-border-strong: rgba(109, 255, 123, 0.28);
+    --terminal-green: #6dff7b;
+    --terminal-green-dim: rgba(109, 255, 123, 0.28);
+    --terminal-amber: #f2c46d;
+    --terminal-amber-dim: rgba(242, 196, 109, 0.24);
+    --terminal-ivory: #f3efe2;
+    --terminal-text: #d3d0c4;
+    --terminal-text-soft: #a7a496;
+    --terminal-ash: #73796f;
   }
 }
 
 @layer base {
   body {
-    @apply bg-background text-white min-h-screen antialiased;
+    @apply min-h-screen antialiased;
+    background:
+      linear-gradient(180deg, rgba(109, 255, 123, 0.04), transparent 16rem),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.015), transparent 45%),
+      var(--terminal-bg);
+    color: var(--terminal-text);
+    font-family: var(--font-geist-mono), "IBM Plex Mono", "Fira Code", monospace;
   }
-}
-
-/* Custom animations */
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-/* Gradient text */
-.gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600;
-}
-
-/* Card hover effects */
-.card-hover {
-  @apply transition-all duration-300 hover:scale-105 hover:shadow-xl;
-}
-
-/* Custom scrollbar */
-.custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-track {
-  @apply bg-zinc-900;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  @apply bg-zinc-700 rounded-full;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  @apply bg-zinc-600;
 }
 
 /* Force dark mode */
 :root {
   color-scheme: dark;
+}
+
+::selection {
+  background: rgba(109, 255, 123, 0.2);
+  color: var(--terminal-ivory);
+}
+
+.terminal-panel {
+  border: 1px solid var(--terminal-border);
+  background: var(--terminal-surface);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.03),
+    0 0 0 1px rgba(0, 0, 0, 0.2),
+    0 24px 80px rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(10px);
+}
+
+.terminal-grid {
+  position: relative;
+}
+
+.terminal-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(109, 255, 123, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(109, 255, 123, 0.04) 1px, transparent 1px);
+  background-size: 100% 2.75rem, 2.75rem 100%;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.85), transparent 100%);
+  pointer-events: none;
+}
+
+.terminal-chip {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--terminal-border);
+  background: rgba(8, 10, 9, 0.82);
+  padding: 0.55rem 0.85rem;
+  font-size: 0.68rem;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--terminal-ivory);
+}
+
+.terminal-link {
+  border: 1px solid var(--terminal-border);
+  background: rgba(10, 12, 11, 0.78);
+  color: var(--terminal-text-soft);
+  transition:
+    border-color 200ms ease,
+    color 200ms ease,
+    transform 200ms ease,
+    background-color 200ms ease;
+}
+
+.terminal-link:hover {
+  transform: translateY(-1px);
+  border-color: var(--terminal-border-strong);
+  background: rgba(14, 18, 15, 0.9);
+  color: var(--terminal-green);
+}
+
+.terminal-log-row {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 1rem;
+  align-items: start;
+  border-top: 1px solid var(--terminal-border);
+  padding-top: 1rem;
+}
+
+.terminal-log-row:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.terminal-mini-card {
+  border: 1px solid var(--terminal-border);
+  background: rgba(9, 11, 10, 0.82);
+  padding: 1rem;
+}
+
+.terminal-noise {
+  background-image:
+    linear-gradient(transparent 0%, rgba(255, 255, 255, 0.015) 50%, transparent 100%),
+    radial-gradient(circle at 20% 10%, rgba(109, 255, 123, 0.09), transparent 22%),
+    radial-gradient(circle at 80% 0%, rgba(242, 196, 109, 0.06), transparent 18%);
+}
+
+@media (max-width: 768px) {
+  .terminal-log-row {
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+  }
 }

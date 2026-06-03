@@ -72,9 +72,9 @@ const SkillsTable = memo(({
   }, []);
 
   return (
-    <div className="w-full bg-zinc-900/40 backdrop-blur-xl rounded-lg border border-white/[0.05] p-3">
+    <div className="terminal-panel w-full p-3 md:p-4">
       <div className="flex items-center justify-between mb-3">
-        <h3 className={`${isMobile ? 'text-[10px]' : 'text-xs'} font-medium text-white/80 tracking-wide uppercase`}>
+        <h3 className={`${isMobile ? 'text-[10px]' : 'text-xs'} font-mono font-medium text-[var(--terminal-ivory)] tracking-[0.24em] uppercase`}>
           {isSkillsExpanded ? 'COMPETENCIES' : 'TOP IT RELATED COMPETENCIES'}
         </h3>
         <button
@@ -87,8 +87,8 @@ const SkillsTable = memo(({
             duration-300
             group
             ${isSkillsExpanded ? 
-              'text-white/60 hover:text-white/80' : 
-              'animate-text-shine bg-gradient-to-r from-blue-500 via-cyan-500 to-purple-500 bg-clip-text text-transparent bg-300% hover:bg-blue-500'
+              'text-[var(--terminal-text-soft)] hover:text-[var(--terminal-green)]' : 
+              'animate-text-shine bg-gradient-to-r from-[var(--terminal-green)] via-[var(--terminal-ivory)] to-[var(--terminal-green)] bg-clip-text text-transparent bg-300%'
             }
           `}
         >
@@ -120,19 +120,19 @@ const SkillsTable = memo(({
         </button>
       </div>
       
-      <div className="flex justify-between text-[8px] text-white/50 mb-2 px-1">
+      <div className="mb-3 flex justify-between px-1 text-[9px] font-mono uppercase tracking-[0.18em] text-[var(--terminal-ash)]">
         <div 
           className={`flex items-center gap-1 cursor-pointer ${selectedCategory === 'hard' || selectedCategory === 'all' ? 'opacity-100' : 'opacity-50'}`}
           onClick={() => isSkillsExpanded && setSelectedCategory(selectedCategory === 'hard' ? 'all' : 'hard')}
         >
-          <div className="w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500"></div>
+          <div className="h-1.5 w-1.5 bg-[var(--terminal-green)]"></div>
           <span>Hard Skills</span>
         </div>
         <div 
           className={`flex items-center gap-1 cursor-pointer ${selectedCategory === 'soft' || selectedCategory === 'all' ? 'opacity-100' : 'opacity-50'}`}
           onClick={() => isSkillsExpanded && setSelectedCategory(selectedCategory === 'soft' ? 'all' : 'soft')}
         >
-          <div className="w-2 h-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-500"></div>
+          <div className="h-1.5 w-1.5 bg-[var(--terminal-amber)]"></div>
           <span>Soft Skills</span>
         </div>
       </div>

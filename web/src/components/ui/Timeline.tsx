@@ -951,10 +951,10 @@ export function Timeline() {
   return (
     <div id="timeline" className="w-full relative scroll-mt-20" ref={containerRef} onClick={handleBackgroundClick}>
       <div id="timeline-background" className="absolute inset-0"></div>
-      <div className="relative grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+      <div className="relative grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
         {/* Left column - Skills table */}
         <div className="md:col-span-1">
-          <div id="skills" className="sticky top-20 space-y-4" ref={skillsTableRef}>
+          <div id="skills" className="space-y-4 md:sticky md:top-20" ref={skillsTableRef}>
             <SkillsTable
               isSkillsExpanded={isSkillsExpanded}
               setIsSkillsExpanded={setIsSkillsExpanded}

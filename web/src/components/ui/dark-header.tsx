@@ -78,15 +78,15 @@ export const DarkHeader = memo(({
   return (
     <>
       {/* Mobile Header with Hamburger */}
-      <header className="md:hidden w-full z-40 fixed top-0 left-0 bg-zinc-950 border-b border-border">
-        <div className="container relative mx-auto h-16 flex items-center justify-between">
-          <Link href="/" className="font-semibold text-xl text-white hover:text-primary transition-colors">
+      <header className="md:hidden w-full z-40 fixed top-0 left-0 border-b border-[color:var(--terminal-border-strong)] bg-[rgba(5,7,6,0.92)] backdrop-blur-md">
+        <div className="container relative mx-auto flex h-16 items-center justify-between">
+          <Link href="/" className="font-mono text-lg font-semibold uppercase tracking-[0.24em] text-[var(--terminal-ivory)] transition-colors hover:text-[var(--terminal-green)]">
             {logo}
           </Link>
           <Button
             variant="ghost"
             size="icon"
-            className="text-white hover:bg-zinc-800"
+            className="text-[var(--terminal-ivory)] hover:bg-[rgba(109,255,123,0.08)] hover:text-[var(--terminal-green)]"
             onClick={toggleSidebar}
           >
             {isSidebarOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -104,7 +104,7 @@ export const DarkHeader = memo(({
       />
       <aside
         className={cn(
-          "fixed top-0 right-0 h-full w-64 bg-zinc-950 border-l border-border z-50 transform transition-transform duration-300 ease-in-out md:hidden overflow-y-auto",
+          "fixed top-0 right-0 h-full w-72 border-l border-[color:var(--terminal-border-strong)] bg-[rgba(6,8,7,0.98)] z-50 transform transition-transform duration-300 ease-in-out md:hidden overflow-y-auto",
           isSidebarOpen ? "translate-x-0" : "translate-x-full"
         )}
       >
@@ -112,7 +112,7 @@ export const DarkHeader = memo(({
           <nav className="space-y-4">
             <Link 
               href="/"
-              className="flex items-center gap-2 text-zinc-300 hover:text-white transition-colors py-2"
+              className="flex items-center gap-2 py-2 font-mono text-sm uppercase tracking-[0.18em] text-[var(--terminal-text-soft)] transition-colors hover:text-[var(--terminal-green)]"
               onClick={(e) => handleAnchorClick(e, "/")}
             >
               <Home className="h-5 w-5" />
@@ -120,7 +120,7 @@ export const DarkHeader = memo(({
             </Link>
             <Link 
               href="/about"
-              className="flex items-center gap-2 text-zinc-300 hover:text-white transition-colors py-2"
+              className="flex items-center gap-2 py-2 font-mono text-sm uppercase tracking-[0.18em] text-[var(--terminal-text-soft)] transition-colors hover:text-[var(--terminal-green)]"
               onClick={(e) => handleAnchorClick(e, "/about")}
             >
               <User className="h-5 w-5" />
@@ -128,7 +128,7 @@ export const DarkHeader = memo(({
             </Link>
             <a 
               href="/#skills"
-              className="flex items-center gap-2 text-zinc-300 hover:text-white transition-colors py-2"
+              className="flex items-center gap-2 py-2 font-mono text-sm uppercase tracking-[0.18em] text-[var(--terminal-text-soft)] transition-colors hover:text-[var(--terminal-green)]"
               onClick={(e) => {
                 e.preventDefault();
                 setIsSidebarOpen(false);
@@ -154,7 +154,7 @@ export const DarkHeader = memo(({
             </a>
             <a 
               href="/#timeline"
-              className="flex items-center gap-2 text-zinc-300 hover:text-white transition-colors py-2"
+              className="flex items-center gap-2 py-2 font-mono text-sm uppercase tracking-[0.18em] text-[var(--terminal-text-soft)] transition-colors hover:text-[var(--terminal-green)]"
               onClick={(e) => {
                 e.preventDefault();
                 setIsSidebarOpen(false);
@@ -186,14 +186,14 @@ export const DarkHeader = memo(({
           </nav>
           
           <div className="mt-auto">
-            <p className="text-zinc-500 mb-3 text-sm">Connect</p>
+            <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.28em] text-[var(--terminal-ash)]">Connect</p>
             <div className="flex flex-wrap gap-2">
               {socialLinks.map((link, index) => (
                 <Button
                   key={index}
                   variant="ghost"
                   size="icon"
-                  className="text-white hover:bg-zinc-800"
+                  className="border border-[color:var(--terminal-border)] text-[var(--terminal-ivory)] hover:bg-[rgba(109,255,123,0.08)] hover:text-[var(--terminal-green)]"
                   asChild
                 >
                   <Link href={link.href} aria-label={link.label} target="_blank" rel="noopener noreferrer">
@@ -207,18 +207,18 @@ export const DarkHeader = memo(({
       </aside>
 
       {/* Desktop Header */}
-      <header className="w-full z-40 fixed top-0 left-0 bg-background border-b border-border bg-zinc-950 text-white hidden md:block">
+      <header className="fixed left-0 top-0 z-40 hidden w-full border-b border-[color:var(--terminal-border-strong)] bg-[rgba(5,7,6,0.84)] text-white backdrop-blur-md md:block">
         <div className="container relative mx-auto min-h-16 flex items-center">
           <div className="flex-1">
             <Link 
               href="/about" 
-              className="text-base font-medium text-zinc-300 hover:text-white transition-colors"
+              className="font-mono text-sm uppercase tracking-[0.2em] text-[var(--terminal-text-soft)] transition-colors hover:text-[var(--terminal-green)]"
             >
               About
             </Link>
           </div>
           <div className="flex-1 flex justify-center">
-            <Link href="/" className="font-semibold text-xl hover:text-primary transition-colors">
+            <Link href="/" className="font-mono text-lg font-semibold uppercase tracking-[0.24em] text-[var(--terminal-ivory)] transition-colors hover:text-[var(--terminal-green)]">
               {logo}
             </Link>
           </div>
@@ -228,7 +228,7 @@ export const DarkHeader = memo(({
                 key={index}
                 variant="ghost"
                 size="icon"
-                className="text-white hover:bg-zinc-800"
+                className="border border-[color:var(--terminal-border)] text-[var(--terminal-ivory)] hover:bg-[rgba(109,255,123,0.08)] hover:text-[var(--terminal-green)]"
                 asChild
               >
                 <Link href={link.href} aria-label={link.label} target="_blank" rel="noopener noreferrer">

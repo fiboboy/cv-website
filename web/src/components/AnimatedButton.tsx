@@ -9,14 +9,12 @@ interface AnimatedButtonProps {
 }
 
 const baseClasses = `
-  relative inline-flex items-center justify-center px-6 py-3
-  font-medium transition-all duration-300
-  bg-gradient-to-r from-purple-500/80 via-indigo-600/80 to-blue-500/80
-  hover:from-blue-500/90 hover:via-indigo-600/90 hover:to-purple-500/90
-  text-white rounded-lg group
-  hover:scale-102 transform
-  shadow-[0_0_20px_rgba(139,92,246,0.3)] hover:shadow-[0_0_25px_rgba(59,130,246,0.5)]
-  backdrop-blur-sm
+  relative inline-flex items-center justify-center overflow-hidden px-6 py-3
+  rounded-none border border-[color:var(--terminal-green-dim)] bg-[rgba(9,12,10,0.92)]
+  font-mono text-[11px] uppercase tracking-[0.28em] text-[var(--terminal-green)]
+  transition-all duration-300 group
+  hover:-translate-y-0.5 hover:border-[color:var(--terminal-green)] hover:text-[var(--terminal-ivory)]
+  hover:shadow-[0_0_28px_rgba(109,255,123,0.12)]
 `;
 
 const AnimatedButton: React.FC<AnimatedButtonProps> = memo(({ href, children, className = '' }) => {
@@ -27,10 +25,11 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = memo(({ href, children, cl
       target="_blank"
       download="Mikhail_Dziubenko_CV.pdf"
     >
+      <span className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(109,255,123,0.85),transparent)] opacity-70" />
       <span className="relative flex items-center justify-center gap-2">
         {children}
       </span>
-      <div className="absolute inset-0 rounded-lg transition-all duration-300 opacity-0 group-hover:opacity-100 bg-gradient-to-r from-purple-500/10 to-blue-500/10 blur" />
+      <div className="absolute inset-0 bg-[linear-gradient(120deg,transparent,rgba(109,255,123,0.08),transparent)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
     </a>
   );
 });

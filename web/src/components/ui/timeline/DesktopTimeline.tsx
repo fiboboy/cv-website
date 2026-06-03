@@ -39,7 +39,6 @@ export function DesktopTimeline({
   yearEnd,
   numYears
 }: DesktopTimelineProps) {
-  // Разделяем элементы на левые и правые
   const leftItems = processedLeftItems.filter(item => item.side === 'left');
   const rightItems = processedRightItems.filter(item => item.side === 'right');
   
@@ -89,68 +88,38 @@ export function DesktopTimeline({
   }, [yearStart, yearEnd, numYears, contentHeight, processedLeftItems, processedRightItems]);
 
   return (
-    <div className="hidden md:block relative min-h-screen">
-      {/* Desktop Timeline Legend */}
-      <div className="grid grid-cols-[1fr,auto,1fr] gap-0 relative z-[3] sticky top-0 py-4">
+    <div className="relative hidden min-h-screen md:block">
+      <div className="sticky top-20 z-[3] grid grid-cols-[1fr,auto,1fr] gap-0 py-4">
         <div className="col-span-3">
           <TimelineLegend isMobileView={false} />
         </div>
       </div>
       
-      {/* Main Timeline Container */}
       <div className="relative" style={{ minHeight: `${totalTimelineHeight}px` }}>
-        {/* Timeline center line */}
         <div className="absolute inset-0 flex justify-center z-[1]">
-          <div className="relative w-[3px]" 
+          <div className="relative w-[2px]" 
             style={{ 
               height: `${totalTimelineHeight}px`,
             }}
           >
-            {/* Верхняя градиентная линия */}
             <div 
-              className="absolute top-0 w-full bg-gradient-to-b from-transparent to-blue-500"
+              className="absolute top-0 w-full"
               style={{ 
-                height: '50px',
-                zIndex: 3
+                height: `${contentHeight}px`,
+                background: 'linear-gradient(to bottom, rgba(243,239,226,0.16) 0%, rgba(109,255,123,0.75) 36%, rgba(242,196,109,0.38) 72%, rgba(109,255,123,0.18) 100%)'
               }}
             />
-            
-            {/* Основная линия с улучшенным градиентом */}
             <div 
-              className="absolute w-full timeline-main-line"
+              className="absolute -left-[3px] w-[8px] blur-[10px]"
               style={{ 
-                top: '50px',
-                height: `${contentHeight - 50}px`,
-                background: 'linear-gradient(to bottom, var(--blue-500) 0%, var(--cyan-500) 33%, var(--purple-500) 67%, var(--blue-500) 100%)',
-                backgroundSize: '100% 300%',
-                animation: 'gradientFlow 15s linear infinite'
-              }}
-            />
-            
-            {/* Градиент внизу */}
-            <div 
-              className="absolute w-full bg-gradient-to-b from-purple-500 to-transparent"
-              style={{ 
-                top: `${contentHeight}px`,
-                height: '120px'
-              }}
-            />
-            
-            {/* Эффекты свечения */}
-            <div className="absolute w-[15px] -left-[6px] blur-[8px] timeline-glow h-full"
-              style={{ 
-                background: 'linear-gradient(to bottom, rgba(59, 130, 246, 0.4) 0%, rgba(6, 182, 212, 0.4) 33%, rgba(168, 85, 247, 0.4) 67%, rgba(59, 130, 246, 0.4) 100%)',
-                backgroundSize: '100% 300%',
-                animation: 'gradientFlow 15s linear infinite',
-                opacity: 0.4
+                height: `${contentHeight}px`,
+                background: 'linear-gradient(to bottom, rgba(109,255,123,0.1) 0%, rgba(109,255,123,0.18) 50%, rgba(242,196,109,0.08) 100%)'
               }}
             />
           </div>
         </div>
 
-        {/* Content Grid */}
         <div className="grid grid-cols-[1fr,auto,1fr] gap-0 relative z-[2]">
-          {/* Left column - Education and Other items */}
           <div className="relative flex justify-end min-h-full">
             {leftItems.map((item, index) => {
               const cardId = `${item.category}-${item.startYear}-${item.title.replace(/\s+/g, '-')}`;
@@ -164,7 +133,7 @@ export function DesktopTimeline({
                     top: `${item.basePosition + item.verticalShift}px`,
                     height: `${item.height}px`,
                     transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
-                    transform: `translateX(-20px)`,
+                    transform: `translateX(-18px)`,
                     zIndex: isCardExpanded ? 100 : 10 + index
                   }}
                 >
@@ -183,7 +152,6 @@ export function DesktopTimeline({
             })}
           </div>
 
-          {/* Center column - Year markers */}
           <div className="relative w-8 flex justify-center" style={{ zIndex: 3 }}>
             {yearMarkers.map(({ year, position }) => (
               <div
@@ -196,7 +164,7 @@ export function DesktopTimeline({
                 }}
               >
                 <div className="relative">
-                  <span className="text-xs font-medium text-zinc-200 select-none px-2 py-1 bg-zinc-900/80 backdrop-blur-sm rounded-full transition-all duration-300 hover:text-white hover:bg-zinc-800/90 shadow-[0_0_10px_rgba(168,85,247,0.2)]">
+                  <span className="select-none border border-[color:var(--terminal-border)] bg-[rgba(8,10,9,0.92)] px-2 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--terminal-ivory)] transition-all duration-300 hover:border-[color:var(--terminal-border-strong)] hover:text-[var(--terminal-green)]">
                     {year}
                   </span>
                 </div>
@@ -204,7 +172,6 @@ export function DesktopTimeline({
             ))}
           </div>
 
-          {/* Right column - Work items */}
           <div className="relative flex justify-start min-h-full">
             {rightItems.map((item, index) => {
               const cardId = `${item.category}-${item.startYear}-${item.title.replace(/\s+/g, '-')}`;
@@ -218,7 +185,7 @@ export function DesktopTimeline({
                     top: `${item.basePosition + item.verticalShift}px`,
                     height: `${item.height}px`,
                     transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
-                    transform: `translateX(20px)`,
+                    transform: `translateX(18px)`,
                     zIndex: isCardExpanded ? 100 : 10 + index
                   }}
                 >
@@ -239,26 +206,6 @@ export function DesktopTimeline({
         </div>
       </div>
       
-      {/* Добавляем стили для анимации */}
-      <style jsx global>{`
-        @keyframes timelineGlow {
-          0% { background-position: 0% 0%; }
-          50% { background-position: 0% 100%; }
-          100% { background-position: 0% 0%; }
-        }
-        
-        @keyframes gradientFlow {
-          0% { background-position: 0% 0%; }
-          50% { background-position: 0% 100%; }
-          100% { background-position: 0% 0%; }
-        }
-        
-        :root {
-          --blue-500: rgb(59, 130, 246);
-          --cyan-500: rgb(6, 182, 212);
-          --purple-500: rgb(168, 85, 247);
-        }
-      `}</style>
     </div>
   );
 } 

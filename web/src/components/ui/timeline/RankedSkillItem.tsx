@@ -9,16 +9,16 @@ interface RankedSkillItemProps {
 
 // Функция для определения цвета градиента навыка
 const getSkillColor = (isSoftSkill: boolean) => {
-  return isSoftSkill 
-    ? 'from-purple-500 to-pink-500'
-    : 'from-blue-500 to-cyan-500';
+  return isSoftSkill
+    ? 'from-[var(--terminal-amber)] to-[rgba(242,196,109,0.45)]'
+    : 'from-[var(--terminal-green)] to-[rgba(109,255,123,0.4)]';
 };
 
 // Функция для получения цвета фона карточки навыка
 const getSkillBackgroundColor = (isSoftSkill: boolean) => {
-  return isSoftSkill 
-    ? 'bg-purple-500/5 hover:bg-purple-500/10'
-    : 'bg-blue-500/5 hover:bg-blue-500/10';
+  return isSoftSkill
+    ? 'bg-[rgba(242,196,109,0.04)] hover:bg-[rgba(242,196,109,0.08)]'
+    : 'bg-[rgba(109,255,123,0.04)] hover:bg-[rgba(109,255,123,0.08)]';
 };
 
 // Группы связанных навыков для отображения в описании (расширенный список)
@@ -108,19 +108,19 @@ const RankedSkillItem = memo(({ skill, isMobile }: RankedSkillItemProps) => {
 
   return (
     <div 
-      className={`transition-all duration-500 transform rounded-md p-1.5 -mx-1.5 ${getSkillBackgroundColor(skill.isSoftSkill)} opacity-100 hover:scale-[1.02]`}
+      className={`-mx-1.5 border border-[color:var(--terminal-border)] p-2 transition-all duration-500 transform ${getSkillBackgroundColor(skill.isSoftSkill)} opacity-100 hover:translate-x-1`}
     >
       <div className="flex items-start gap-2 mb-1.5">
         <div className="flex-1 min-w-0">
           <div className="flex flex-col">
             <div className="flex items-center">
-              <span className={`text-white/90 font-medium ${isMobile ? 'text-sm' : 'text-base'} leading-tight transition-all duration-300 ${skill.isActive ? 'text-white' : ''}`}>
+              <span className={`font-mono font-medium uppercase tracking-[0.12em] ${isMobile ? 'text-xs' : 'text-sm'} leading-tight transition-all duration-300 ${skill.isActive ? 'text-[var(--terminal-ivory)]' : 'text-[var(--terminal-text-soft)]'}`}>
                 {skill.name}
               </span>
               {related.length > 0 && (
                 <button 
                   onClick={handleExpandClick}
-                  className="ml-1.5 text-white/50 hover:text-white/90 transition-colors"
+                  className="ml-1.5 text-[var(--terminal-ash)] hover:text-[var(--terminal-green)] transition-colors"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg" 
@@ -135,7 +135,7 @@ const RankedSkillItem = memo(({ skill, isMobile }: RankedSkillItemProps) => {
               )}
             </div>
             <div className="flex flex-col">
-              <span className={`${isMobile ? 'text-xs leading-tight' : 'text-sm'} text-white/50 ${isExpanded ? '' : 'line-clamp-2'}`}>
+              <span className={`${isMobile ? 'text-[11px] leading-5' : 'text-xs leading-5'} text-[var(--terminal-text-soft)] ${isExpanded ? '' : 'line-clamp-2'}`}>
                 {enhancedDescription}
               </span>
               {isExpanded && related.length > 0 && (
@@ -143,7 +143,7 @@ const RankedSkillItem = memo(({ skill, isMobile }: RankedSkillItemProps) => {
                   {related.map((relatedSkill, idx) => (
                     <span
                       key={idx}
-                      className="text-[10px] px-1.5 py-0.5 rounded-full bg-white/10 text-white/70"
+                      className="border border-[color:var(--terminal-border)] bg-[rgba(8,10,9,0.8)] px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.08em] text-[var(--terminal-text-soft)]"
                     >
                       {relatedSkill}
                     </span>
@@ -153,11 +153,11 @@ const RankedSkillItem = memo(({ skill, isMobile }: RankedSkillItemProps) => {
             </div>
           </div>
         </div>
-        <span className={`${isMobile ? 'text-[10px]' : 'text-xs'} font-medium text-white/70 pt-0.5`}>{skill.currentWeight}</span>
+        <span className={`${isMobile ? 'text-[10px]' : 'text-xs'} font-mono text-[var(--terminal-green)] pt-0.5`}>{skill.currentWeight}/10</span>
       </div>
-      <div className="h-2 w-full bg-white/[0.05] rounded-full overflow-hidden backdrop-blur-sm">
+      <div className="h-2 w-full overflow-hidden border border-[color:var(--terminal-border)] bg-[rgba(255,255,255,0.03)]">
         <div
-          className={`h-full rounded-full transition-all duration-1000 ease-out bg-gradient-to-r ${getSkillColor(skill.isSoftSkill)} ${skill.isActive ? 'shadow-[0_0_8px_rgba(147,51,234,0.4)]' : ''}`}
+          className={`h-full transition-all duration-1000 ease-out bg-gradient-to-r ${getSkillColor(skill.isSoftSkill)} ${skill.isActive ? 'shadow-[0_0_12px_rgba(109,255,123,0.2)]' : ''}`}
           style={{
             width: `${skill.currentWeight * 10}%`,
             transition: 'width 1.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease-out, box-shadow 0.5s ease-out'

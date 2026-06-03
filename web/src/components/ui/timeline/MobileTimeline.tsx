@@ -34,54 +34,34 @@ export function MobileTimeline({
   
   return (
     <div className="md:hidden w-full">
-      {/* Mobile Timeline Legend */}
       <div id="mobile-timeline-legend" className="flex justify-center gap-4 mb-4 relative z-20">
         <TimelineLegend isMobileView={true} />
       </div>
       
-      {/* Центральная линия таймлайна */}
       <div className="relative mt-4 mb-12" id="mobile-timeline-content">
-        {/* Container для линии и карточек */}
         <div className="relative" style={{ minHeight: `${minContainerHeight}px` }}>
-          {/* Фиксированная центральная линия */}
-          <div className="absolute left-1/2 -translate-x-1/2 w-[3px] h-full z-[1]">
-            {/* Верхняя градиентная линия */}
+          <div className="absolute left-1/2 -translate-x-1/2 w-[2px] h-full z-[1]">
             <div 
-              className="absolute top-0 w-full bg-gradient-to-b from-transparent to-blue-500"
-              style={{ height: '50px' }}
+              className="absolute top-0 w-full"
+              style={{ height: '100%', background: 'linear-gradient(to bottom, rgba(243,239,226,0.14), rgba(109,255,123,0.72) 34%, rgba(242,196,109,0.36) 74%, rgba(109,255,123,0.14))' }}
             />
-            
-            {/* Основная линия с градиентом */}
             <div 
-              className="absolute w-full bg-gradient-to-b from-blue-500 via-cyan-500 to-purple-500"
-              style={{ 
-                top: '50px',
-                height: 'calc(100% - 100px)',
-                animation: 'gradientFlow 8s linear infinite',
-                backgroundSize: '200% 200%',
-              }} 
-            />
-            
-            {/* Нижняя градиентная линия */}
-            <div 
-              className="absolute bottom-0 w-full bg-gradient-to-b from-purple-500 to-transparent"
-              style={{ height: '50px' }}
+              className="absolute -left-[3px] w-[8px] blur-[10px]"
+              style={{ height: '100%', background: 'linear-gradient(to bottom, rgba(109,255,123,0.08), rgba(109,255,123,0.16), rgba(242,196,109,0.08))' }}
             />
           </div>
           
-          {/* Год 2001 в начале таймлайна */}
           <div 
             className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center z-10"
             style={{ top: '-20px' }}
           >
             <div className="relative">
-              <span className="text-sm font-medium text-zinc-200 select-none px-2 py-1 bg-zinc-900/80 backdrop-blur-sm rounded-full">
+              <span className="select-none border border-[color:var(--terminal-border)] bg-[rgba(8,10,9,0.92)] px-2 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--terminal-ivory)]">
                 {minYear}
               </span>
             </div>
           </div>
           
-          {/* Карточки */}
           <div className="relative z-[2] pt-8">
             {sortedItems.map((item, index) => {
               const cardId = `${item.category}-${item.startYear}-${item.title.replace(/\s+/g, '-')}`;
@@ -92,16 +72,14 @@ export function MobileTimeline({
                   key={index} 
                   className="w-full py-3"
                 >
-                  {/* Маркер года */}
                   <div className="flex justify-center mb-2">
                     <div className="relative">
-                      <span className="text-xs font-medium text-zinc-200 select-none px-2 py-1 bg-zinc-900/80 backdrop-blur-sm rounded-full">
+                      <span className="select-none border border-[color:var(--terminal-border)] bg-[rgba(8,10,9,0.92)] px-2 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--terminal-ivory)]">
                         {item.startYear === item.endYear ? item.startYear : `${item.startYear} - ${item.endYear}`}
                       </span>
                     </div>
                   </div>
                   
-                  {/* Карточка таймлайна */}
                   <TimelineCard
                     item={item}
                     isRight={index % 2 === 0}
@@ -117,34 +95,18 @@ export function MobileTimeline({
             })}
           </div>
           
-          {/* Год 2025 в конце таймлайна */}
           <div 
             className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center z-10"
             style={{ bottom: '-40px' }}
           >
             <div className="relative">
-              <span className="text-sm font-medium text-zinc-200 select-none px-2 py-1 bg-zinc-900/80 backdrop-blur-sm rounded-full">
+              <span className="select-none border border-[color:var(--terminal-border)] bg-[rgba(8,10,9,0.92)] px-2 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--terminal-ivory)]">
                 {maxYear}
               </span>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Стили для анимации */}
-      <style jsx global>{`
-        @keyframes timelineGlow {
-          0% { background-position: 0% 0%; }
-          50% { background-position: 0% 100%; }
-          100% { background-position: 0% 0%; }
-        }
-        
-        @keyframes gradientFlow {
-          0% { background-position: 0% 0%; }
-          50% { background-position: 0% 100%; }
-          100% { background-position: 0% 0%; }
-        }
-      `}</style>
     </div>
   );
 } 

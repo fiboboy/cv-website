@@ -867,7 +867,7 @@
   text-transform: uppercase;
   color: #000;
   will-change: transform;
-  animation: drone-marquee 22s linear infinite;
+  animation: drone-marquee 31.4s linear infinite;
 }
 
 @keyframes drone-marquee {

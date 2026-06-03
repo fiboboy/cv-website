@@ -8,7 +8,7 @@ const coreStrengths = [
   "Cross-stakeholder communication and continuity support",
   "Supplier and vendor coordination with small-business administration experience",
   "Visual hierarchy, packaging layout, and product-variant differentiation",
-  "Landing-page structure and UX/UI concept work from limited source material",
+  "Landing-page structure and UX/UI prototype work from lean briefs and source material",
 ];
 
 const experience = [
@@ -74,12 +74,12 @@ const selectedDesignWork = [
     ],
   },
   {
-    title: "DroneOps service website concept",
-    meta: "Independent UX/UI concept work",
+    title: "DroneOps interactive service website prototype",
+    meta: "Independent UX/UI prototype work",
     bullets: [
-      "Built a bold landing-page direction for a drone-based property-maintenance service concept.",
+      "Built a bold landing-page direction for a drone-based property-maintenance service prototype.",
       "Structured the homepage around offer clarity, service segmentation, and prominent calls to action.",
-      "Developed a strong visual identity and interactive presentation even though the concept remains unfinished.",
+      "Packaged the interface as a live demo with preserved hover states, motion, service cards, and CTA behavior.",
     ],
   },
 ];
@@ -105,8 +105,8 @@ export default function ResumePage() {
                 <p className="max-w-3xl text-base leading-7 text-[var(--terminal-text-soft)] md:text-lg">
                   Bilingual operations and quality-focused professional with 15+ years of experience across
                   safety-critical air traffic management, aviation operations supervision, remote AI data work,
-                  and selected self-driven visual/UI projects. Recent work includes transcription, labeling, review,
-                  QA, English-to-Russian translation, packaging layout, and concept-level UX/UI presentation.
+                  and self-directed visual/UI projects. Recent work includes transcription, labeling, review,
+                  QA, English-to-Russian translation, packaging layout, and interactive UX/UI presentation.
                 </p>
               </div>
               <div className="terminal-mini-card min-w-[240px] space-y-3">
@@ -155,7 +155,7 @@ export default function ResumePage() {
               <div>
                 <p className="text-[11px] uppercase tracking-[0.3em] text-[var(--terminal-ash)]">selected design work</p>
                 <h2 className="mt-2 text-2xl font-semibold uppercase tracking-[0.06em] text-[var(--terminal-ivory)]">
-                  Packaging and interface concepts
+                  Packaging and interface prototypes
                 </h2>
               </div>
             </div>

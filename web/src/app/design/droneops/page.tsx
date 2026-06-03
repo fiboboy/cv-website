@@ -2,21 +2,33 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import {
   ArrowDown,
+  ArrowRight,
   ArrowUpRight,
   BarChart,
   CheckCircle2,
+  Clock,
   Factory,
   Home,
   Menu,
+  Moon,
   Plane,
   Shield,
   Sun,
+  X,
 } from "lucide-react";
 
 const marqueeText = "NO SCAFFOLDING / 100% CLEAN / ZERO RISKS / COST EFFICIENT / ";
+
+const navLinks = [
+  { label: "Services", href: "#services" },
+  { label: "For Whom", href: "#audiences" },
+  { label: "Why Drones", href: "#why" },
+  { label: "Contact", href: "#contact" },
+];
 
 const revealVariants: Variants = {
   hidden: { opacity: 0, y: 44, rotate: -1.5, scale: 0.97 },
@@ -27,9 +39,9 @@ const revealVariants: Variants = {
     scale: 1,
     transition: {
       type: "spring",
-      stiffness: 320,
-      damping: 18,
-      mass: 0.9,
+      stiffness: 400,
+      damping: 15,
+      mass: 1,
     },
   },
 };
@@ -46,7 +58,7 @@ function DemoButton({
   return (
     <Link
       href={href}
-      className={`drone-button ${variant === "primary" ? "drone-button--primary" : "drone-button--outline"}`}
+      className={`drone-button group ${variant === "primary" ? "drone-button--primary" : "drone-button--outline"}`}
     >
       <span>{children}</span>
       <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" strokeWidth={2.5} />
@@ -75,6 +87,33 @@ function ScrollReveal({
       {children}
     </motion.div>
   );
+}
+
+function StaggerContainer({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <motion.div
+      variants={{
+        hidden: { opacity: 0 },
+        visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
+      }}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-10%" }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+function StaggerItem({ children }: { children: React.ReactNode }) {
+  return <motion.div variants={revealVariants}>{children}</motion.div>;
 }
 
 function DemoServiceCard({
@@ -128,9 +167,20 @@ function DemoFeatureCard({
 }
 
 export default function DroneOpsDemoPage() {
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <main className="drone-demo min-h-screen">
-      <header className="drone-nav">
+    <main id="top" className={`drone-demo min-h-screen ${theme === "light" ? "drone-demo--light" : ""}`}>
+      <header className={`drone-nav ${scrolled ? "drone-nav--scrolled" : ""}`}>
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6">
           <Link href="/design" className="flex items-center gap-3 group">
             <div className="drone-logo-box">
@@ -145,22 +195,54 @@ export default function DroneOpsDemoPage() {
           </Link>
 
           <nav className="hidden items-center gap-8 md:flex">
-            <a href="#services" className="drone-nav-link">Services</a>
-            <a href="#audiences" className="drone-nav-link">For Whom</a>
-            <a href="#why" className="drone-nav-link">Why Drones</a>
-            <a href="#contact" className="drone-nav-link">CTA</a>
+            {navLinks.map((link) => (
+              <a key={link.href} href={link.href} className="drone-nav-link">
+                {link.label}
+              </a>
+            ))}
           </nav>
 
           <div className="hidden items-center gap-4 md:flex">
-            <span className="border-r-2 border-black pr-4 text-sm font-bold text-[var(--drone-muted)]">Demo Mode</span>
+            <button
+              type="button"
+              className="drone-theme-toggle"
+              title="Toggle theme"
+              onClick={() => setTheme((value) => (value === "dark" ? "light" : "dark"))}
+            >
+              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </button>
+            <a href="#contact" className="border-r-2 border-black pr-4 text-sm font-bold text-[var(--drone-muted)] hover:text-[var(--drone-foreground)]">
+              Dashboard Login
+            </a>
             <DemoButton href="#contact" variant="primary">Get Quote</DemoButton>
           </div>
 
-          <button className="md:hidden drone-menu-button" aria-label="Menu">
+          <button className="md:hidden drone-menu-button" aria-label="Menu" onClick={() => setMobileMenuOpen(true)}>
             <Menu className="h-6 w-6" />
           </button>
         </div>
       </header>
+
+      {mobileMenuOpen && (
+        <div className="drone-mobile-menu">
+          <div className="mb-12 flex items-center justify-between">
+            <span className="font-mono text-xl font-bold uppercase tracking-tight">DRONEOPS</span>
+            <button className="drone-menu-button" aria-label="Close menu" onClick={() => setMobileMenuOpen(false)}>
+              <X className="h-6 w-6" />
+            </button>
+          </div>
+          <nav className="flex flex-col gap-4 text-left">
+            {navLinks.map((link) => (
+              <a key={link.href} href={link.href} className="drone-mobile-link" onClick={() => setMobileMenuOpen(false)}>
+                {link.label}
+              </a>
+            ))}
+            <a href="#contact" className="drone-mobile-cta" onClick={() => setMobileMenuOpen(false)}>
+              Client Login <ArrowRight className="h-5 w-5" strokeWidth={2.5} />
+            </a>
+          </nav>
+        </div>
+      )}
 
       <nav className="drone-breadcrumbs" aria-label="Breadcrumb">
         <Link href="/">Portfolio</Link>
@@ -173,13 +255,13 @@ export default function DroneOpsDemoPage() {
       <section className="drone-hero">
         <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-2">
           <div>
-            <div className="drone-kicker">Next-Gen Property Care</div>
+            <div className="drone-kicker drone-brain-shake">Next-Gen Property Care</div>
             <h1 className="drone-hero-title">
-              <span className="drone-hero-title-block">Industrial</span>
+              <span className="drone-hero-title-block drone-brain-shake">Industrial</span>
               <br />
               Drone Care.
               <br />
-              <span className="drone-hero-highlight">
+              <span className="drone-hero-highlight drone-brain-shake">
                 No Lifts.
                 <span className="drone-hero-highlight-bar" />
               </span>
@@ -196,7 +278,7 @@ export default function DroneOpsDemoPage() {
 
           <div className="hidden lg:flex items-center justify-end">
             <div className="drone-hero-art group">
-              <Image src="/work/drones/hero.png" alt="Industrial cleaning drone" fill className="object-cover object-center transition-transform duration-1000 ease-out group-hover:scale-105" priority />
+              <Image src="/work/drones/hero.png" alt="Industrial cleaning drone" fill className="drone-hero-image object-cover object-center" priority />
               <div className="drone-hero-art-mask" />
             </div>
           </div>
@@ -225,26 +307,28 @@ export default function DroneOpsDemoPage() {
 
       <section id="why" className="drone-why">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="mx-auto max-w-3xl text-center">
+          <div className="drone-brain-shake mx-auto max-w-3xl cursor-crosshair text-center">
             <div className="drone-section-tag">
               <span className="drone-section-tag-dot" />
               The Truth
             </div>
-            <h2 className="drone-section-title">Traditional methods are obsolete.</h2>
+            <h2 className="drone-section-title">
+              <span className="drone-section-title-mark">Traditional methods are obsolete.</span>
+            </h2>
             <p className="drone-section-copy">
               Ladders break. Scaffolding is expensive. Drones do it better, faster, and safer.
             </p>
-            <div className="mt-8 flex justify-center">
-              <ArrowDown className="h-8 w-8 animate-bounce text-[var(--drone-muted)]" strokeWidth={2} />
-            </div>
+          </div>
+          <div className="mt-8 flex justify-center">
+            <ArrowDown className="h-8 w-8 animate-bounce text-[var(--drone-muted)]" strokeWidth={2} />
           </div>
 
-          <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            <ScrollReveal><DemoFeatureCard icon={<Shield className="h-6 w-6" />} title="Safety First" description="We operate entirely from the ground." /></ScrollReveal>
-            <ScrollReveal delay={0.08}><DemoFeatureCard icon={<Plane className="h-6 w-6" />} title="Extreme Speed" description="Tasks that take days with lifts take hours." /></ScrollReveal>
-            <ScrollReveal delay={0.16}><DemoFeatureCard icon={<CheckCircle2 className="h-6 w-6" />} title="Quality" description="AI-assisted flying ensures 100% coverage." /></ScrollReveal>
-            <ScrollReveal delay={0.24}><DemoFeatureCard icon={<BarChart className="h-6 w-6" />} title="High ROI" description="Lower setup costs mean direct savings." /></ScrollReveal>
-          </div>
+          <StaggerContainer className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <StaggerItem><DemoFeatureCard icon={<Shield className="h-6 w-6" />} title="Safety First" description="We operate entirely from the ground." /></StaggerItem>
+            <StaggerItem><DemoFeatureCard icon={<Clock className="h-6 w-6" />} title="Extreme Speed" description="Tasks that take days with lifts take hours." /></StaggerItem>
+            <StaggerItem><DemoFeatureCard icon={<CheckCircle2 className="h-6 w-6" />} title="Quality" description="AI-assisted flying ensures 100% coverage." /></StaggerItem>
+            <StaggerItem><DemoFeatureCard icon={<BarChart className="h-6 w-6" />} title="High ROI" description="Lower setup costs mean direct savings." /></StaggerItem>
+          </StaggerContainer>
         </div>
       </section>
 
@@ -255,7 +339,9 @@ export default function DroneOpsDemoPage() {
               <span className="drone-section-tag-dot drone-section-tag-dot--orange" />
               Capabilities
             </div>
-            <h2 className="drone-section-title drone-section-title--dark">Heavy-duty systems</h2>
+            <h2 className="drone-section-title drone-section-title--dark">
+              <span className="drone-section-title-mark drone-section-title-mark--dark">Heavy-duty systems</span>
+            </h2>
             <p className="drone-section-copy drone-section-copy--dark">Airborne maintenance for any exterior task.</p>
           </div>
 
@@ -271,7 +357,7 @@ export default function DroneOpsDemoPage() {
         <Image src="/work/drones/poster.png" alt="DroneOps poster background" fill className="pointer-events-none object-cover opacity-[0.03] mix-blend-luminosity" />
         <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
           <ScrollReveal>
-            <h2 className="mb-8 text-5xl font-black tracking-tight md:text-7xl">
+            <h2 className="drone-brain-shake mb-8 inline-block cursor-crosshair text-5xl font-black tracking-tight md:text-7xl">
               Stop waiting.
               <br />
               <span className="text-[var(--drone-accent-lime)]">Start clearing.</span>
@@ -312,7 +398,12 @@ export default function DroneOpsDemoPage() {
             <h4 className="mb-4 font-mono text-lg font-bold text-[var(--drone-accent-lime)]">Services</h4>
             <ul className="space-y-3 text-sm text-[var(--drone-muted)]">
               {["Roof Treatment", "Facade Cleaning", "Window Cleaning", "Solar Panels"].map((item) => (
-                <li key={item}><span className="drone-footer-link">{item}</span></li>
+                <li key={item}>
+                  <span className="drone-footer-item">
+                    <ArrowRight className="h-3 w-3" strokeWidth={3} />
+                    {item}
+                  </span>
+                </li>
               ))}
             </ul>
           </div>
@@ -321,7 +412,12 @@ export default function DroneOpsDemoPage() {
             <h4 className="mb-4 font-mono text-lg font-bold text-[var(--drone-accent-lime)]">Company</h4>
             <ul className="space-y-3 text-sm text-[var(--drone-muted)]">
               {["About Us", "Careers", "Contact", "Dashboard Login"].map((item) => (
-                <li key={item}><span className="drone-footer-link">{item}</span></li>
+                <li key={item}>
+                  <span className="drone-footer-item">
+                    <ArrowRight className="h-3 w-3" strokeWidth={3} />
+                    {item}
+                  </span>
+                </li>
               ))}
             </ul>
           </div>

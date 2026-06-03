@@ -59,8 +59,8 @@ export default function DesignPage() {
                   Selected Design Work
                 </h1>
                 <p className="max-w-[68ch] text-base leading-7 text-[var(--terminal-text-soft)] md:text-lg">
-                  Two compact case studies: a coffee label system for a blend lineup, and an interactive DroneOps landing
-                  page concept with real hover states and motion preserved inside this portfolio.
+                  A focused set of visual work: a Coffee Holic label system for a blend lineup, and a DroneOps
+                  interactive landing-page prototype with real hover states, motion, service cards, and CTA flow.
                 </p>
               </div>
               <div className="design-index">
@@ -71,8 +71,8 @@ export default function DesignPage() {
                 </a>
                 <a href="#droneops" className="design-index-item">
                   <span>02</span>
-                  <strong>DroneOps concept</strong>
-                  <small>Interactive landing page</small>
+                  <strong>DroneOps prototype</strong>
+                  <small>Interactive prototype</small>
                 </a>
               </div>
             </div>
@@ -134,15 +134,15 @@ export default function DesignPage() {
             <div className="design-case-copy">
               <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.3em] text-[var(--terminal-green)]">
                 <LayoutTemplate className="h-4 w-4" />
-                case 02 / interactive concept
+                case 02 / interactive prototype
               </div>
               <h2 className="text-3xl font-semibold uppercase tracking-[0.06em] text-[var(--terminal-ivory)] md:text-4xl">
-                DroneOps landing page concept
+                DroneOps landing page prototype
               </h2>
               <p className="text-base leading-7 text-[var(--terminal-text-soft)]">
-                A bold landing page direction for a drone-based exterior maintenance service. The screenshots below show
-                the real interface, while the demo page keeps the actual hover behavior, animated headings, service
-                cards, and CTA flow.
+                A bold interface direction for a drone-based exterior maintenance service. The screenshots show the
+                rendered product surface, while the live demo preserves the original hover behavior, animated headings,
+                service cards, theme toggle, mobile menu, and CTA flow.
               </p>
               <div className="design-list">
                 <div className="design-list-item">

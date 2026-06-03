@@ -239,7 +239,7 @@ export default function Home() {
                   <span className="terminal-chip">Transcript QA</span>
                   <span className="terminal-chip">EN-RU translation</span>
                   <span className="terminal-chip">Packaging design</span>
-                  <span className="terminal-chip">UX/UI concepts</span>
+                  <span className="terminal-chip">UX/UI prototypes</span>
                 </div>
 
                 <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:flex-wrap sm:gap-5">
@@ -321,12 +321,12 @@ export default function Home() {
             </div>
             <div className="space-y-4 text-sm leading-7 text-[var(--terminal-text-soft)]">
               <p>
-                My visual work is not a huge agency-style archive. What I can show today is smaller, but real:
-                a coffee label system and a drone-service website concept with a strong visual direction.
+                My visual work is built around structure: a coffee label system with clear product variation,
+                and a DroneOps service interface shaped as a working interactive landing-page prototype.
               </p>
               <p>
-                The useful through-line is structure: I tend to work from hierarchy, clarity, repeatable systems,
-                and practical communication rather than decoration for its own sake.
+                The through-line is practical visual communication: hierarchy, consistency, offer clarity,
+                and interaction details that make a design easier to understand and present.
               </p>
             </div>
           </section>
@@ -334,7 +334,7 @@ export default function Home() {
           <section className="terminal-panel p-6">
             <div className="mb-4 flex items-center justify-between text-[11px] uppercase tracking-[0.3em] text-[var(--terminal-ash)]">
               <span>design skills</span>
-              <span className="text-[var(--terminal-green)]">honest baseline</span>
+              <span className="text-[var(--terminal-green)]">applied toolkit</span>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               {[
@@ -396,14 +396,14 @@ export default function Home() {
             <div className="max-w-3xl">
               <p className="text-[11px] uppercase tracking-[0.3em] text-[var(--terminal-ash)]">selected design work</p>
               <h2 className="mt-2 text-2xl font-semibold uppercase tracking-[0.08em] text-[var(--terminal-ivory)] sm:text-3xl">
-                Real work, packaged clearly
+                Selected visual systems
               </h2>
               <p className="mt-3 max-w-[56ch] text-sm leading-7 text-[var(--terminal-text-soft)] sm:text-base">
-                I do not have dozens of finished product case studies, so this section focuses on work that is real and
-                presentable: a coffee label system and an unfinished but visually defined drone-service website concept.
+                Two focused projects that show how I think through visual hierarchy, product differentiation,
+                interaction states, and conversion flow: Coffee Holic labels and the DroneOps interface prototype.
               </p>
             </div>
-            <span className="terminal-chip">2 grounded case studies</span>
+            <span className="terminal-chip">2 selected case studies</span>
           </div>
 
           <div className="space-y-8">
@@ -418,9 +418,8 @@ export default function Home() {
                     Coffee label series for a blend lineup
                   </h3>
                   <p className="max-w-[60ch] text-sm leading-7 text-[var(--terminal-text-soft)] sm:text-base">
-                    A compact packaging system built for a coffee lineup with several blends. The goal was to keep one
-                    recognizable structure across all labels while changing palette, blend identity, and tasting notes
-                    from product to product.
+                    A packaging system for a coffee lineup with several blends. One recognizable structure carries
+                    the brand, while color, naming, blend identity, and tasting notes make each product distinct.
                   </p>
                 </div>
 
@@ -465,16 +464,16 @@ export default function Home() {
               <div className="work-copy">
                 <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-[var(--terminal-green)]">
                   <LayoutTemplate className="h-4 w-4" />
-                  ui concept
+                  ui prototype
                 </div>
                 <div className="space-y-4">
                   <h3 className="text-2xl font-semibold uppercase tracking-[0.08em] text-[var(--terminal-ivory)] sm:text-3xl">
-                    DroneOps landing and service concept
+                    DroneOps landing and service prototype
                   </h3>
                   <p className="max-w-[60ch] text-sm leading-7 text-[var(--terminal-text-soft)] sm:text-base">
-                    An unfinished website concept for a drone-based property maintenance service. The current state
-                    already shows a clear visual direction, service architecture, and strong CTA flow even though the
-                    project is not fully completed.
+                    An interactive landing-page prototype for a drone-based exterior maintenance service. It presents
+                    the offer, audience split, service architecture, hover behavior, and quote flow in one coherent
+                    visual direction.
                   </p>
                 </div>
 
@@ -486,14 +485,14 @@ export default function Home() {
                 </div>
 
                 <div className="work-metrics">
-                  <CaseStat label="status" value="concept in progress" />
-                  <CaseStat label="built" value="homepage + service pages" />
+                  <CaseStat label="status" value="interactive prototype" />
+                  <CaseStat label="built" value="homepage + service flow" />
                   <CaseStat label="role" value="ui direction / content structure" />
                 </div>
 
                 <p className="text-sm leading-7 text-[var(--terminal-text-soft)]">
-                  What is already convincing: a bold brutalist palette, clear audience framing, and a service-first
-                  structure that makes the offer understandable fast.
+                  The value is in the product framing: bold visual language, sharp audience segmentation,
+                  service-first information architecture, and a direct path to quote request.
                 </p>
                 <div className="pt-1">
                   <AnimatedButton href="/design/droneops" className="min-w-[240px] justify-center sm:w-auto">
@@ -532,7 +531,7 @@ export default function Home() {
               </h2>
             </div>
             <p className="max-w-[34ch] text-sm leading-6 text-[var(--terminal-text-soft)]">
-              A concise timeline of work, education, and a few relevant milestones only.
+              Work, education, training, and selected milestones with direct relevance to the roles I target.
             </p>
           </div>
           <Timeline />

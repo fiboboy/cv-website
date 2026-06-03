@@ -40,7 +40,7 @@ export const professionalProfile: ProfessionalProfile = {
       "Operations supervision",
       "AI data review and QA",
       "EN-RU translation",
-      "Packaging and UX/UI concepts"
+      "Packaging and UX/UI prototypes"
     ]
   },
   technicalSkills: {
@@ -83,7 +83,7 @@ export const professionalProfile: ProfessionalProfile = {
     },
     {
       area: "Visual structure",
-      description: "Builds clear information hierarchy and consistent visual systems for labels and web concepts",
+      description: "Builds clear information hierarchy and consistent visual systems for labels and web prototypes",
       relevance: "Useful in packaging design, landing pages, and presentation-oriented digital work"
     }
   ],
@@ -99,8 +99,8 @@ export const professionalProfile: ProfessionalProfile = {
       relevance: "Demonstrates calm decision-making and operations leadership"
     },
     {
-      achievement: "Built a coffee label series and a drone-service website concept",
-      impact: "Created a repeatable packaging system and a strong visual landing-page direction from limited assets",
+      achievement: "Built a coffee label series and a drone-service website prototype",
+      impact: "Created a repeatable packaging system and an interactive landing-page prototype from a lean service brief",
       relevance: "Demonstrates practical visual design thinking and UX/UI initiative"
     }
   ],

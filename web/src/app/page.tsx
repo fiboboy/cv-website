@@ -321,8 +321,8 @@ export default function Home() {
             </div>
             <div className="space-y-4 text-sm leading-7 text-[var(--terminal-text-soft)]">
               <p>
-                My visual work is built around structure: a coffee label system with clear product variation,
-                and a DroneOps service interface shaped as a working interactive landing-page prototype.
+                My visual work is built around structure: a Coffee Holic retail system with product labels and a
+                feedback flyer, and a DroneOps service interface shaped as a working interactive landing-page prototype.
               </p>
               <p>
                 The through-line is practical visual communication: hierarchy, consistency, offer clarity,
@@ -340,6 +340,7 @@ export default function Home() {
               {[
                 "Visual hierarchy",
                 "Packaging layout",
+                "Print feedback touchpoints",
                 "Color-coded product variation",
                 "Landing page structure",
                 "Offer presentation",
@@ -400,7 +401,8 @@ export default function Home() {
               </h2>
               <p className="mt-3 max-w-[56ch] text-sm leading-7 text-[var(--terminal-text-soft)] sm:text-base">
                 Two focused projects that show how I think through visual hierarchy, product differentiation,
-                interaction states, and conversion flow: Coffee Holic labels and the DroneOps interface prototype.
+                customer touchpoints, interaction states, and conversion flow: Coffee Holic retail visuals and the
+                DroneOps interface prototype.
               </p>
             </div>
             <span className="terminal-chip">2 selected case studies</span>
@@ -411,15 +413,16 @@ export default function Home() {
               <div className="work-copy">
                 <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-[var(--terminal-green)]">
                   <Package2 className="h-4 w-4" />
-                  packaging system
+                  retail visual system
                 </div>
                 <div className="space-y-4">
                   <h3 className="text-2xl font-semibold uppercase tracking-[0.08em] text-[var(--terminal-ivory)] sm:text-3xl">
-                    Coffee label series for a blend lineup
+                    Coffee Holic labels and feedback flyer
                   </h3>
                   <p className="max-w-[60ch] text-sm leading-7 text-[var(--terminal-text-soft)] sm:text-base">
-                    A packaging system for a coffee lineup with several blends. One recognizable structure carries
-                    the brand, while color, naming, blend identity, and tasting notes make each product distinct.
+                    A retail visual system for a coffee lineup with several blends and an in-store feedback flyer.
+                    One recognizable structure carries the brand, while color, naming, blend identity, tasting notes,
+                    and a QR-led feedback flow make the touchpoints distinct and useful.
                   </p>
                 </div>
 
@@ -427,18 +430,19 @@ export default function Home() {
                   <WorkChip>Label hierarchy</WorkChip>
                   <WorkChip>Variant color system</WorkChip>
                   <WorkChip>Packaging layout</WorkChip>
+                  <WorkChip>Feedback flyer</WorkChip>
                   <WorkChip>Retail shelf clarity</WorkChip>
                 </div>
 
                 <div className="work-metrics">
-                  <CaseStat label="scope" value="5 label variants" />
-                  <CaseStat label="focus" value="consistency + differentiation" />
-                  <CaseStat label="role" value="visual design / packaging" />
+                  <CaseStat label="scope" value="5 labels + flyer" />
+                  <CaseStat label="focus" value="retail clarity + response flow" />
+                  <CaseStat label="role" value="visual design / print layout" />
                 </div>
 
                 <p className="text-sm leading-7 text-[var(--terminal-text-soft)]">
-                  What works well here: strong repeatable frame, readable information hierarchy, and enough color
-                  contrast between blends to make the series feel organized instead of repetitive.
+                  What works well here: strong repeatable frame, readable information hierarchy, clear variation
+                  between blends, and a direct print touchpoint for collecting customer feedback.
                 </p>
               </div>
 
@@ -455,6 +459,7 @@ export default function Home() {
                 <div className="work-proof-line">
                   <span>5 label variants</span>
                   <span>shared hierarchy</span>
+                  <span>feedback flyer</span>
                   <span>color-coded blends</span>
                 </div>
               </div>

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, LayoutTemplate, Package2 } from "lucide-react";
+import { ArrowRight, LayoutTemplate, MessageSquareText, Package2 } from "lucide-react";
 import AnimatedButton from "@/components/AnimatedButton";
 import { DarkHeader } from "@/components/ui/dark-header";
 
@@ -59,15 +59,16 @@ export default function DesignPage() {
                   Selected Design Work
                 </h1>
                 <p className="max-w-[68ch] text-base leading-7 text-[var(--terminal-text-soft)] md:text-lg">
-                  A focused set of visual work: a Coffee Holic label system for a blend lineup, and a DroneOps
-                  interactive landing-page prototype with real hover states, motion, service cards, and CTA flow.
+                  A focused set of visual work: a Coffee Holic retail system with labels and an in-store feedback
+                  flyer, plus a DroneOps interactive landing-page prototype with real hover states, motion, service
+                  cards, and CTA flow.
                 </p>
               </div>
               <div className="design-index">
                 <a href="#coffee-labels" className="design-index-item">
                   <span>01</span>
-                  <strong>Coffee Holic labels</strong>
-                  <small>Packaging system</small>
+                  <strong>Coffee Holic retail system</strong>
+                  <small>Packaging + feedback flyer</small>
                 </a>
                 <a href="#droneops" className="design-index-item">
                   <span>02</span>
@@ -85,12 +86,12 @@ export default function DesignPage() {
                 case 01 / packaging system
               </div>
               <h2 className="text-3xl font-semibold uppercase tracking-[0.06em] text-[var(--terminal-ivory)] md:text-4xl">
-                Coffee Holic blend label series
+                Coffee Holic retail visual system
               </h2>
               <p className="text-base leading-7 text-[var(--terminal-text-soft)]">
-                A repeatable label architecture for five coffee blends. The work is strongest as a system: stable brand
-                placement, consistent information hierarchy, and enough color separation for each blend to read as its
-                own product.
+                A repeatable visual system for Coffee Holic retail touchpoints: five blend labels plus an in-store
+                feedback flyer built around a clear QR-led action. The work connects product identity, shelf clarity,
+                and a simple customer response flow inside the same brand language.
               </p>
               <div className="design-list">
                 <div className="design-list-item">
@@ -99,7 +100,11 @@ export default function DesignPage() {
                 </div>
                 <div className="design-list-item">
                   <span>Role</span>
-                  <p>Visual design, packaging layout, variant logic, and final label composition.</p>
+                  <p>Visual design, packaging layout, variant logic, feedback flyer composition, and final artwork.</p>
+                </div>
+                <div className="design-list-item">
+                  <span>Customer touchpoint</span>
+                  <p>QR-first flyer for collecting short cafe feedback: clear headline, low-friction instruction, and anonymous option.</p>
                 </div>
               </div>
             </div>
@@ -127,6 +132,27 @@ export default function DesignPage() {
                   </article>
                 ))}
               </div>
+              <article className="coffee-flyer-card">
+                <div className="coffee-flyer-frame">
+                  <Image
+                    src="/work/coffee/feedback-flyer.png"
+                    alt="Coffee Holic customer feedback flyer with QR-style coffee bean composition"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 22vw"
+                  />
+                </div>
+                <div className="coffee-flyer-caption">
+                  <div className="inline-flex items-center gap-2 text-[var(--terminal-green)]">
+                    <MessageSquareText className="h-4 w-4" />
+                    <span>In-store feedback flyer</span>
+                  </div>
+                  <p>
+                    A customer-facing print piece for cafe feedback: direct Russian copy, 30-second promise, anonymous
+                    option, and a coffee-bean QR visual that keeps the call to action on-brand.
+                  </p>
+                </div>
+              </article>
             </div>
           </article>
 

@@ -470,6 +470,43 @@
   color: var(--terminal-amber);
 }
 
+.coffee-flyer-card {
+  display: grid;
+  gap: 1rem;
+  border: 1px solid var(--terminal-border);
+  background:
+    linear-gradient(135deg, rgba(242, 196, 109, 0.08), transparent 42%),
+    rgba(5, 7, 6, 0.96);
+  padding: 1rem;
+}
+
+.coffee-flyer-frame {
+  position: relative;
+  aspect-ratio: 721 / 1000;
+  width: min(100%, 22rem);
+  overflow: hidden;
+  border: 1px solid rgba(242, 196, 109, 0.28);
+  background: #f1dcc2;
+  justify-self: center;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.35),
+    0 24px 70px rgba(0, 0, 0, 0.28);
+}
+
+.coffee-flyer-caption {
+  display: grid;
+  gap: 0.55rem;
+  font-size: 0.78rem;
+  line-height: 1.7;
+  color: var(--terminal-text-soft);
+}
+
+.coffee-flyer-caption span {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
 .drone-screen-main {
   aspect-ratio: 1440 / 1100;
   min-height: auto;

@@ -7,7 +7,7 @@ const coreStrengths = [
   "Incident, emergency, and escalation handling with reporting and procedural compliance",
   "Cross-stakeholder communication and continuity support",
   "Supplier and vendor coordination with small-business administration experience",
-  "Visual hierarchy, packaging layout, and product-variant differentiation",
+  "Visual hierarchy, packaging layout, feedback flyer design, and product-variant differentiation",
   "Landing-page structure and UX/UI prototype work from lean briefs and source material",
 ];
 
@@ -65,12 +65,12 @@ const education = [
 
 const selectedDesignWork = [
   {
-    title: "Coffee Holic coffee-blend label series",
+    title: "Coffee Holic retail visual system",
     meta: "Independent visual work",
     bullets: [
-      "Created a repeatable packaging layout for multiple coffee-blend variants.",
-      "Used shared hierarchy and structure while differentiating products through color, naming, and tasting-note presentation.",
-      "Focused on retail readability and visual consistency across the lineup rather than one-off decorative treatment.",
+      "Created a repeatable packaging layout for multiple coffee-blend variants and a customer feedback flyer.",
+      "Used shared hierarchy and structure while differentiating products through color, naming, tasting-note presentation, and QR-led response flow.",
+      "Focused on retail readability, visual consistency, and practical customer communication rather than one-off decorative treatment.",
     ],
   },
   {
